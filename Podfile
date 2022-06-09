@@ -6,5 +6,7 @@ target 'meus' do
   use_frameworks!
 
   # Pods for meus
-	pod 'Firebase/Core'
+	pod 'Firebase/Database'
+	pod 'Firebase/Firestore'
+	pod 'FirebaseUI/Auth'
 end

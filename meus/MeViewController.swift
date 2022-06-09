@@ -7,12 +7,15 @@
 
 import UIKit
 
-class MeViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource {
+class MeViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource, UITableViewDelegate, UITableViewDataSource {
     
+    var schedules = ["점심약속", "시험", "저녁약속", "술약속", "롤약속", "코딩약속"]
     
     @IBOutlet weak var collectionView: UICollectionView!
     @IBOutlet weak var monthLabel: UILabel!
     
+    
+    @IBOutlet var ScheduleTable: UITableView!
     var selectedDate = Date()
     var totalSquares = [String]()
     
@@ -21,6 +24,9 @@ class MeViewController: UIViewController,UICollectionViewDelegate,UICollectionVi
         self.navigationItem.hidesBackButton = true
         setCellsView()
         setMonthView()
+        
+        ScheduleTable.dataSource = self
+        ScheduleTable.delegate = self
     }
     
     func setCellsView(){
@@ -78,5 +84,17 @@ class MeViewController: UIViewController,UICollectionViewDelegate,UICollectionVi
     override open var shouldAutorotate: Bool{ // 화면 방향전환여부 x
         return false
     }
+    
+    /// Table View
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return schedules.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = ScheduleTable.dequeueReusableCell(withIdentifier: "Cells", for: indexPath) as! Cells
+        cell.Txt.text = schedules[indexPath.row]
+        return cell
+    }
+    
     
 }
