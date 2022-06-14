@@ -1,9 +1,3 @@
-//
-//  SceneDelegate.swift
-//  meus
-//
-//  Created by 최현성 on 2022/05/24.
-//
 
 import UIKit
 

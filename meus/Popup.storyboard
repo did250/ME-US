@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -19,14 +19,14 @@
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="6id-wj-lVl">
                                 <rect key="frame" x="107" y="398" width="200" height="100"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="로그인 실패!!" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AOt-yA-z1g">
-                                        <rect key="frame" x="56" y="0.0" width="88" height="21"/>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="로그인 실패" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="AOt-yA-z1g">
+                                        <rect key="frame" x="61" y="30" width="78" height="21"/>
                                         <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                         <nil key="textColor"/>
                                         <nil key="highlightedColor"/>
                                     </label>
                                     <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="X5b-CU-P6b">
-                                        <rect key="frame" x="78" y="69" width="44" height="31"/>
+                                        <rect key="frame" x="78" y="56" width="44" height="44"/>
                                         <state key="normal" title="Button"/>
                                         <buttonConfiguration key="configuration" style="plain" title="OK"/>
                                         <connections>
@@ -36,9 +36,10 @@
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
-                                    <constraint firstItem="AOt-yA-z1g" firstAttribute="top" secondItem="6id-wj-lVl" secondAttribute="top" id="GmY-fd-27U"/>
+                                    <constraint firstItem="AOt-yA-z1g" firstAttribute="top" secondItem="6id-wj-lVl" secondAttribute="top" constant="30" id="GmY-fd-27U"/>
                                     <constraint firstAttribute="width" constant="200" id="QHb-il-YYE"/>
                                     <constraint firstItem="AOt-yA-z1g" firstAttribute="centerX" secondItem="6id-wj-lVl" secondAttribute="centerX" id="fLm-Ng-0Rr"/>
+                                    <constraint firstItem="X5b-CU-P6b" firstAttribute="top" secondItem="AOt-yA-z1g" secondAttribute="bottom" constant="5" id="foT-AY-rxN"/>
                                     <constraint firstAttribute="bottom" secondItem="X5b-CU-P6b" secondAttribute="bottom" id="kYa-yi-fcS"/>
                                     <constraint firstAttribute="height" constant="100" id="may-1a-PkK"/>
                                     <constraint firstItem="X5b-CU-P6b" firstAttribute="centerX" secondItem="6id-wj-lVl" secondAttribute="centerX" id="oda-dW-EO7"/>

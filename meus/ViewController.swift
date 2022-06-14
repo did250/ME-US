@@ -1,14 +1,8 @@
-//
-//  ViewController.swift
-//  meus
-//
-//  Created by 최현성 on 2022/05/24.
-//
 
 import UIKit
 import Firebase
 
-class ViewController: UIViewController {
+class ViewController: UIViewController,UITextFieldDelegate {
     
     @IBOutlet weak var idTextField: UITextField!
     
@@ -48,11 +42,7 @@ class ViewController: UIViewController {
                 self?.present(popup, animated: true, completion: nil)
             }
         }
-//        let firstVC = storyboard!.instantiateViewController(withIdentifier: "MeVIewController")
-//        let tbc = UITabBarController()
-//        tbc.viewControllers = [firstVC]
-//        
-//        present(tbc, animated: true)
+        
     }
     
     @IBAction func signUpBtn(_ sender: Any) {
@@ -62,15 +52,33 @@ class ViewController: UIViewController {
         sbt?.modalTransitionStyle = .flipHorizontal // 화면 넘어가는 애니메이션
         self.present(sbt!, animated: true, completion: nil)
     }
+        
+        // 화면터치시 키보드 내려가는 코드
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    // 리턴키 눌렀을때 다음 텍스트 필드 이동 및 마지막 텍스트 필드일때 키보드 사라짐
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == idTextField {
+            pwTextField.becomeFirstResponder()
+        } else {
+            pwTextField.resignFirstResponder()
+        }
+        return true
+    }
+    
+    
+    
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
         
-        
+        idTextField.delegate = self
+        pwTextField.delegate = self
         
     }
-
 
 }
 

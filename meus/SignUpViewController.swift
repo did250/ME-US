@@ -1,13 +1,9 @@
-//
-//  signUPViewController.swift
-//  meus
-//
-//  Created by 최현성 on 2022/05/28.
-//
 
 import UIKit
 
-class SignUpViewController: UIViewController {
+class SignUpViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate {
+    
+   
     
     @IBOutlet weak var name: UITextField!
     @IBOutlet weak var idAndemail: UITextField!
@@ -27,6 +23,8 @@ class SignUpViewController: UIViewController {
     @IBOutlet weak var pwreInputField: UITextField!
     
     @IBOutlet weak var notSamePw: UILabel!
+    
+    @IBOutlet weak var emailField: UITextField!
     
     @IBOutlet weak var numberField: UITextField!
     
@@ -56,11 +54,35 @@ class SignUpViewController: UIViewController {
 //        self.present(alert, animated: false)
         
         self.presentingViewController?.dismiss(animated: true)
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        self.view.endEditing(true) // 키보드 있을때 스크롤 드래그시 키보드 사라짐
+    }
+    
+    
+    
+    // 리턴키 눌렀을때 다음 텍스트 필드 이동 및 마지막 텍스트 필드일때 키보드 사라짐
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == name {
+            idAndemail.becomeFirstResponder()
+        }
+        if textField == idAndemail {
+            idAndemail.resignFirstResponder()
+        }
+        if textField == pwInputField {
+            pwreInputField.becomeFirstResponder()
+        }
+        if textField == pwreInputField {
+            pwreInputField.resignFirstResponder()
+        }
+        if textField == emailField {
+            numberField.becomeFirstResponder()
+        } else {
+            numberField.resignFirstResponder()
+        }
         
-        
-        
-        
-        
+        return true
     }
     
     
@@ -74,9 +96,13 @@ class SignUpViewController: UIViewController {
         
         numberNotSame.isHidden = true
         
+        name.delegate = self
+        idAndemail.delegate = self
+        pwInputField.delegate = self
+        pwreInputField.delegate = self
+        emailField.delegate = self
+        numberField.delegate = self
     }
     
-
     
-
 }
