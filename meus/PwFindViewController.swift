@@ -1,4 +1,3 @@
-
 import UIKit
 
 class PwFindViewController: UIViewController, UITextFieldDelegate {
@@ -31,8 +30,6 @@ class PwFindViewController: UIViewController, UITextFieldDelegate {
         lbt?.modalTransitionStyle = .flipHorizontal // 화면 넘어가는 애니메이션
         self.present(lbt!, animated: true, completion: nil)
     }
-    
-    
 
     @IBAction func backBtn(_ sender: Any) {
         self.presentingViewController?.dismiss(animated: true)
@@ -58,12 +55,10 @@ class PwFindViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
         certiNumNotSameField.isHidden = true
-        
         
         nameField.delegate = self
         idField.delegate = self
@@ -71,8 +66,4 @@ class PwFindViewController: UIViewController, UITextFieldDelegate {
         certificationField.delegate = self
         
     }
-    
-
-    
-
 }

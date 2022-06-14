@@ -22,6 +22,7 @@ class ViewController: UIViewController,UITextFieldDelegate {
         self.present(pwf!, animated: true, completion: nil)
         
     }
+    
     @IBAction func loginBtn(_ sender: Any) {
         guard let userEmail = idTextField.text else {return}
         guard let userPassword = pwTextField.text else {return}
@@ -43,7 +44,6 @@ class ViewController: UIViewController,UITextFieldDelegate {
                 self?.present(popup, animated: true, completion: nil)
             }
         }
-        
     }
     
     @IBAction func signUpBtn(_ sender: Any) {
@@ -68,9 +68,6 @@ class ViewController: UIViewController,UITextFieldDelegate {
         }
         return true
     }
-    
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()

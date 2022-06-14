@@ -58,69 +58,6 @@
             </objects>
             <point key="canvasLocation" x="61" y="87"/>
         </scene>
-        <!--Add Friend Pop View Controller-->
-        <scene sceneID="xfx-Uf-Z2h">
-            <objects>
-                <viewController storyboardIdentifier="AddFriendPopViewController" id="B1B-ea-zQe" customClass="AddFriendPopViewController" customModule="meus" customModuleProvider="target" sceneMemberID="viewController">
-                    <view key="view" contentMode="scaleToFill" id="suS-wV-tal">
-                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <subviews>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="ss4-md-Onb">
-                                <rect key="frame" x="100" y="244" width="214" height="418"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dJh-ZI-tgx">
-                                        <rect key="frame" x="73.5" y="95" width="67" height="31"/>
-                                        <state key="normal" title="Button"/>
-                                        <buttonConfiguration key="configuration" style="plain" title="Button"/>
-                                        <connections>
-                                            <action selector="btnOK:" destination="B1B-ea-zQe" eventType="touchUpInside" id="h2N-Qb-kXd"/>
-                                        </connections>
-                                    </button>
-                                    <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fcs-xQ-fn2">
-                                        <rect key="frame" x="91" y="51" width="32" height="34"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                        <textInputTraits key="textInputTraits"/>
-                                    </textField>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="추가할 친구의 ID를 입력하세요." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="LbZ-kE-IJ7">
-                                        <rect key="frame" x="0.0" y="10" width="214" height="21"/>
-                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
-                                </subviews>
-                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
-                                <constraints>
-                                    <constraint firstItem="dJh-ZI-tgx" firstAttribute="centerX" secondItem="ss4-md-Onb" secondAttribute="centerX" id="3r1-W8-8XO"/>
-                                    <constraint firstItem="LbZ-kE-IJ7" firstAttribute="leading" secondItem="ss4-md-Onb" secondAttribute="leading" id="CU8-JY-Ge9"/>
-                                    <constraint firstAttribute="trailing" secondItem="LbZ-kE-IJ7" secondAttribute="trailing" id="Jxs-kg-S83"/>
-                                    <constraint firstItem="dJh-ZI-tgx" firstAttribute="top" secondItem="fcs-xQ-fn2" secondAttribute="bottom" constant="10" id="OXg-Ab-AFG"/>
-                                    <constraint firstItem="fcs-xQ-fn2" firstAttribute="centerX" secondItem="ss4-md-Onb" secondAttribute="centerX" id="e1x-tm-QD1"/>
-                                    <constraint firstItem="LbZ-kE-IJ7" firstAttribute="centerX" secondItem="ss4-md-Onb" secondAttribute="centerX" id="ugf-Wf-n4N"/>
-                                    <constraint firstItem="LbZ-kE-IJ7" firstAttribute="top" secondItem="ss4-md-Onb" secondAttribute="top" constant="10" id="ukx-yA-8IA"/>
-                                    <constraint firstItem="fcs-xQ-fn2" firstAttribute="top" secondItem="LbZ-kE-IJ7" secondAttribute="bottom" constant="20" id="vqc-Ud-ddA"/>
-                                </constraints>
-                            </view>
-                        </subviews>
-                        <viewLayoutGuide key="safeArea" id="aQo-fQ-Oqp"/>
-                        <color key="backgroundColor" white="0.0" alpha="0.60091576986754969" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <constraints>
-                            <constraint firstItem="ss4-md-Onb" firstAttribute="top" secondItem="aQo-fQ-Oqp" secondAttribute="top" constant="200" id="JBr-88-JV5"/>
-                            <constraint firstItem="aQo-fQ-Oqp" firstAttribute="bottom" secondItem="ss4-md-Onb" secondAttribute="bottom" constant="200" id="YBg-D0-71d"/>
-                            <constraint firstItem="ss4-md-Onb" firstAttribute="centerY" secondItem="suS-wV-tal" secondAttribute="centerY" id="ZCl-Rx-kSZ"/>
-                            <constraint firstItem="ss4-md-Onb" firstAttribute="leading" secondItem="aQo-fQ-Oqp" secondAttribute="leading" constant="100" id="aMa-1h-1Sk"/>
-                            <constraint firstItem="aQo-fQ-Oqp" firstAttribute="trailing" secondItem="ss4-md-Onb" secondAttribute="trailing" constant="100" id="ej3-bf-t5e"/>
-                            <constraint firstItem="ss4-md-Onb" firstAttribute="centerX" secondItem="suS-wV-tal" secondAttribute="centerX" id="pxG-Gn-Zkc"/>
-                        </constraints>
-                    </view>
-                    <connections>
-                        <outlet property="friedid" destination="fcs-xQ-fn2" id="Z78-A9-oxx"/>
-                    </connections>
-                </viewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="LVQ-DX-wSk" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="1192.753623188406" y="101.78571428571428"/>
-        </scene>
     </scenes>
     <resources>
         <systemColor name="systemBackgroundColor">

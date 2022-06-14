@@ -1,4 +1,3 @@
-
 import UIKit
 
 class IdFindViewController: UIViewController, UITextFieldDelegate {
@@ -21,9 +20,8 @@ class IdFindViewController: UIViewController, UITextFieldDelegate {
     
     @IBAction func backBtn(_ sender: Any) {
         self.presentingViewController?.dismiss(animated: true)
-    
-    
     }
+    
     override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
         self.view.endEditing(true)
     }
@@ -38,9 +36,6 @@ class IdFindViewController: UIViewController, UITextFieldDelegate {
         return true
     }
     
-    
-    
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -48,7 +43,4 @@ class IdFindViewController: UIViewController, UITextFieldDelegate {
         emailField.delegate = self
         
     }
-    
-
-   
 }

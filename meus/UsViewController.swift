@@ -3,7 +3,6 @@ import UIKit
 import CodableFirebase
 import FirebaseDatabase
 
-
 class UsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var ref : DatabaseReference!
@@ -14,12 +13,7 @@ class UsViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     
     @IBOutlet var GroupTable: UITableView!
     @IBOutlet var FriendTable: UITableView!
-    
-    @IBOutlet var addgroup: UIButton!
-    @IBOutlet var grouprequest: UIButton!
-    @IBOutlet var addfriend: UIButton!
-    @IBOutlet var friendrequest: UIButton!
-    
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == GroupTable {
             return groups.count
@@ -53,15 +47,13 @@ class UsViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         return ""
     }
     
-    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 30
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        print(newfriend)
-        print("11111")
+        
         ref = Database.database().reference()
         Loaduser()
         GroupTable.delegate = self
@@ -70,9 +62,20 @@ class UsViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         FriendTable.dataSource = self
         
     }
+    override func viewWillAppear(_ animated: Bool) {
+        Loaduser()
+    }
+    
     
     
     @IBAction func addgroup(_ sender: UIButton) {
+        guard let popup = self.storyboard?.instantiateViewController(withIdentifier: "AddGroupPopViewController") as? AddGroupPopViewController else {return}
+        popup.myid = userinfo.id
+        popup.groups = userinfo.groups
+        popup.myuid = userinfo.uid
+        popup.modalPresentationStyle = .overFullScreen
+        popup.modalTransitionStyle = .crossDissolve
+        self.present(popup, animated: true, completion: nil)
         
     }
     
@@ -80,9 +83,9 @@ class UsViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     @IBAction func addfriend(_ sender: UIButton) {
-        sendFrequest(friendid: "alpa@gmail.com", myid: "asdfafsd")
-        let storyboard = UIStoryboard.init(name: "Popup", bundle: nil)
-        let popup = storyboard.instantiateViewController(withIdentifier: "AddFriendPopViewController")
+    
+        guard let popup = self.storyboard?.instantiateViewController(withIdentifier: "AddFriendPopViewController") as? AddFriendPopViewController else {return}
+        popup.myid = userinfo.id
         popup.modalPresentationStyle = .overFullScreen
         popup.modalTransitionStyle = .crossDissolve
         self.present(popup, animated: true, completion: nil)
@@ -126,40 +129,30 @@ extension UsViewController {
     // 친구의 Frequest 에 myid 추가
     func sendFrequest(friendid : String, myid : String) {
         var frienduid : String = ""
-        ref.child("users").queryOrdered(byChild: "id").queryEqual(toValue: friendid).observeSingleEvent(of: .value, with: {
+        ref?.child("users").queryOrdered(byChild: "id").queryEqual(toValue: friendid).observeSingleEvent(of: .value, with: {
             snapshot in
-            
             for child in snapshot.children {
-                
                 let snap = child as! DataSnapshot
                 frienduid = snap.key
-                print(frienduid)
                 self.ref.child("users").child(frienduid).child("Frequest").getData {
                     (error,snapshot) in
                     if let error = error {
                         print("Error \(error)")
                     }
                     else{
-                        
                         guard let value = snapshot?.value else {return}
                         if let data2 = try? FirebaseDecoder().decode([String].self, from: value){
                             var array: [String] = data2
                             array.append(myid)
                             self.ref.child("users").child(frienduid).updateChildValues(["Frequest": array])
-                           
                         }
                         else{
                             print("Error")
                         }
-                        
                     }
-                    
                 }
-                
-                
             }
         })
-        
     }
 }
 

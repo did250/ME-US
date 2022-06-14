@@ -1,4 +1,3 @@
-
 import UIKit
 
 class MeViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource, UITableViewDelegate, UITableViewDataSource {
@@ -89,6 +88,4 @@ class MeViewController: UIViewController,UICollectionViewDelegate,UICollectionVi
         cell.Txt.text = schedules[indexPath.row]
         return cell
     }
-    
-    
 }

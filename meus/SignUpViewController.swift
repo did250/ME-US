@@ -59,8 +59,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIScrollViewD
                     return
                 }
                 adduser(uid: user.uid, name: userName)
-           
-                
                 self.dismiss(animated: true, completion: nil)
                 }
         }
@@ -69,8 +67,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIScrollViewD
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
         self.view.endEditing(true) // 키보드 있을때 스크롤 드래그시 키보드 사라짐
     }
-    
-    
     
     // 리턴키 눌렀을때 다음 텍스트 필드 이동 및 마지막 텍스트 필드일때 키보드 사라짐
     func textFieldShouldReturn(_ textField: UITextField) -> Bool {
@@ -91,11 +87,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIScrollViewD
         } else {
             numberField.resignFirstResponder()
         }
-        
         return true
     }
-    
-    
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -103,9 +96,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIScrollViewD
         ref = Database.database().reference()
         
         alreadyId.isHidden = true
-        
         notSamePw.isHidden = true
-        
         numberNotSame.isHidden = true
         
         name.delegate = self
@@ -116,9 +107,7 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIScrollViewD
         numberField.delegate = self
     }
     
-    
     func adduser(uid:String, name: String){
         ref.child("users").child(uid).setValue(["key": ref.childByAutoId().key, "id": idAndemail.text , "uid": uid,"name": name, "friends": ["friends"], "groups": ["groups"], "Frequest": ["Frequest"], "Grequest": ["Grequest"], "schedules": ["schedules"]])
     }
-    
 }
