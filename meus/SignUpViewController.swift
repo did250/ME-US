@@ -1,9 +1,9 @@
-
+import Firebase
 import UIKit
 
 class SignUpViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate {
     
-   
+    var ref: DatabaseReference!
     
     @IBOutlet weak var name: UITextField!
     @IBOutlet weak var idAndemail: UITextField!
@@ -47,13 +47,23 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIScrollViewD
     }
     
     @IBAction func signUpFinishBtn(_ sender: Any) {
+        guard let userEmail = idAndemail.text, let userPassword = pwInputField.text, let userPasswordConfirm = pwreInputField.text, let userName = name.text else {return}
         
-//        let alert = UIAlertController(title: "완료", message: "축하합니다 회원가입이 완료되었습니다^^", preferredStyle: .alert)
-//        let check = UIAlertAction(title: "완료", style: .default) { self.presentingViewController?.dismiss(animated: true)} in
-//        alert.addAction(check)//. check를 alert에 버튼으로 등록
-//        self.present(alert, animated: false)
-        
-        self.presentingViewController?.dismiss(animated: true)
+        if userEmail == "" || userPassword == "" || userPasswordConfirm == "" || userPassword != userPasswordConfirm {
+            // fail
+        }
+        else {
+            Auth.auth().createUser(withEmail: userEmail, password: userPassword ) { [self] authResult, error in
+                guard let user = authResult?.user, error == nil else {
+                    print(error!.localizedDescription)
+                    return
+                }
+                adduser(uid: user.uid, name: userName)
+           
+                
+                self.dismiss(animated: true, completion: nil)
+                }
+        }
     }
     
     func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
@@ -90,6 +100,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIScrollViewD
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        ref = Database.database().reference()
+        
         alreadyId.isHidden = true
         
         notSamePw.isHidden = true
@@ -104,5 +116,9 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIScrollViewD
         numberField.delegate = self
     }
     
+    
+    func adduser(uid:String, name: String){
+        ref.child("users").child(uid).setValue(["key": ref.childByAutoId().key, "id": idAndemail.text , "uid": uid,"name": name, "friends": ["friends"], "groups": ["groups"], "Frequest": ["Frequest"], "Grequest": ["Grequest"], "schedules": ["schedules"]])
+    }
     
 }

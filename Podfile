@@ -9,4 +9,5 @@ target 'meus' do
 	pod 'Firebase/Database'
 	pod 'Firebase/Firestore'
 	pod 'FirebaseUI/Auth'
+	pod 'CodableFirebase'
 end

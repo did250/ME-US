@@ -31,6 +31,7 @@ class ViewController: UIViewController,UITextFieldDelegate {
                 let tab = self?.storyboard?.instantiateViewController(withIdentifier: "TabBar")
                 tab?.modalPresentationStyle = .fullScreen
                 tab?.modalTransitionStyle = .crossDissolve
+                
                 self?.present(tab!, animated: true, completion: nil)
             }
             else {
