@@ -25,8 +25,7 @@ class AddGroupPopViewController: UIViewController {
             groups.append(input)
             self.ref.child("users").child(myuid).updateChildValues(["groups": groups])
             self.dismiss(animated: false, completion: nil)
-            let vc = UsViewController(nibName: "UsViewController", bundle: nil)
-            vc.viewWillAppear(true)
+            
         }
     }
     

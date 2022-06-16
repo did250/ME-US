@@ -60,7 +60,6 @@ class UsViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         GroupTable.dataSource = self
         FriendTable.delegate = self
         FriendTable.dataSource = self
-        
     }
     override func viewWillAppear(_ animated: Bool) {
         Loaduser()
@@ -73,13 +72,18 @@ class UsViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         popup.myid = userinfo.id
         popup.groups = userinfo.groups
         popup.myuid = userinfo.uid
-        popup.modalPresentationStyle = .overFullScreen
+        popup.modalPresentationStyle = .fullScreen
         popup.modalTransitionStyle = .crossDissolve
         self.present(popup, animated: true, completion: nil)
         
     }
     
     @IBAction func grouprequest(_ sender: UIButton) {
+        guard let popup = self.storyboard?.instantiateViewController(withIdentifier: "RequestViewController") as? RequestViewController else {return}
+        popup.requests = userinfo.Grequest
+        popup.modalPresentationStyle = .overFullScreen
+        popup.modalTransitionStyle = .crossDissolve
+        self.present(popup, animated: true, completion: nil)
     }
     
     @IBAction func addfriend(_ sender: UIButton) {
@@ -94,7 +98,11 @@ class UsViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     }
     
     @IBAction func friendrequest(_ sender: UIButton) {
-        
+        guard let popup = self.storyboard?.instantiateViewController(withIdentifier: "RequestViewController") as? RequestViewController else {return}
+        popup.requests = userinfo.Frequest
+        popup.modalPresentationStyle = .overFullScreen
+        popup.modalTransitionStyle = .crossDissolve
+        self.present(popup, animated: true, completion: nil)
     }
     
 }
