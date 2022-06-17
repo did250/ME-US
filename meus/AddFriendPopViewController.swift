@@ -9,11 +9,13 @@ class AddFriendPopViewController: UIViewController {
     
     @IBOutlet var friedid: UITextField!
     @IBOutlet var labelsame: UILabel!
+    @IBOutlet var labelalready: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
         ref = Database.database().reference()
         labelsame.isHidden = true
+        labelalready.isHidden = true
         // Do any additional setup after loading the view.
     }
     
@@ -21,13 +23,11 @@ class AddFriendPopViewController: UIViewController {
         guard let input = friedid.text else {return}
         if input == myid {
             labelsame.isHidden = false
+            labelalready.isHidden = true
         }
-//        else if (){
-//            이미 친추 했는지 검사해야함
-//        }
         else {
             sendFrequest(friendid: input, myid: myid)
-            self.dismiss(animated: false, completion: nil)
+            
         }
     }
     
@@ -51,8 +51,15 @@ class AddFriendPopViewController: UIViewController {
                         guard let value = snapshot?.value else {return}
                         if let data2 = try? FirebaseDecoder().decode([String].self, from: value){
                             var array: [String] = data2
-                            array.append(myid)
-                            self.ref.child("users").child(frienduid).updateChildValues(["Frequest": array])
+                            if (!array.contains(myid)){
+                                array.append(myid)
+                                self.ref.child("users").child(frienduid).updateChildValues(["Frequest": array])
+                                self.dismiss(animated: false, completion: nil)
+                            }
+                            else {
+                                self.labelalready.isHidden = false
+                                self.labelsame.isHidden = true
+                            }
                         }
                         else{
                             print("Error")

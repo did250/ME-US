@@ -10,16 +10,19 @@ class AddGroupPopViewController: UIViewController {
     var groups : [String] = []
     
     @IBOutlet var groupname: UITextField!
+    @IBOutlet var labelalready: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        labelalready.isHidden = true
         ref = Database.database().reference()
     }
 
     @IBAction func btnOK(_ sender: UIButton) {
         guard let input = groupname.text else {return}
         if groups.contains(input){
-            
+            labelalready.isHidden = false
         }
         else {
             groups.append(input)

@@ -41,12 +41,20 @@
                                             <action selector="btncancel:" destination="I6O-B3-Sn9" eventType="touchUpInside" id="Uof-Tr-J27"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="그룹 이름이 존재합니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="31h-dl-uhn">
+                                        <rect key="frame" x="27" y="198.5" width="160.5" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" systemColor="systemRedColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="Al7-ra-W3V" firstAttribute="top" secondItem="50j-W5-6bj" secondAttribute="top" constant="30" id="0MB-1o-Jjc"/>
+                                    <constraint firstItem="31h-dl-uhn" firstAttribute="centerX" secondItem="50j-W5-6bj" secondAttribute="centerX" id="3Tn-QW-etg"/>
                                     <constraint firstItem="zmR-Hx-GoU" firstAttribute="top" secondItem="Al7-ra-W3V" secondAttribute="bottom" constant="10" id="8vP-Zy-kPS"/>
                                     <constraint firstItem="Al7-ra-W3V" firstAttribute="leading" secondItem="50j-W5-6bj" secondAttribute="leading" constant="10" id="E0p-hJ-sWC"/>
+                                    <constraint firstItem="31h-dl-uhn" firstAttribute="centerY" secondItem="50j-W5-6bj" secondAttribute="centerY" id="KKj-Tx-0ld"/>
                                     <constraint firstAttribute="trailing" secondItem="Al7-ra-W3V" secondAttribute="trailing" constant="10" id="RWy-Pt-xO6"/>
                                     <constraint firstItem="2PW-m6-z63" firstAttribute="top" secondItem="Al7-ra-W3V" secondAttribute="bottom" constant="10" id="Vci-sO-MzC"/>
                                     <constraint firstAttribute="trailing" secondItem="zmR-Hx-GoU" secondAttribute="trailing" constant="10" id="dTQ-Ul-Djc"/>
@@ -65,6 +73,7 @@
                     </view>
                     <connections>
                         <outlet property="groupname" destination="Al7-ra-W3V" id="nTq-cZ-gnA"/>
+                        <outlet property="labelalready" destination="31h-dl-uhn" id="P9x-53-tof"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="IK2-KV-0mC" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
@@ -868,11 +877,20 @@
                                     <action selector="friendrequest:" destination="JCZ-ib-pmN" eventType="touchUpInside" id="s4H-L2-Mlp"/>
                                 </connections>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ypt-Dh-pNd">
+                                <rect key="frame" x="0.0" y="44" width="74" height="38.5"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Refresh"/>
+                                <connections>
+                                    <action selector="Refresh:" destination="JCZ-ib-pmN" eventType="touchUpInside" id="gc6-ai-FHX"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="wi5-yh-AsU"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="sMu-ba-1tj" firstAttribute="height" secondItem="pbe-eC-bfd" secondAttribute="height" multiplier="0.805195" id="0ay-Db-X7w"/>
+                            <constraint firstItem="Ypt-Dh-pNd" firstAttribute="leading" secondItem="wi5-yh-AsU" secondAttribute="leading" id="6IZ-88-x0s"/>
                             <constraint firstItem="0J7-hk-Zco" firstAttribute="top" secondItem="sMu-ba-1tj" secondAttribute="bottom" id="83e-Td-eXD"/>
                             <constraint firstItem="wi5-yh-AsU" firstAttribute="trailing" secondItem="rmN-hI-r9K" secondAttribute="trailing" constant="10" id="AON-qz-Jlh"/>
                             <constraint firstItem="wi5-yh-AsU" firstAttribute="trailing" secondItem="ldH-cI-Z6y" secondAttribute="trailing" constant="10" id="FIY-eh-e0x"/>
@@ -887,9 +905,11 @@
                             <constraint firstItem="ldH-cI-Z6y" firstAttribute="top" secondItem="tdA-8o-SBX" secondAttribute="bottom" id="dcw-Fx-rqa"/>
                             <constraint firstItem="sMu-ba-1tj" firstAttribute="top" secondItem="tdA-8o-SBX" secondAttribute="bottom" id="dtg-b7-T0e"/>
                             <constraint firstItem="pbe-eC-bfd" firstAttribute="height" secondItem="wi5-yh-AsU" secondAttribute="height" multiplier="0.05" id="fJe-dj-7AB"/>
+                            <constraint firstItem="Ypt-Dh-pNd" firstAttribute="top" secondItem="wi5-yh-AsU" secondAttribute="top" id="mzd-0x-76P"/>
                             <constraint firstItem="tdA-8o-SBX" firstAttribute="top" secondItem="pbe-eC-bfd" secondAttribute="bottom" id="nhg-Qe-tNm"/>
                             <constraint firstItem="tdA-8o-SBX" firstAttribute="trailing" secondItem="wi5-yh-AsU" secondAttribute="trailing" id="nt3-H1-9E9"/>
                             <constraint firstItem="tdA-8o-SBX" firstAttribute="height" secondItem="pbe-eC-bfd" secondAttribute="height" multiplier="9" id="uuj-6n-bhs"/>
+                            <constraint firstItem="tdA-8o-SBX" firstAttribute="top" secondItem="Ypt-Dh-pNd" secondAttribute="bottom" id="w8S-Jb-rCN"/>
                             <constraint firstItem="tdA-8o-SBX" firstAttribute="leading" secondItem="wi5-yh-AsU" secondAttribute="leading" id="wV0-zT-JG6"/>
                             <constraint firstItem="rmN-hI-r9K" firstAttribute="leading" secondItem="pbe-eC-bfd" secondAttribute="trailing" constant="10" id="wyU-FK-Zhu"/>
                         </constraints>
@@ -1449,12 +1469,19 @@
                                             <action selector="btncancel:" destination="tRM-F3-1rO" eventType="touchUpInside" id="n1K-24-RKg"/>
                                         </connections>
                                     </button>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="이미 요청 을 보낸 아이디입니다." textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="jQr-hB-kX6">
+                                        <rect key="frame" x="0.0" y="147" width="214" height="21"/>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <color key="textColor" systemColor="systemRedColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
                                 </subviews>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <constraints>
                                     <constraint firstItem="YCF-FI-gHR" firstAttribute="top" secondItem="Y3o-Cf-Ei2" secondAttribute="bottom" constant="10" id="890-vz-iRX"/>
                                     <constraint firstItem="US1-Mw-q4Q" firstAttribute="leading" secondItem="rk5-Vr-eqK" secondAttribute="leading" id="Axg-lE-qTv"/>
                                     <constraint firstItem="Kcs-xZ-B5S" firstAttribute="centerX" secondItem="rk5-Vr-eqK" secondAttribute="centerX" id="DL4-0h-zDY"/>
+                                    <constraint firstItem="jQr-hB-kX6" firstAttribute="leading" secondItem="rk5-Vr-eqK" secondAttribute="leading" id="H9g-yo-stQ"/>
                                     <constraint firstItem="Y3o-Cf-Ei2" firstAttribute="top" secondItem="Kcs-xZ-B5S" secondAttribute="bottom" constant="20" id="Hc4-y1-e3q"/>
                                     <constraint firstItem="Y3o-Cf-Ei2" firstAttribute="centerX" secondItem="rk5-Vr-eqK" secondAttribute="centerX" id="M0d-Ap-Qsd"/>
                                     <constraint firstAttribute="trailing" secondItem="US1-Mw-q4Q" secondAttribute="trailing" id="NBA-2j-6Bk"/>
@@ -1466,6 +1493,7 @@
                                     <constraint firstItem="Kcs-xZ-B5S" firstAttribute="leading" secondItem="rk5-Vr-eqK" secondAttribute="leading" id="ZU9-Id-wiv"/>
                                     <constraint firstItem="Y3o-Cf-Ei2" firstAttribute="leading" secondItem="rk5-Vr-eqK" secondAttribute="leading" constant="10" id="Ztq-jT-fWq"/>
                                     <constraint firstItem="zc9-LK-eNN" firstAttribute="top" secondItem="Y3o-Cf-Ei2" secondAttribute="bottom" constant="10" id="onx-2V-RNk"/>
+                                    <constraint firstItem="jQr-hB-kX6" firstAttribute="top" secondItem="US1-Mw-q4Q" secondAttribute="bottom" id="qh2-RA-5KN"/>
                                     <constraint firstAttribute="trailing" secondItem="Y3o-Cf-Ei2" secondAttribute="trailing" constant="10" id="twC-2c-cdm"/>
                                 </constraints>
                             </view>
@@ -1483,6 +1511,7 @@
                     </view>
                     <connections>
                         <outlet property="friedid" destination="Y3o-Cf-Ei2" id="G7y-Rd-YUW"/>
+                        <outlet property="labelalready" destination="jQr-hB-kX6" id="iTE-aO-0Jg"/>
                         <outlet property="labelsame" destination="US1-Mw-q4Q" id="F5h-VB-ODH"/>
                     </connections>
                 </viewController>

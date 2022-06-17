@@ -431,7 +431,7 @@
 				CODE_SIGN_ENTITLEMENTS = meus/meus.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = XH7R4BM798;
+				DEVELOPMENT_TEAM = RSF44CWACA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = meus/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -446,7 +446,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = heewon.company.meus;
+				PRODUCT_BUNDLE_IDENTIFIER = heewon.company.menus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -463,7 +463,7 @@
 				CODE_SIGN_ENTITLEMENTS = meus/meus.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = XH7R4BM798;
+				DEVELOPMENT_TEAM = RSF44CWACA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = meus/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -478,7 +478,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = heewon.company.meus;
+				PRODUCT_BUNDLE_IDENTIFIER = heewon.company.menus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

@@ -9,7 +9,6 @@ class UsViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     var userinfo : userstruct!
     var groups : [String] = []
     var friends : [String] = []
-    var newfriend : String = "kkkkkk"
     
     @IBOutlet var GroupTable: UITableView!
     @IBOutlet var FriendTable: UITableView!
@@ -65,7 +64,9 @@ class UsViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         Loaduser()
     }
     
-    
+    @IBAction func Refresh(_ sender: UIButton) {
+        Loaduser()
+    }
     
     @IBAction func addgroup(_ sender: UIButton) {
         guard let popup = self.storyboard?.instantiateViewController(withIdentifier: "AddGroupPopViewController") as? AddGroupPopViewController else {return}
@@ -100,7 +101,7 @@ class UsViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     @IBAction func friendrequest(_ sender: UIButton) {
         guard let popup = self.storyboard?.instantiateViewController(withIdentifier: "RequestViewController") as? RequestViewController else {return}
         popup.requests = userinfo.Frequest
-        popup.modalPresentationStyle = .overFullScreen
+        popup.modalPresentationStyle = .fullScreen
         popup.modalTransitionStyle = .crossDissolve
         self.present(popup, animated: true, completion: nil)
     }
