@@ -13,11 +13,14 @@
 		49235AB72851639D00706A61 /* Popup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49235AB62851639D00706A61 /* Popup.storyboard */; };
 		49235AB92851657100706A61 /* UsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49235AB82851657100706A61 /* UsViewController.swift */; };
 		49235ABF28516DA600706A61 /* Cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49235ABE28516DA600706A61 /* Cells.swift */; };
-		497F7D3F28583563003B79F4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 497F7D3E28583563003B79F4 /* GoogleService-Info.plist */; };
 		499A58C52858899800ED7D7B /* AddFriendPopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499A58C42858899800ED7D7B /* AddFriendPopViewController.swift */; };
 		499A58C7285917F700ED7D7B /* AddGroupPopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499A58C6285917F700ED7D7B /* AddGroupPopViewController.swift */; };
 		499A58C9285BA37F00ED7D7B /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499A58C8285BA37F00ED7D7B /* RequestViewController.swift */; };
 		499A58CB285BA57B00ED7D7B /* RequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499A58CA285BA57B00ED7D7B /* RequestTableViewCell.swift */; };
+		6D1A5C6F285D81380030BE59 /* SecondPopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1A5C6E285D81380030BE59 /* SecondPopViewController.swift */; };
+		6D1A5C71285DB2EF0030BE59 /* AlarmSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1A5C70285DB2EF0030BE59 /* AlarmSettingViewController.swift */; };
+		6D1A5C73285DB8700030BE59 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1A5C72285DB8700030BE59 /* InfoViewController.swift */; };
+		6D1A5C75285DB8AB0030BE59 /* PrivacyPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1A5C74285DB8AB0030BE59 /* PrivacyPolicyViewController.swift */; };
 		6D2ABD0C28578BA000B5BEDC /* OptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2ABD0B28578BA000B5BEDC /* OptionViewController.swift */; };
 		6D2ABD0E28578C2200B5BEDC /* OptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2ABD0D28578C2200B5BEDC /* OptionTableViewCell.swift */; };
 		6D2EA37B283BE14500A91E9A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2EA37A283BE14500A91E9A /* AppDelegate.swift */; };
@@ -31,6 +34,8 @@
 		6DD6D57828439FAE00FB883A /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD6D57728439FAE00FB883A /* MeViewController.swift */; };
 		6DE7FA3628451E5700B6EF57 /* IdFindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE7FA3528451E5700B6EF57 /* IdFindViewController.swift */; };
 		6DE7FA3828451E8100B6EF57 /* PwFindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE7FA3728451E8100B6EF57 /* PwFindViewController.swift */; };
+		6DEA606A285CF090002E7429 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6DEA6069285CF090002E7429 /* GoogleService-Info.plist */; };
+		6DEA606C285CF318002E7429 /* PasswordChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEA606B285CF318002E7429 /* PasswordChangeViewController.swift */; };
 		BE748A7A906BEFC45A7BEA3C /* Pods_meus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 883476C0679D31655310B0FD /* Pods_meus.framework */; };
 /* End PBXBuildFile section */
 
@@ -41,11 +46,14 @@
 		49235AB62851639D00706A61 /* Popup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Popup.storyboard; sourceTree = "<group>"; };
 		49235AB82851657100706A61 /* UsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsViewController.swift; sourceTree = "<group>"; };
 		49235ABE28516DA600706A61 /* Cells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cells.swift; sourceTree = "<group>"; };
-		497F7D3E28583563003B79F4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		499A58C42858899800ED7D7B /* AddFriendPopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendPopViewController.swift; sourceTree = "<group>"; };
 		499A58C6285917F700ED7D7B /* AddGroupPopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroupPopViewController.swift; sourceTree = "<group>"; };
 		499A58C8285BA37F00ED7D7B /* RequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
 		499A58CA285BA57B00ED7D7B /* RequestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTableViewCell.swift; sourceTree = "<group>"; };
+		6D1A5C6E285D81380030BE59 /* SecondPopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondPopViewController.swift; sourceTree = "<group>"; };
+		6D1A5C70285DB2EF0030BE59 /* AlarmSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSettingViewController.swift; sourceTree = "<group>"; };
+		6D1A5C72285DB8700030BE59 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
+		6D1A5C74285DB8AB0030BE59 /* PrivacyPolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyViewController.swift; sourceTree = "<group>"; };
 		6D2ABD0B28578BA000B5BEDC /* OptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionViewController.swift; sourceTree = "<group>"; };
 		6D2ABD0D28578C2200B5BEDC /* OptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionTableViewCell.swift; sourceTree = "<group>"; };
 		6D2EA377283BE14500A91E9A /* meus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = meus.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -61,6 +69,8 @@
 		6DD6D57728439FAE00FB883A /* MeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 		6DE7FA3528451E5700B6EF57 /* IdFindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdFindViewController.swift; sourceTree = "<group>"; };
 		6DE7FA3728451E8100B6EF57 /* PwFindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PwFindViewController.swift; sourceTree = "<group>"; };
+		6DEA6069285CF090002E7429 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6DEA606B285CF318002E7429 /* PasswordChangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordChangeViewController.swift; sourceTree = "<group>"; };
 		6DF221042852555500008EB3 /* meus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = meus.entitlements; sourceTree = "<group>"; };
 		7381CA878277EC890FF71E28 /* Pods-meus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-meus.release.xcconfig"; path = "Target Support Files/Pods-meus/Pods-meus.release.xcconfig"; sourceTree = "<group>"; };
 		86FAF1BD66A9FEED3B9E5F5D /* Pods-meus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-meus.debug.xcconfig"; path = "Target Support Files/Pods-meus/Pods-meus.debug.xcconfig"; sourceTree = "<group>"; };
@@ -118,7 +128,7 @@
 			isa = PBXGroup;
 			children = (
 				6DF221042852555500008EB3 /* meus.entitlements */,
-				497F7D3E28583563003B79F4 /* GoogleService-Info.plist */,
+				6DEA6069285CF090002E7429 /* GoogleService-Info.plist */,
 				6D2EA37A283BE14500A91E9A /* AppDelegate.swift */,
 				6D2EA37C283BE14500A91E9A /* SceneDelegate.swift */,
 				6D2EA37E283BE14500A91E9A /* ViewController.swift */,
@@ -143,6 +153,11 @@
 				499A58C6285917F700ED7D7B /* AddGroupPopViewController.swift */,
 				499A58C8285BA37F00ED7D7B /* RequestViewController.swift */,
 				499A58CA285BA57B00ED7D7B /* RequestTableViewCell.swift */,
+				6DEA606B285CF318002E7429 /* PasswordChangeViewController.swift */,
+				6D1A5C6E285D81380030BE59 /* SecondPopViewController.swift */,
+				6D1A5C70285DB2EF0030BE59 /* AlarmSettingViewController.swift */,
+				6D1A5C72285DB8700030BE59 /* InfoViewController.swift */,
+				6D1A5C74285DB8AB0030BE59 /* PrivacyPolicyViewController.swift */,
 			);
 			path = meus;
 			sourceTree = "<group>";
@@ -209,7 +224,7 @@
 			files = (
 				6D2EA387283BE14800A91E9A /* LaunchScreen.storyboard in Resources */,
 				6D2EA384283BE14800A91E9A /* Assets.xcassets in Resources */,
-				497F7D3F28583563003B79F4 /* GoogleService-Info.plist in Resources */,
+				6DEA606A285CF090002E7429 /* GoogleService-Info.plist in Resources */,
 				6D2EA382283BE14500A91E9A /* Main.storyboard in Resources */,
 				49235AB72851639D00706A61 /* Popup.storyboard in Resources */,
 			);
@@ -264,8 +279,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6D1A5C6F285D81380030BE59 /* SecondPopViewController.swift in Sources */,
 				6DD6D57828439FAE00FB883A /* MeViewController.swift in Sources */,
 				49235ABF28516DA600706A61 /* Cells.swift in Sources */,
+				6D1A5C75285DB8AB0030BE59 /* PrivacyPolicyViewController.swift in Sources */,
 				31C3CA6D284E0CC10092E08E /* CalendarHelper.swift in Sources */,
 				499A58C7285917F700ED7D7B /* AddGroupPopViewController.swift in Sources */,
 				49235AB32851500600706A61 /* PopViewController.swift in Sources */,
@@ -281,8 +298,11 @@
 				6D2EA37D283BE14500A91E9A /* SceneDelegate.swift in Sources */,
 				6DE7FA3828451E8100B6EF57 /* PwFindViewController.swift in Sources */,
 				6D2ABD0C28578BA000B5BEDC /* OptionViewController.swift in Sources */,
+				6D1A5C71285DB2EF0030BE59 /* AlarmSettingViewController.swift in Sources */,
+				6DEA606C285CF318002E7429 /* PasswordChangeViewController.swift in Sources */,
 				6D6F19442855BF7D00BFB2B8 /* optiondata.swift in Sources */,
 				31FFEEBE284DDF58005B30B1 /* CalendarCell.swift in Sources */,
+				6D1A5C73285DB8700030BE59 /* InfoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -431,7 +451,7 @@
 				CODE_SIGN_ENTITLEMENTS = meus/meus.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = RSF44CWACA;
+				DEVELOPMENT_TEAM = XH7R4BM798;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = meus/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -446,7 +466,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = heewon.company.menus;
+				PRODUCT_BUNDLE_IDENTIFIER = heewon.company.mennus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -463,7 +483,7 @@
 				CODE_SIGN_ENTITLEMENTS = meus/meus.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = RSF44CWACA;
+				DEVELOPMENT_TEAM = XH7R4BM798;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = meus/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -478,7 +498,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = heewon.company.menus;
+				PRODUCT_BUNDLE_IDENTIFIER = heewon.company.mennus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

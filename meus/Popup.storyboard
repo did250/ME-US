@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
@@ -57,6 +57,82 @@
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Ief-a0-LHa" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="61" y="87"/>
+        </scene>
+        <!--Second Pop View Controller-->
+        <scene sceneID="1ds-LG-usB">
+            <objects>
+                <viewController storyboardIdentifier="SecondPopViewController" id="ab9-OR-03F" customClass="SecondPopViewController" customModule="meus" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="rKB-xh-ZrQ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="jhs-Ga-geC">
+                                <rect key="frame" x="107" y="398" width="200" height="100"/>
+                                <subviews>
+                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" misplaced="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="OaM-S9-2OJ">
+                                        <rect key="frame" x="8" y="8" width="184" height="42"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="42" id="oQX-PZ-cDc"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <nil key="textColor"/>
+                                        <nil key="highlightedColor"/>
+                                    </label>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ztu-4k-dCG">
+                                        <rect key="frame" x="100" y="70" width="100" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="30" id="5AC-xa-MI7"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="취소"/>
+                                        <connections>
+                                            <action selector="btn2:" destination="ab9-OR-03F" eventType="touchUpInside" id="4pA-aq-8q2"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yDE-M7-AI4">
+                                        <rect key="frame" x="0.0" y="70" width="100" height="30"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="100" id="2Cb-Gb-V4j"/>
+                                            <constraint firstAttribute="height" constant="30" id="XPD-hK-eXY"/>
+                                        </constraints>
+                                        <state key="normal" title="Button"/>
+                                        <buttonConfiguration key="configuration" style="plain" title="확인"/>
+                                        <connections>
+                                            <action selector="btn1:" destination="ab9-OR-03F" eventType="touchUpInside" id="JkQ-fs-6Ay"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="100" id="4ov-9a-f0n"/>
+                                    <constraint firstItem="OaM-S9-2OJ" firstAttribute="centerX" secondItem="jhs-Ga-geC" secondAttribute="centerX" id="B1A-ib-bSp"/>
+                                    <constraint firstItem="OaM-S9-2OJ" firstAttribute="top" secondItem="jhs-Ga-geC" secondAttribute="top" constant="8" id="OLM-Px-S7d"/>
+                                    <constraint firstItem="yDE-M7-AI4" firstAttribute="width" secondItem="Ztu-4k-dCG" secondAttribute="width" id="QFW-F6-E8x"/>
+                                    <constraint firstAttribute="trailing" secondItem="Ztu-4k-dCG" secondAttribute="trailing" id="XYM-CO-3sx"/>
+                                    <constraint firstAttribute="width" constant="200" id="bpn-gM-BLc"/>
+                                    <constraint firstAttribute="bottom" secondItem="Ztu-4k-dCG" secondAttribute="bottom" id="kZF-Yn-Qez"/>
+                                    <constraint firstItem="yDE-M7-AI4" firstAttribute="leading" secondItem="jhs-Ga-geC" secondAttribute="leading" id="vkD-La-Yen"/>
+                                    <constraint firstAttribute="bottom" secondItem="yDE-M7-AI4" secondAttribute="bottom" id="zCL-vO-Dgb"/>
+                                </constraints>
+                            </view>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="29W-Jc-kpW"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="0.5" colorSpace="custom" customColorSpace="displayP3"/>
+                        <constraints>
+                            <constraint firstItem="jhs-Ga-geC" firstAttribute="centerY" secondItem="rKB-xh-ZrQ" secondAttribute="centerY" id="NuS-is-XBo"/>
+                            <constraint firstItem="jhs-Ga-geC" firstAttribute="centerX" secondItem="rKB-xh-ZrQ" secondAttribute="centerX" id="yRZ-52-k4y"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="btn1name" destination="yDE-M7-AI4" id="MdL-x2-MiE"/>
+                        <outlet property="btn2name" destination="Ztu-4k-dCG" id="hX6-oD-Mnu"/>
+                        <outlet property="popLabel" destination="OaM-S9-2OJ" id="YbZ-4n-rnp"/>
+                        <outlet property="secondPopView" destination="jhs-Ga-geC" id="koS-xt-Ayh"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="vjZ-z7-tbA" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="889.85507246376824" y="85.714285714285708"/>
         </scene>
     </scenes>
     <resources>
