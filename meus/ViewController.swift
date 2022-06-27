@@ -28,21 +28,26 @@ class ViewController: UIViewController,UITextFieldDelegate {
         guard let userPassword = pwTextField.text else {return}
         
         Auth.auth().signIn(withEmail: userEmail, password: userPassword) { [weak self] authResult, error in guard self != nil else { return }
-            if authResult != nil {
-                let tab = self?.storyboard?.instantiateViewController(withIdentifier: "TabBar")
-                tab?.modalPresentationStyle = .fullScreen
-                tab?.modalTransitionStyle = .crossDissolve
-                
-                self?.present(tab!, animated: true, completion: nil)
-            }
-            else {
-                print("로그인실패.", error?.localizedDescription ?? "")
-                let storyboard = UIStoryboard.init(name: "Popup", bundle: nil)
-                let popup = storyboard.instantiateViewController(withIdentifier: "PopViewController")
-                popup.modalPresentationStyle = .overFullScreen
-                popup.modalTransitionStyle = .crossDissolve
-                self?.present(popup, animated: true, completion: nil)
-            }
+//            if authResult != nil {
+//                let tab = self?.storyboard?.instantiateViewController(withIdentifier: "TabBar")
+//                tab?.modalPresentationStyle = .fullScreen
+//                tab?.modalTransitionStyle = .crossDissolve
+//
+//                self?.present(tab!, animated: true, completion: nil)
+//            }
+//            else {
+//                print("로그인실패.", error?.localizedDescription ?? "")
+//                let storyboard = UIStoryboard.init(name: "Popup", bundle: nil)
+//                let popup = storyboard.instantiateViewController(withIdentifier: "PopViewController")
+//                popup.modalPresentationStyle = .overFullScreen
+//                popup.modalTransitionStyle = .crossDissolve
+//                self?.present(popup, animated: true, completion: nil)
+//            }
+            let tab = self?.storyboard?.instantiateViewController(withIdentifier: "TabBar")
+            tab?.modalPresentationStyle = .fullScreen
+            tab?.modalTransitionStyle = .crossDissolve
+            
+            self?.present(tab!, animated: true, completion: nil) 
         }
     }
     

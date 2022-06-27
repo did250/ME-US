@@ -7,7 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		313485C8286311B50044DC58 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 313485C7286311B50044DC58 /* GoogleService-Info.plist */; };
 		31C3CA6D284E0CC10092E08E /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C3CA6C284E0CC10092E08E /* CalendarHelper.swift */; };
+		31FDF1D728644CE20014735B /* AddScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FDF1D628644CE20014735B /* AddScheduleViewController.swift */; };
+		31FDF1D92865D90F0014735B /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FDF1D82865D90F0014735B /* Schedule.swift */; };
 		31FFEEBE284DDF58005B30B1 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FFEEBD284DDF58005B30B1 /* CalendarCell.swift */; };
 		49235AB32851500600706A61 /* PopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49235AB22851500600706A61 /* PopViewController.swift */; };
 		49235AB72851639D00706A61 /* Popup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49235AB62851639D00706A61 /* Popup.storyboard */; };
@@ -34,13 +37,15 @@
 		6DD6D57828439FAE00FB883A /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD6D57728439FAE00FB883A /* MeViewController.swift */; };
 		6DE7FA3628451E5700B6EF57 /* IdFindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE7FA3528451E5700B6EF57 /* IdFindViewController.swift */; };
 		6DE7FA3828451E8100B6EF57 /* PwFindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE7FA3728451E8100B6EF57 /* PwFindViewController.swift */; };
-		6DEA606A285CF090002E7429 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6DEA6069285CF090002E7429 /* GoogleService-Info.plist */; };
 		6DEA606C285CF318002E7429 /* PasswordChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEA606B285CF318002E7429 /* PasswordChangeViewController.swift */; };
 		BE748A7A906BEFC45A7BEA3C /* Pods_meus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 883476C0679D31655310B0FD /* Pods_meus.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		313485C7286311B50044DC58 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		31C3CA6C284E0CC10092E08E /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
+		31FDF1D628644CE20014735B /* AddScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddScheduleViewController.swift; sourceTree = "<group>"; };
+		31FDF1D82865D90F0014735B /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
 		31FFEEBD284DDF58005B30B1 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
 		49235AB22851500600706A61 /* PopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopViewController.swift; sourceTree = "<group>"; };
 		49235AB62851639D00706A61 /* Popup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Popup.storyboard; sourceTree = "<group>"; };
@@ -69,7 +74,6 @@
 		6DD6D57728439FAE00FB883A /* MeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 		6DE7FA3528451E5700B6EF57 /* IdFindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdFindViewController.swift; sourceTree = "<group>"; };
 		6DE7FA3728451E8100B6EF57 /* PwFindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PwFindViewController.swift; sourceTree = "<group>"; };
-		6DEA6069285CF090002E7429 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6DEA606B285CF318002E7429 /* PasswordChangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordChangeViewController.swift; sourceTree = "<group>"; };
 		6DF221042852555500008EB3 /* meus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = meus.entitlements; sourceTree = "<group>"; };
 		7381CA878277EC890FF71E28 /* Pods-meus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-meus.release.xcconfig"; path = "Target Support Files/Pods-meus/Pods-meus.release.xcconfig"; sourceTree = "<group>"; };
@@ -128,7 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				6DF221042852555500008EB3 /* meus.entitlements */,
-				6DEA6069285CF090002E7429 /* GoogleService-Info.plist */,
+				313485C7286311B50044DC58 /* GoogleService-Info.plist */,
 				6D2EA37A283BE14500A91E9A /* AppDelegate.swift */,
 				6D2EA37C283BE14500A91E9A /* SceneDelegate.swift */,
 				6D2EA37E283BE14500A91E9A /* ViewController.swift */,
@@ -138,6 +142,7 @@
 				6DD0E0D82841F23100C3D5E7 /* SignUpViewController.swift */,
 				6DD6D57728439FAE00FB883A /* MeViewController.swift */,
 				49235AB82851657100706A61 /* UsViewController.swift */,
+				31FDF1D628644CE20014735B /* AddScheduleViewController.swift */,
 				49235ABE28516DA600706A61 /* Cells.swift */,
 				31FFEEBD284DDF58005B30B1 /* CalendarCell.swift */,
 				31C3CA6C284E0CC10092E08E /* CalendarHelper.swift */,
@@ -158,6 +163,7 @@
 				6D1A5C70285DB2EF0030BE59 /* AlarmSettingViewController.swift */,
 				6D1A5C72285DB8700030BE59 /* InfoViewController.swift */,
 				6D1A5C74285DB8AB0030BE59 /* PrivacyPolicyViewController.swift */,
+				31FDF1D82865D90F0014735B /* Schedule.swift */,
 			);
 			path = meus;
 			sourceTree = "<group>";
@@ -224,7 +230,7 @@
 			files = (
 				6D2EA387283BE14800A91E9A /* LaunchScreen.storyboard in Resources */,
 				6D2EA384283BE14800A91E9A /* Assets.xcassets in Resources */,
-				6DEA606A285CF090002E7429 /* GoogleService-Info.plist in Resources */,
+				313485C8286311B50044DC58 /* GoogleService-Info.plist in Resources */,
 				6D2EA382283BE14500A91E9A /* Main.storyboard in Resources */,
 				49235AB72851639D00706A61 /* Popup.storyboard in Resources */,
 			);
@@ -281,6 +287,7 @@
 			files = (
 				6D1A5C6F285D81380030BE59 /* SecondPopViewController.swift in Sources */,
 				6DD6D57828439FAE00FB883A /* MeViewController.swift in Sources */,
+				31FDF1D728644CE20014735B /* AddScheduleViewController.swift in Sources */,
 				49235ABF28516DA600706A61 /* Cells.swift in Sources */,
 				6D1A5C75285DB8AB0030BE59 /* PrivacyPolicyViewController.swift in Sources */,
 				31C3CA6D284E0CC10092E08E /* CalendarHelper.swift in Sources */,
@@ -302,6 +309,7 @@
 				6DEA606C285CF318002E7429 /* PasswordChangeViewController.swift in Sources */,
 				6D6F19442855BF7D00BFB2B8 /* optiondata.swift in Sources */,
 				31FFEEBE284DDF58005B30B1 /* CalendarCell.swift in Sources */,
+				31FDF1D92865D90F0014735B /* Schedule.swift in Sources */,
 				6D1A5C73285DB8700030BE59 /* InfoViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -460,13 +468,13 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = heewon.company.mennus;
+				PRODUCT_BUNDLE_IDENTIFIER = heewon.company.meus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -492,13 +500,13 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = heewon.company.mennus;
+				PRODUCT_BUNDLE_IDENTIFIER = heewon.company.meus;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
