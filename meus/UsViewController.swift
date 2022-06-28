@@ -69,6 +69,17 @@ class UsViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
             
             
         }
+        else if tableView == GroupTable {
+            let cell2 = GroupTable.dequeueReusableCell(withIdentifier: "Cells", for: indexPath) as! Cells
+            guard let newvc = self.storyboard?.instantiateViewController(withIdentifier: "GroupViewController") as? GroupViewController else {return}
+            newvc.name = groups[indexPath.row]
+            newvc.modalPresentationStyle = .fullScreen
+            newvc.modalTransitionStyle = .crossDissolve
+            self.present(newvc, animated: true, completion: nil)
+        }
+        
+        
+        
     }
     
     override func viewDidLoad() {

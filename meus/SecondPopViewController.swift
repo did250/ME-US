@@ -22,7 +22,10 @@ class SecondPopViewController: UIViewController {
                 vc.modalPresentationStyle = .fullScreen
                 vc.modalTransitionStyle = .crossDissolve
                 self.present(vc, animated: true , completion: nil)
-        } 
+        }
+        else if flag == "GroupOut" {
+            
+        }
     }
     
     @IBAction func btn2(_ sender: Any) {
@@ -36,6 +39,12 @@ class SecondPopViewController: UIViewController {
             popLabel.text = data
             popLabel.sizeToFit()
         }
+        if flag == "GroupOut" {
+            popLabel.text = "그룹에서 탈퇴 하시겠습니까?"
+        }
+        
+        
+        
         
         let button = btn1name.setTitle(name1, for: .normal)
         

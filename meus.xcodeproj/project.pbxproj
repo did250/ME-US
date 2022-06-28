@@ -19,11 +19,12 @@
 		499A58C7285917F700ED7D7B /* AddGroupPopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499A58C6285917F700ED7D7B /* AddGroupPopViewController.swift */; };
 		499A58C9285BA37F00ED7D7B /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499A58C8285BA37F00ED7D7B /* RequestViewController.swift */; };
 		499A58CB285BA57B00ED7D7B /* RequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499A58CA285BA57B00ED7D7B /* RequestTableViewCell.swift */; };
-		499A58F1286A1ED000ED7D7B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 499A58F0286A1ED000ED7D7B /* GoogleService-Info.plist */; };
 		6D1A5C6F285D81380030BE59 /* SecondPopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1A5C6E285D81380030BE59 /* SecondPopViewController.swift */; };
 		6D1A5C71285DB2EF0030BE59 /* AlarmSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1A5C70285DB2EF0030BE59 /* AlarmSettingViewController.swift */; };
 		6D1A5C73285DB8700030BE59 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1A5C72285DB8700030BE59 /* InfoViewController.swift */; };
 		6D1A5C75285DB8AB0030BE59 /* PrivacyPolicyViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1A5C74285DB8AB0030BE59 /* PrivacyPolicyViewController.swift */; };
+		6D1FC900286B50C5005B8C39 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6D1FC8FF286B50C5005B8C39 /* GoogleService-Info.plist */; };
+		6D1FC904286B5D70005B8C39 /* GroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1FC903286B5D70005B8C39 /* GroupViewController.swift */; };
 		6D2ABD0C28578BA000B5BEDC /* OptionViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2ABD0B28578BA000B5BEDC /* OptionViewController.swift */; };
 		6D2ABD0E28578C2200B5BEDC /* OptionTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2ABD0D28578C2200B5BEDC /* OptionTableViewCell.swift */; };
 		6D2EA37B283BE14500A91E9A /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D2EA37A283BE14500A91E9A /* AppDelegate.swift */; };
@@ -54,11 +55,12 @@
 		499A58C6285917F700ED7D7B /* AddGroupPopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroupPopViewController.swift; sourceTree = "<group>"; };
 		499A58C8285BA37F00ED7D7B /* RequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
 		499A58CA285BA57B00ED7D7B /* RequestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTableViewCell.swift; sourceTree = "<group>"; };
-		499A58F0286A1ED000ED7D7B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6D1A5C6E285D81380030BE59 /* SecondPopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondPopViewController.swift; sourceTree = "<group>"; };
 		6D1A5C70285DB2EF0030BE59 /* AlarmSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSettingViewController.swift; sourceTree = "<group>"; };
 		6D1A5C72285DB8700030BE59 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
 		6D1A5C74285DB8AB0030BE59 /* PrivacyPolicyViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PrivacyPolicyViewController.swift; sourceTree = "<group>"; };
+		6D1FC8FF286B50C5005B8C39 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
+		6D1FC903286B5D70005B8C39 /* GroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GroupViewController.swift; sourceTree = "<group>"; };
 		6D2ABD0B28578BA000B5BEDC /* OptionViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionViewController.swift; sourceTree = "<group>"; };
 		6D2ABD0D28578C2200B5BEDC /* OptionTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionTableViewCell.swift; sourceTree = "<group>"; };
 		6D2EA377283BE14500A91E9A /* meus.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = meus.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -132,7 +134,7 @@
 			isa = PBXGroup;
 			children = (
 				6DF221042852555500008EB3 /* meus.entitlements */,
-				499A58F0286A1ED000ED7D7B /* GoogleService-Info.plist */,
+				6D1FC8FF286B50C5005B8C39 /* GoogleService-Info.plist */,
 				6D2EA37A283BE14500A91E9A /* AppDelegate.swift */,
 				6D2EA37C283BE14500A91E9A /* SceneDelegate.swift */,
 				6D2EA37E283BE14500A91E9A /* ViewController.swift */,
@@ -164,6 +166,7 @@
 				6D1A5C72285DB8700030BE59 /* InfoViewController.swift */,
 				6D1A5C74285DB8AB0030BE59 /* PrivacyPolicyViewController.swift */,
 				31FDF1D82865D90F0014735B /* Schedule.swift */,
+				6D1FC903286B5D70005B8C39 /* GroupViewController.swift */,
 			);
 			path = meus;
 			sourceTree = "<group>";
@@ -230,7 +233,7 @@
 			files = (
 				6D2EA387283BE14800A91E9A /* LaunchScreen.storyboard in Resources */,
 				6D2EA384283BE14800A91E9A /* Assets.xcassets in Resources */,
-				499A58F1286A1ED000ED7D7B /* GoogleService-Info.plist in Resources */,
+				6D1FC900286B50C5005B8C39 /* GoogleService-Info.plist in Resources */,
 				6D2EA382283BE14500A91E9A /* Main.storyboard in Resources */,
 				49235AB72851639D00706A61 /* Popup.storyboard in Resources */,
 			);
@@ -303,6 +306,7 @@
 				6D2ABD0E28578C2200B5BEDC /* OptionTableViewCell.swift in Sources */,
 				49235AB92851657100706A61 /* UsViewController.swift in Sources */,
 				6D2EA37D283BE14500A91E9A /* SceneDelegate.swift in Sources */,
+				6D1FC904286B5D70005B8C39 /* GroupViewController.swift in Sources */,
 				6DE7FA3828451E8100B6EF57 /* PwFindViewController.swift in Sources */,
 				6D2ABD0C28578BA000B5BEDC /* OptionViewController.swift in Sources */,
 				6D1A5C71285DB2EF0030BE59 /* AlarmSettingViewController.swift in Sources */,
