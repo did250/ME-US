@@ -50,17 +50,41 @@ class UsViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         return 30
     }
     
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let cell = FriendTable.dequeueReusableCell(withIdentifier: "Cells", for: indexPath) as! Cells
+        if tableView == FriendTable {
+            guard let newvc = self.storyboard?.instantiateViewController(withIdentifier: "MeViewController") as? MeViewController else {return}
+            var frienduid : String = ""
+            ref?.child("users").queryOrdered(byChild: "id").queryEqual(toValue: cell.Txt.text!).observeSingleEvent(of: .value, with: {
+                snapshot in
+                for child in snapshot.children {
+                    let snap = child as! DataSnapshot
+                    frienduid = snap.key
+                    
+                    newvc.uid = frienduid
+                    
+                    self.present(newvc, animated: true, completion: nil)
+                }
+            })
+            
+            
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         ref = Database.database().reference()
         Loaduser()
+        
         GroupTable.delegate = self
         GroupTable.dataSource = self
         FriendTable.delegate = self
         FriendTable.dataSource = self
     }
     override func viewWillAppear(_ animated: Bool) {
+        guard let newvc = self.storyboard?.instantiateViewController(withIdentifier: "MeViewController") as? MeViewController else {return}
+        newvc.uid = Auth.auth().currentUser!.uid
         Loaduser()
     }
     
@@ -173,7 +197,7 @@ struct userstruct: Codable{
     let id: String
     let key: String
     let name: String
-    let schedules: [String]
+    let schedules: [[String]]
     let uid: String
     enum Codingkeys: String {
         case Frequest = "Frequest"

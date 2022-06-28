@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -585,7 +585,7 @@
         <!--ME-->
         <scene sceneID="OpX-An-bYZ">
             <objects>
-                <viewController storyboardIdentifier="MeVIewController" modalPresentationStyle="fullScreen" id="9aO-Vy-6T3" customClass="MeViewController" customModule="meus" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="MeViewController" modalPresentationStyle="fullScreen" id="9aO-Vy-6T3" customClass="MeViewController" customModule="meus" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="B8r-OA-4GA">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -752,7 +752,15 @@
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="추가"/>
                                 <connections>
-                                    <segue destination="1vw-mo-vbh" kind="presentation" modalPresentationStyle="fullScreen" id="tY8-fs-PpW"/>
+                                    <action selector="addschedule:" destination="9aO-Vy-6T3" eventType="touchUpInside" id="OPM-cF-iq2"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UMH-Qe-gV5">
+                                <rect key="frame" x="0.0" y="44" width="67" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <connections>
+                                    <action selector="backbutton:" destination="9aO-Vy-6T3" eventType="touchUpInside" id="NNd-tx-PYj"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -763,6 +771,7 @@
                             <constraint firstItem="CZL-uG-Noy" firstAttribute="width" secondItem="ADn-Dm-ajD" secondAttribute="width" id="3PF-Tc-vDR"/>
                             <constraint firstItem="m2k-TV-iBT" firstAttribute="bottom" secondItem="ADn-Dm-ajD" secondAttribute="bottom" id="3Rp-0a-Ewa"/>
                             <constraint firstItem="Bar-Yu-0rc" firstAttribute="centerX" secondItem="ADn-Dm-ajD" secondAttribute="centerX" id="7Bk-aV-vIP"/>
+                            <constraint firstItem="UMH-Qe-gV5" firstAttribute="top" secondItem="ADn-Dm-ajD" secondAttribute="top" id="8fw-Ce-IOx"/>
                             <constraint firstItem="cUh-c2-HcE" firstAttribute="leading" secondItem="FtF-aR-ojM" secondAttribute="trailing" id="EEn-rf-7eg"/>
                             <constraint firstItem="FtF-aR-ojM" firstAttribute="centerY" secondItem="cUh-c2-HcE" secondAttribute="centerY" id="FCz-Hi-XJI"/>
                             <constraint firstItem="ADn-Dm-ajD" firstAttribute="trailing" secondItem="MHo-PM-e6G" secondAttribute="trailing" id="FUw-fg-0xd"/>
@@ -784,6 +793,7 @@
                             <constraint firstItem="CZL-uG-Noy" firstAttribute="width" secondItem="ADn-Dm-ajD" secondAttribute="width" id="gfu-Kr-zPg"/>
                             <constraint firstItem="MHo-PM-e6G" firstAttribute="centerX" secondItem="ADn-Dm-ajD" secondAttribute="centerX" id="haE-xv-u0s"/>
                             <constraint firstItem="m2k-TV-iBT" firstAttribute="leading" secondItem="ADn-Dm-ajD" secondAttribute="leading" id="lJt-iD-2up"/>
+                            <constraint firstItem="UMH-Qe-gV5" firstAttribute="leading" secondItem="ADn-Dm-ajD" secondAttribute="leading" id="oBY-h1-Lrg"/>
                             <constraint firstItem="Kb5-AS-7Cl" firstAttribute="centerY" secondItem="cUh-c2-HcE" secondAttribute="centerY" id="r3D-go-pnN"/>
                             <constraint firstItem="MHo-PM-e6G" firstAttribute="top" secondItem="cUh-c2-HcE" secondAttribute="bottom" constant="30" id="tOm-i7-scq"/>
                             <constraint firstItem="ADn-Dm-ajD" firstAttribute="trailing" secondItem="Kb5-AS-7Cl" secondAttribute="trailing" id="xeP-fz-Kq4"/>
@@ -792,7 +802,10 @@
                     <tabBarItem key="tabBarItem" title="ME" image="calendar" catalog="system" id="vrU-lb-0WZ"/>
                     <navigationItem key="navigationItem" id="2Eh-LI-RB1"/>
                     <connections>
+                        <outlet property="Calendarname" destination="Bar-Yu-0rc" id="zCv-LZ-q08"/>
                         <outlet property="ScheduleTable" destination="m2k-TV-iBT" id="obA-l8-jbe"/>
+                        <outlet property="addbutton" destination="vL9-0v-si5" id="0xo-ek-7lY"/>
+                        <outlet property="backbutton" destination="UMH-Qe-gV5" id="VUN-yt-H8Y"/>
                         <outlet property="collectionView" destination="CZL-uG-Noy" id="1ax-lR-xRe"/>
                         <outlet property="monthLabel" destination="cUh-c2-HcE" id="PB7-eu-0xh"/>
                     </connections>
@@ -804,7 +817,7 @@
         <!--Add Schedule View Controller-->
         <scene sceneID="Nay-ui-HLk">
             <objects>
-                <viewController id="1vw-mo-vbh" customClass="AddScheduleViewController" customModule="meus" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="AddScheduleViewController" id="1vw-mo-vbh" customClass="AddScheduleViewController" customModule="meus" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="e9C-Ze-whp">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

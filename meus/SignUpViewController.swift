@@ -108,6 +108,6 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIScrollViewD
     }
     
     func adduser(uid:String, name: String){
-        ref.child("users").child(uid).setValue(["key": ref.childByAutoId().key, "id": idAndemail.text , "uid": uid,"name": name, "friends": ["friends"], "groups": ["groups"], "Frequest": ["Frequest"], "Grequest": ["Grequest"], "schedules": ["schedules"]])
+        ref.child("users").child(uid).setValue([ "key": ref.childByAutoId().key, "id": idAndemail.text , "uid": uid,"name": name, "friends": ["friends"], "groups": ["groups"], "Frequest": ["Frequest"], "Grequest": ["Grequest"], "schedules": [["크리스마스","2022년 12월 25일","2022년 12월 25일","오전 11시 11분", "오전 11시 12분"]] ])
     }
 }

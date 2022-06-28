@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		313485C8286311B50044DC58 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 313485C7286311B50044DC58 /* GoogleService-Info.plist */; };
 		31C3CA6D284E0CC10092E08E /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C3CA6C284E0CC10092E08E /* CalendarHelper.swift */; };
 		31FDF1D728644CE20014735B /* AddScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FDF1D628644CE20014735B /* AddScheduleViewController.swift */; };
 		31FDF1D92865D90F0014735B /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FDF1D82865D90F0014735B /* Schedule.swift */; };
@@ -20,6 +19,7 @@
 		499A58C7285917F700ED7D7B /* AddGroupPopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499A58C6285917F700ED7D7B /* AddGroupPopViewController.swift */; };
 		499A58C9285BA37F00ED7D7B /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499A58C8285BA37F00ED7D7B /* RequestViewController.swift */; };
 		499A58CB285BA57B00ED7D7B /* RequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499A58CA285BA57B00ED7D7B /* RequestTableViewCell.swift */; };
+		499A58F1286A1ED000ED7D7B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 499A58F0286A1ED000ED7D7B /* GoogleService-Info.plist */; };
 		6D1A5C6F285D81380030BE59 /* SecondPopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1A5C6E285D81380030BE59 /* SecondPopViewController.swift */; };
 		6D1A5C71285DB2EF0030BE59 /* AlarmSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1A5C70285DB2EF0030BE59 /* AlarmSettingViewController.swift */; };
 		6D1A5C73285DB8700030BE59 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1A5C72285DB8700030BE59 /* InfoViewController.swift */; };
@@ -42,7 +42,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		313485C7286311B50044DC58 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		31C3CA6C284E0CC10092E08E /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
 		31FDF1D628644CE20014735B /* AddScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddScheduleViewController.swift; sourceTree = "<group>"; };
 		31FDF1D82865D90F0014735B /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
@@ -55,6 +54,7 @@
 		499A58C6285917F700ED7D7B /* AddGroupPopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroupPopViewController.swift; sourceTree = "<group>"; };
 		499A58C8285BA37F00ED7D7B /* RequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
 		499A58CA285BA57B00ED7D7B /* RequestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTableViewCell.swift; sourceTree = "<group>"; };
+		499A58F0286A1ED000ED7D7B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6D1A5C6E285D81380030BE59 /* SecondPopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondPopViewController.swift; sourceTree = "<group>"; };
 		6D1A5C70285DB2EF0030BE59 /* AlarmSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSettingViewController.swift; sourceTree = "<group>"; };
 		6D1A5C72285DB8700030BE59 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
@@ -132,7 +132,7 @@
 			isa = PBXGroup;
 			children = (
 				6DF221042852555500008EB3 /* meus.entitlements */,
-				313485C7286311B50044DC58 /* GoogleService-Info.plist */,
+				499A58F0286A1ED000ED7D7B /* GoogleService-Info.plist */,
 				6D2EA37A283BE14500A91E9A /* AppDelegate.swift */,
 				6D2EA37C283BE14500A91E9A /* SceneDelegate.swift */,
 				6D2EA37E283BE14500A91E9A /* ViewController.swift */,
@@ -230,7 +230,7 @@
 			files = (
 				6D2EA387283BE14800A91E9A /* LaunchScreen.storyboard in Resources */,
 				6D2EA384283BE14800A91E9A /* Assets.xcassets in Resources */,
-				313485C8286311B50044DC58 /* GoogleService-Info.plist in Resources */,
+				499A58F1286A1ED000ED7D7B /* GoogleService-Info.plist in Resources */,
 				6D2EA382283BE14500A91E9A /* Main.storyboard in Resources */,
 				49235AB72851639D00706A61 /* Popup.storyboard in Resources */,
 			);
@@ -459,7 +459,7 @@
 				CODE_SIGN_ENTITLEMENTS = meus/meus.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = XH7R4BM798;
+				DEVELOPMENT_TEAM = RSF44CWACA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = meus/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -468,7 +468,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -491,7 +491,7 @@
 				CODE_SIGN_ENTITLEMENTS = meus/meus.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = XH7R4BM798;
+				DEVELOPMENT_TEAM = RSF44CWACA;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = meus/Info.plist;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
@@ -500,7 +500,7 @@
 				INFOPLIST_KEY_UISupportedInterfaceOrientations = UIInterfaceOrientationPortrait;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				IPHONEOS_DEPLOYMENT_TARGET = 15.5;
+				IPHONEOS_DEPLOYMENT_TARGET = 15.1;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

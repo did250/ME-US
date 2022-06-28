@@ -1,13 +1,17 @@
-
+import Firebase
+import FirebaseDatabase
 import UIKit
 
 
 class AddScheduleViewController: UIViewController {
-    @IBOutlet weak var titleTextField: UITextField!
     
+    var ref : DatabaseReference!
+    var myuid : String = ""
+    var schedules : [[String]] = [[""]]
+    
+    @IBOutlet weak var titleTextField: UITextField!
     @IBOutlet weak var startDateTextField: UITextField!
     @IBOutlet weak var endDateTextField: UITextField!
-    
     @IBOutlet weak var startTimeTextField: UITextField!
     @IBOutlet weak var endTimeTextField: UITextField!
     
@@ -23,6 +27,8 @@ class AddScheduleViewController: UIViewController {
     var selectedDate2 = Calendar.current.date(byAdding: .day, value: 1, to: selectedDate)
     
     override func viewDidLoad() {
+        
+        ref = Database.database().reference()
         self.configureStartDatePicker()
         self.configureEndDatePicker()
         self.configureStartTimePicker()
@@ -78,10 +84,11 @@ class AddScheduleViewController: UIViewController {
     @IBAction func tapConfirmButton(_ sender: UIButton) {
 
         let newSchedule = Schedule(title: titleTextField.text!, startDate: startDate!, endDate: endDate!, startTime: startTime!, endTime: endTime!)
-
+        var add = [titleTextField.text!, startDate!, endDate!, startTime!, endTime!]
+        self.schedules.append(add)
         scheduleList.append(newSchedule)
-        
-        self.presentingViewController?.dismiss(animated: true)
+        self.ref.child("users").child(myuid).updateChildValues(["schedules": schedules])
+        self.dismiss(animated: false, completion: nil)
     }
     
     @objc private func startDatePickerValueDidChange(_ datePicker: UIDatePicker){
