@@ -41,22 +41,25 @@ class AddScheduleViewController: UIViewController {
     
     private func configureStartDatePicker(){
         self.startDatePicker.datePickerMode = .date
+        self.startDatePicker.date = selectedDate
         self.startDatePicker.preferredDatePickerStyle = .wheels
         self.startDatePicker.addTarget(self, action: #selector(startDatePickerValueDidChange(_:)), for: .valueChanged)
         
         self.startDateTextField.text = CalendarHelper().dateToString(date: selectedDate)
-        
         self.startDate = CalendarHelper().dateToString(date: selectedDate)
-        
         self.startDateTextField.inputView = self.startDatePicker
         
     }
     private func configureEndDatePicker(){
         self.endDatePicker.datePickerMode = .date
+        self.endDatePicker.date = selectedDate
         self.endDatePicker.preferredDatePickerStyle = .wheels
         self.endDatePicker.addTarget(self, action: #selector(endDatePickerValueDidChange(_:)), for: .valueChanged)
         self.endDateTextField.text = CalendarHelper().dateToString(date: selectedDate)
         self.endDate = CalendarHelper().dateToString(date: selectedDate)
+        if(CalendarHelper().StringtoDate(string: startDate!) > CalendarHelper().StringtoDate(string: endDate!)){
+            startDate = endDate
+        }
         self.endDateTextField.inputView = self.endDatePicker
     }
     
@@ -82,7 +85,7 @@ class AddScheduleViewController: UIViewController {
         self.presentingViewController?.dismiss(animated: true)
     }
     @IBAction func tapConfirmButton(_ sender: UIButton) {
-
+        
         let newSchedule = Schedule(title: titleTextField.text!, startDate: startDate!, endDate: endDate!, startTime: startTime!, endTime: endTime!)
         var add = [titleTextField.text!, startDate!, endDate!, startTime!, endTime!]
         self.schedules.append(add)

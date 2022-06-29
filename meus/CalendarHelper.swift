@@ -56,7 +56,7 @@ class CalendarHelper{
     
     func yearString(date: Date) -> String{ // 2022년 6월 7일 => 2022
         let formatter = DateFormatter()
-        formatter.locale = Locale(identifier: "ko_kr") // 한국시간 표시
+        //formatter.locale = Locale(identifier: "ko_kr") // 한국시간 표시
         formatter.dateFormat = "yyyy"
         return formatter.string(from: date)
     }

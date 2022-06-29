@@ -671,6 +671,9 @@
                             <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="CZL-uG-Noy">
                                 <rect key="frame" x="0.0" y="228.5" width="414" height="307.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="307.5" id="NC3-GQ-6VW"/>
+                                </constraints>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="EZB-Ac-sXT">
                                     <size key="itemSize" width="128" height="128"/>
                                     <size key="headerReferenceSize" width="0.0" height="0.0"/>
@@ -768,32 +771,28 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="cUh-c2-HcE" firstAttribute="top" secondItem="Bar-Yu-0rc" secondAttribute="bottom" constant="24" id="102-C6-Aih"/>
-                            <constraint firstItem="CZL-uG-Noy" firstAttribute="width" secondItem="ADn-Dm-ajD" secondAttribute="width" id="3PF-Tc-vDR"/>
                             <constraint firstItem="m2k-TV-iBT" firstAttribute="bottom" secondItem="ADn-Dm-ajD" secondAttribute="bottom" id="3Rp-0a-Ewa"/>
                             <constraint firstItem="Bar-Yu-0rc" firstAttribute="centerX" secondItem="ADn-Dm-ajD" secondAttribute="centerX" id="7Bk-aV-vIP"/>
                             <constraint firstItem="UMH-Qe-gV5" firstAttribute="top" secondItem="ADn-Dm-ajD" secondAttribute="top" id="8fw-Ce-IOx"/>
+                            <constraint firstItem="CZL-uG-Noy" firstAttribute="top" secondItem="MHo-PM-e6G" secondAttribute="bottom" id="8sA-j4-sMJ"/>
                             <constraint firstItem="cUh-c2-HcE" firstAttribute="leading" secondItem="FtF-aR-ojM" secondAttribute="trailing" id="EEn-rf-7eg"/>
                             <constraint firstItem="FtF-aR-ojM" firstAttribute="centerY" secondItem="cUh-c2-HcE" secondAttribute="centerY" id="FCz-Hi-XJI"/>
                             <constraint firstItem="ADn-Dm-ajD" firstAttribute="trailing" secondItem="MHo-PM-e6G" secondAttribute="trailing" id="FUw-fg-0xd"/>
-                            <constraint firstItem="CZL-uG-Noy" firstAttribute="top" secondItem="MHo-PM-e6G" secondAttribute="bottom" id="FcM-hx-HQB"/>
                             <constraint firstItem="Kb5-AS-7Cl" firstAttribute="leading" secondItem="cUh-c2-HcE" secondAttribute="trailing" id="Fgk-oA-jb4"/>
                             <constraint firstItem="m2k-TV-iBT" firstAttribute="trailing" secondItem="ADn-Dm-ajD" secondAttribute="trailing" id="IGp-Ir-0Pf"/>
                             <constraint firstItem="Bar-Yu-0rc" firstAttribute="top" secondItem="ADn-Dm-ajD" secondAttribute="top" constant="13" id="Ktf-4D-V2v"/>
                             <constraint firstItem="Kb5-AS-7Cl" firstAttribute="height" secondItem="cUh-c2-HcE" secondAttribute="height" id="M6C-fh-q9E"/>
-                            <constraint firstItem="m2k-TV-iBT" firstAttribute="top" secondItem="CZL-uG-Noy" secondAttribute="bottom" id="Nbk-Pj-Yb4"/>
                             <constraint firstItem="m2k-TV-iBT" firstAttribute="width" secondItem="CZL-uG-Noy" secondAttribute="width" id="Rl1-Va-0Sm"/>
                             <constraint firstItem="ADn-Dm-ajD" firstAttribute="trailing" secondItem="CZL-uG-Noy" secondAttribute="trailing" id="UXM-7H-AUh"/>
-                            <constraint firstItem="CZL-uG-Noy" firstAttribute="height" secondItem="ADn-Dm-ajD" secondAttribute="height" multiplier="0.4" id="VxR-3H-hkq"/>
                             <constraint firstItem="FtF-aR-ojM" firstAttribute="leading" secondItem="ADn-Dm-ajD" secondAttribute="leading" id="aaU-h8-jij"/>
-                            <constraint firstItem="m2k-TV-iBT" firstAttribute="top" secondItem="CZL-uG-Noy" secondAttribute="bottom" id="bGT-hb-oC2"/>
                             <constraint firstItem="MHo-PM-e6G" firstAttribute="leading" secondItem="ADn-Dm-ajD" secondAttribute="leading" id="bHd-XB-af3"/>
                             <constraint firstItem="cUh-c2-HcE" firstAttribute="centerX" secondItem="ADn-Dm-ajD" secondAttribute="centerX" id="c8E-a9-DQk"/>
                             <constraint firstItem="CZL-uG-Noy" firstAttribute="leading" secondItem="ADn-Dm-ajD" secondAttribute="leading" id="fUx-yg-iRm"/>
                             <constraint firstItem="FtF-aR-ojM" firstAttribute="height" secondItem="cUh-c2-HcE" secondAttribute="height" id="fiW-qf-bj4"/>
-                            <constraint firstItem="CZL-uG-Noy" firstAttribute="width" secondItem="ADn-Dm-ajD" secondAttribute="width" id="gfu-Kr-zPg"/>
                             <constraint firstItem="MHo-PM-e6G" firstAttribute="centerX" secondItem="ADn-Dm-ajD" secondAttribute="centerX" id="haE-xv-u0s"/>
                             <constraint firstItem="m2k-TV-iBT" firstAttribute="leading" secondItem="ADn-Dm-ajD" secondAttribute="leading" id="lJt-iD-2up"/>
                             <constraint firstItem="UMH-Qe-gV5" firstAttribute="leading" secondItem="ADn-Dm-ajD" secondAttribute="leading" id="oBY-h1-Lrg"/>
+                            <constraint firstItem="m2k-TV-iBT" firstAttribute="top" secondItem="CZL-uG-Noy" secondAttribute="bottom" id="oSW-ZM-Jem"/>
                             <constraint firstItem="Kb5-AS-7Cl" firstAttribute="centerY" secondItem="cUh-c2-HcE" secondAttribute="centerY" id="r3D-go-pnN"/>
                             <constraint firstItem="MHo-PM-e6G" firstAttribute="top" secondItem="cUh-c2-HcE" secondAttribute="bottom" constant="30" id="tOm-i7-scq"/>
                             <constraint firstItem="ADn-Dm-ajD" firstAttribute="trailing" secondItem="Kb5-AS-7Cl" secondAttribute="trailing" id="xeP-fz-Kq4"/>

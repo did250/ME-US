@@ -25,15 +25,34 @@ class MeViewController: UIViewController,UICollectionViewDelegate,UICollectionVi
     var totalSquares = [String]()
     
     var m: Int = 0
+    var y: Int = 0
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        print("viewdidload")
+        
+//        var schedule0 = Schedule(title: "a0", startDate: "2020년 10월 22일", endDate: "2022년 4월 8일", startTime: "오전 11시 20분", endTime: "오전 11시 20분")
+//        var schedule1 = Schedule(title: "a1", startDate: "2022년 6월 5일", endDate: "2022년 6월 5일", startTime: "오전 11시 20분", endTime: "오전 11시 20분")
+//        var schedule2 = Schedule(title: "a2", startDate: "2022년 6월 18일", endDate: "2022년 6월 22일", startTime: "오전 11시 20분", endTime: "오전 11시 20분")
+//        var schedule3 = Schedule(title: "a3", startDate: "2022년 7월 21일", endDate: "2022년 10월 7일", startTime: "오전 11시 20분", endTime: "오전 11시 20분")
+//        var schedule4 = Schedule(title: "a4", startDate: "2022년 11월 23일", endDate: "2023년 2월 3일", startTime: "오전 11시 20분", endTime: "오전 11시 20분")
+//        var schedule5 = Schedule(title: "a5", startDate: "2022년 6월 2일", endDate: "2022년 6월 29일", startTime: "오전 11시 20분", endTime: "오전 11시 20분")
+//
+//
+//        scheduleList.append(schedule0)
+//        scheduleList.append(schedule1)
+//        scheduleList.append(schedule2)
+//        scheduleList.append(schedule3)
+//        scheduleList.append(schedule4)
+//        scheduleList.append(schedule5)
+        
+        
         
         ref = Database.database().reference()
        
-        m = Int(CalendarHelper().monthString(date: selectedDate))!
+//        m = Int(CalendarHelper().monthString(date: selectedDate))!
+//        y = Int(CalendarHelper().yearString(date: selectedDate))!
+//
         Loaduser{data in
             self.userinfo = data
             scheduleList.removeAll()
@@ -41,32 +60,13 @@ class MeViewController: UIViewController,UICollectionViewDelegate,UICollectionVi
                 var newschedule:Schedule = Schedule(title: i[0], startDate: i[1], endDate: i[2], startTime: i[3], endTime: i[4])
                 scheduleList.append(newschedule)
             }
-            for i in scheduleList{
-                var aa = Int(CalendarHelper().monthString(date: CalendarHelper().StringtoDate(string: i.startDate)))!
-                
-                if (aa == self.m){
-                    self.currentSchedule.append(i)
-                    var bb = CalendarHelper().daysOfMonth(date: CalendarHelper().StringtoDate(string: i.startDate))
-                    var cc = CalendarHelper().daysOfMonth(date: CalendarHelper().StringtoDate(string: i.endDate))
-                    for i in bb...cc{
-                        if(!self.currentDays.contains(i)){
-                            self.currentDays.append(i)
-                        }
-                    }
-
-                    
-                }
-            }
+            //여기에는 안넣어도 어차피 appear에서 findSchedule()있으니까 필요없는거같음
             self.collectionView.reloadData()
         }
         
-        
-//        scheduleList.append(schedule1)
-//        scheduleList.append(schedule2)
-//        scheduleList.append(schedule3)
-       
-        
+        let screenHeight = (UIScreen.main.bounds.height) * 2 / 5
         self.navigationItem.hidesBackButton = true
+
         setCellsView()
         setMonthView()
         collectionView.delegate = self
@@ -84,6 +84,7 @@ class MeViewController: UIViewController,UICollectionViewDelegate,UICollectionVi
         
         let flowLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         flowLayout.itemSize = CGSize(width: width, height: height)
+        
         
     }
     
@@ -142,22 +143,7 @@ class MeViewController: UIViewController,UICollectionViewDelegate,UICollectionVi
         if(m == 0){
             m = 12
         }
-        for i in scheduleList{
-            var aa = Int(CalendarHelper().monthString(date: CalendarHelper().StringtoDate(string: i.startDate)))!
-            
-            if (aa == m){
-                currentSchedule.append(i)
-                var bb = CalendarHelper().daysOfMonth(date: CalendarHelper().StringtoDate(string: i.startDate))
-                var cc = CalendarHelper().daysOfMonth(date: CalendarHelper().StringtoDate(string: i.endDate))
-                for i in bb...cc{
-                    if(!currentDays.contains(i)){
-                        currentDays.append(i)
-                    }
-                }
-
-                
-            }
-        }
+        findSchedule()
         collectionView.reloadData()
         setMonthView()
         
@@ -176,21 +162,7 @@ class MeViewController: UIViewController,UICollectionViewDelegate,UICollectionVi
         currentSchedule.removeAll()
         daySchedule.removeAll()
         
-        for i in scheduleList{
-            var aa = Int(CalendarHelper().monthString(date: CalendarHelper().StringtoDate(string: i.startDate)))!
-            
-            if (aa == m){
-                currentSchedule.append(i)
-                var bb = CalendarHelper().daysOfMonth(date: CalendarHelper().StringtoDate(string: i.startDate))
-                var cc = CalendarHelper().daysOfMonth(date: CalendarHelper().StringtoDate(string: i.endDate))
-                for i in bb...cc{
-                    if(!currentDays.contains(i)){
-                        currentDays.append(i)
-                    }
-                }
-                
-            }
-        }
+        findSchedule()
         setMonthView()
     }
     
@@ -248,12 +220,93 @@ class MeViewController: UIViewController,UICollectionViewDelegate,UICollectionVi
             selectedDate = CalendarHelper().StringtoDate(string: date)
             selectedIndex = indexPath.row
             daySchedule.removeAll()
+            m = Int(CalendarHelper().monthString(date: selectedDate))!
+            y = Int(CalendarHelper().yearString(date: selectedDate))!
+
+            
             for i in currentSchedule{
-                var bb = CalendarHelper().daysOfMonth(date: CalendarHelper().StringtoDate(string: i.startDate))
-                var cc = CalendarHelper().daysOfMonth(date: CalendarHelper().StringtoDate(string: i.endDate))
-                if(Int(day)! >= bb && Int(day)! <= cc){
-                    daySchedule.append(i)
+                var startYear = Int(CalendarHelper().yearString(date: CalendarHelper().StringtoDate(string: i.startDate)))!
+                var endYear = Int(CalendarHelper().yearString(date: CalendarHelper().StringtoDate(string: i.endDate)))!
+                var startMonth = Int(CalendarHelper().monthString(date: CalendarHelper().StringtoDate(string: i.startDate)))!
+                var endMonth = Int(CalendarHelper().monthString(date: CalendarHelper().StringtoDate(string: i.endDate)))!
+                
+                if(startYear == self.y && endYear == self.y){
+                    if(startMonth == self.m && endMonth == self.m){
+                        var startDay = CalendarHelper().daysOfMonth(date: CalendarHelper().StringtoDate(string: i.startDate))
+                        var endDay = CalendarHelper().daysOfMonth(date: CalendarHelper().StringtoDate(string: i.endDate))
+                        if(Int(day)! >= startDay && Int(day)! <= endDay){
+                            daySchedule.append(i)
+                        }
+                    }
+                    else if(startMonth <= self.m && endMonth >= self.m){
+                        if(startMonth == self.m){
+                            var startDay = CalendarHelper().daysOfMonth(date: CalendarHelper().StringtoDate(string: i.startDate))
+                            var endDay = CalendarHelper().daysInMonth(date: CalendarHelper().StringtoDate(string: i.startDate))
+                            if(Int(day)! >= startDay && Int(day)! <= endDay){
+                                daySchedule.append(i)
+                            }
+                        }
+                        else if(startMonth < self.m && endMonth > self.m){
+                            var startDay = 1
+                            var endDay = CalendarHelper().daysInMonth(date: selectedDate)
+                            if(Int(day)! >= startDay && Int(day)! <= endDay){
+                                daySchedule.append(i)
+                            }
+                        }
+                        else if(endMonth == self.m){
+                            var startDay = 1
+                            var endDay = CalendarHelper().daysOfMonth(date: CalendarHelper().StringtoDate(string: i.endDate))
+                            if(Int(day)! >= startDay && Int(day)! <= endDay){
+                                daySchedule.append(i)
+                            }
+                        }
+                    }
                 }
+                else if(startYear <= self.y && endYear >= self.y){
+                    if(startYear < self.y && endYear > self.y){
+                        var startDay = 1
+                        var endDay = CalendarHelper().daysInMonth(date: selectedDate)
+                        if(Int(day)! >= startDay && Int(day)! <= endDay){
+                            daySchedule.append(i)
+                        }
+                    }
+                    else if(startYear == self.y){
+                        if(startMonth == self.m){
+                            var startDay = CalendarHelper().daysOfMonth(date: CalendarHelper().StringtoDate(string: i.startDate))
+                            var endDay = CalendarHelper().daysInMonth(date: CalendarHelper().StringtoDate(string: i.startDate))
+                            if(Int(day)! >= startDay && Int(day)! <= endDay){
+                                daySchedule.append(i)
+                            }
+                        }
+                        else if(startMonth <= self.m){
+                            var startDay = 1
+                            var endDay = CalendarHelper().daysInMonth(date: selectedDate)
+                            if(Int(day)! >= startDay && Int(day)! <= endDay){
+                                daySchedule.append(i)
+                            }
+                        }
+                    }
+                    else if(endYear == self.y){
+                        if(endMonth == self.m){
+                            var startDay = 1
+                            var endDay = CalendarHelper().daysOfMonth(date: CalendarHelper().StringtoDate(string: i.endDate))
+                            if(Int(day)! >= startDay && Int(day)! <= endDay){
+                                daySchedule.append(i)
+                            }
+                        }
+                        else if(endMonth > self.m){
+                            var startDay = 1
+                            var endDay = CalendarHelper().daysInMonth(date: selectedDate)
+                            if(Int(day)! >= startDay && Int(day)! <= endDay){
+                                daySchedule.append(i)
+                            }
+                        }
+                    }
+                            
+                }
+                
+                
+                
             }
             
             collectionView.reloadData()
@@ -278,14 +331,23 @@ class MeViewController: UIViewController,UICollectionViewDelegate,UICollectionVi
         let cell = ScheduleTable.dequeueReusableCell(withIdentifier: "Cells", for: indexPath) as! Cells
         cell.Txt.text = daySchedule[indexPath.row].title
         
+        y = Int(CalendarHelper().yearString(date: selectedDate))!
         
-        if(CalendarHelper().dateToString(date: selectedDate) == daySchedule[indexPath.row].endDate && CalendarHelper().dateToString(date: selectedDate) == daySchedule[indexPath.row].startDate){
+        var currentDay = CalendarHelper().dateToString(date: selectedDate)
+        var currentYear = CalendarHelper().yearString(date: selectedDate)
+        var startYear = CalendarHelper().yearString(date: CalendarHelper().StringtoDate(string: daySchedule[indexPath.row].startDate))
+        var endYear = CalendarHelper().yearString(date: CalendarHelper().StringtoDate(string: daySchedule[indexPath.row].endDate))
+        var startDay = daySchedule[indexPath.row].startDate
+        var endDay = daySchedule[indexPath.row].endDate
+        
+
+        if(currentDay == startDay && currentDay == endDay){
             cell.subTitle.text = daySchedule[indexPath.row].startTime + " ~ " + daySchedule[indexPath.row].endTime
         }
-        else if(CalendarHelper().dateToString(date: selectedDate) != daySchedule[indexPath.row].endDate && CalendarHelper().dateToString(date: selectedDate) != daySchedule[indexPath.row].startDate){
+        else if(currentDay != startDay && currentDay != endDay){
             cell.subTitle.text = "하루종일"
         }
-        else if(CalendarHelper().dateToString(date: selectedDate) == daySchedule[indexPath.row].startDate){
+        else if(currentDay == startDay){
             cell.subTitle.text = daySchedule[indexPath.row].startTime + " ~ "
         }
         else{
@@ -323,22 +385,14 @@ class MeViewController: UIViewController,UICollectionViewDelegate,UICollectionVi
                     var newschedule:Schedule = Schedule(title: i[0], startDate: i[1], endDate: i[2], startTime: i[3], endTime: i[4])
                     scheduleList.append(newschedule)
                 }
-                for i in scheduleList{
-                    var aa = Int(CalendarHelper().monthString(date: CalendarHelper().StringtoDate(string: i.startDate)))!
-                    
-                    if (aa == self.m){
-                        self.currentSchedule.append(i)
-                        var bb = CalendarHelper().daysOfMonth(date: CalendarHelper().StringtoDate(string: i.startDate))
-                        var cc = CalendarHelper().daysOfMonth(date: CalendarHelper().StringtoDate(string: i.endDate))
-                        for i in bb...cc{
-                            if(!self.currentDays.contains(i)){
-                                self.currentDays.append(i)
-                            }
-                        }
-                    }
-                }
+                self.findSchedule()
                 self.collectionView.reloadData()
             }
+            //scheduleList.removeAll()
+            self.currentDays.removeAll()
+            self.currentSchedule.removeAll()
+            findSchedule()
+            self.collectionView.reloadData()
         }
         
         
@@ -368,6 +422,120 @@ extension MeViewController {
                 }
             }
         }
+    }
+    
+    func findSchedule(){
+        m = Int(CalendarHelper().monthString(date: selectedDate))!
+        y = Int(CalendarHelper().yearString(date: selectedDate))!
+        for i in scheduleList{
+            var startYear = Int(CalendarHelper().yearString(date: CalendarHelper().StringtoDate(string: i.startDate)))!
+            var endYear = Int(CalendarHelper().yearString(date: CalendarHelper().StringtoDate(string: i.endDate)))!
+            var startMonth = Int(CalendarHelper().monthString(date: CalendarHelper().StringtoDate(string: i.startDate)))!
+            var endMonth = Int(CalendarHelper().monthString(date: CalendarHelper().StringtoDate(string: i.endDate)))!
+            
+            if(startYear == self.y && endYear == self.y){
+                if(startMonth == self.m && endMonth == self.m){
+                    self.currentSchedule.append(i)
+                    var startDay = CalendarHelper().daysOfMonth(date: CalendarHelper().StringtoDate(string: i.startDate))
+                    var endDay = CalendarHelper().daysOfMonth(date: CalendarHelper().StringtoDate(string: i.endDate))
+                    for i in startDay...endDay{
+                        if(!self.currentDays.contains(i)){
+                            self.currentDays.append(i)
+                        }
+                    }
+                }
+                else if(startMonth <= self.m && endMonth >= self.m){
+                    if(startMonth == self.m){
+                        self.currentSchedule.append(i)
+                        var startDay = CalendarHelper().daysOfMonth(date: CalendarHelper().StringtoDate(string: i.startDate))
+                        var endDay = CalendarHelper().daysInMonth(date: CalendarHelper().StringtoDate(string: i.startDate))
+                        for i in startDay...endDay{
+                            if(!self.currentDays.contains(i)){
+                                self.currentDays.append(i)
+                            }
+                        }
+                        
+                    }
+                    else if(startMonth < self.m && endMonth > self.m){
+                        self.currentSchedule.append(i)
+                        var startDay = 1
+                        var endDay = CalendarHelper().daysInMonth(date: selectedDate)
+                        for i in startDay...endDay{
+                            if(!self.currentDays.contains(i)){
+                                self.currentDays.append(i)
+                            }
+                        }
+                    }
+                    else if(endMonth == self.m){
+                        self.currentSchedule.append(i)
+                        var startDay = 1
+                        var endDay = CalendarHelper().daysOfMonth(date: CalendarHelper().StringtoDate(string: i.endDate))
+                        for i in startDay...endDay{
+                            if(!self.currentDays.contains(i)){
+                                self.currentDays.append(i)
+                            }
+                        }
+                    }
+                }
+            }
+            else if(startYear <= self.y && endYear >= self.y){
+                if(startYear == self.y){
+                    if(startMonth == self.m){
+                        self.currentSchedule.append(i)
+                        var startDay = CalendarHelper().daysOfMonth(date: CalendarHelper().StringtoDate(string: i.startDate))
+                        var endDay = CalendarHelper().daysInMonth(date: CalendarHelper().StringtoDate(string: i.startDate))
+                        for i in startDay...endDay{
+                            if(!self.currentDays.contains(i)){
+                                self.currentDays.append(i)
+                            }
+                        }
+                    }
+                    else if(startMonth < self.m){
+                        self.currentSchedule.append(i)
+                        var startDay = 1
+                        var endDay = CalendarHelper().daysInMonth(date: selectedDate)
+                        for i in startDay...endDay{
+                            if(!self.currentDays.contains(i)){
+                                self.currentDays.append(i)
+                            }
+                        }
+                    }
+                }
+                else if(startYear < self.y && endYear > self.y){
+                    self.currentSchedule.append(i)
+                    var startDay = 1
+                    var endDay = CalendarHelper().daysInMonth(date: selectedDate)
+                    for i in startDay...endDay{
+                        if(!self.currentDays.contains(i)){
+                            self.currentDays.append(i)
+                        }
+                    }
+                }
+                else if(endYear == self.y){
+                    if(endMonth == self.m){
+                        self.currentSchedule.append(i)
+                        var startDay = 1
+                        var endDay = CalendarHelper().daysOfMonth(date: CalendarHelper().StringtoDate(string: i.endDate))
+                        for i in startDay...endDay{
+                            if(!self.currentDays.contains(i)){
+                                self.currentDays.append(i)
+                            }
+                        }
+                    }
+                    else if(endMonth > self.m){
+                        self.currentSchedule.append(i)
+                        var startDay = 1
+                        var endDay = CalendarHelper().daysInMonth(date: selectedDate)
+                        for i in startDay...endDay{
+                            if(!self.currentDays.contains(i)){
+                                self.currentDays.append(i)
+                            }
+                        }
+
+                    }
+                }
+            }
+        }//for문 끝나는곳
     }
 }
 
