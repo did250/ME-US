@@ -1562,10 +1562,30 @@
                                                             <nil key="textColor"/>
                                                             <nil key="highlightedColor"/>
                                                         </label>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="07c-ve-hwN">
+                                                            <rect key="frame" x="172" y="6.5" width="42" height="31"/>
+                                                            <state key="normal" title="Button"/>
+                                                            <buttonConfiguration key="configuration" style="plain" image="xmark" catalog="system"/>
+                                                            <connections>
+                                                                <action selector="btnDeny:" destination="wRn-5f-EaT" eventType="touchUpInside" id="GW1-8G-oez"/>
+                                                            </connections>
+                                                        </button>
+                                                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="fwP-Ek-f9R">
+                                                            <rect key="frame" x="128" y="6.5" width="44" height="31"/>
+                                                            <state key="normal" title="Button"/>
+                                                            <buttonConfiguration key="configuration" style="plain" image="checkmark" catalog="system"/>
+                                                            <connections>
+                                                                <action selector="btnAccept:" destination="wRn-5f-EaT" eventType="touchUpInside" id="uiG-Ni-1cw"/>
+                                                            </connections>
+                                                        </button>
                                                     </subviews>
                                                     <constraints>
+                                                        <constraint firstItem="fwP-Ek-f9R" firstAttribute="centerY" secondItem="lF7-6G-Kv4" secondAttribute="centerY" id="4Ig-b0-NvX"/>
+                                                        <constraint firstItem="07c-ve-hwN" firstAttribute="leading" secondItem="fwP-Ek-f9R" secondAttribute="trailing" id="6O9-QG-zR4"/>
+                                                        <constraint firstItem="07c-ve-hwN" firstAttribute="centerY" secondItem="lF7-6G-Kv4" secondAttribute="centerY" id="F1x-XE-d8x"/>
                                                         <constraint firstItem="Bbb-tB-q39" firstAttribute="leading" secondItem="lF7-6G-Kv4" secondAttribute="leadingMargin" id="SWZ-8h-IQ3"/>
                                                         <constraint firstItem="Bbb-tB-q39" firstAttribute="centerY" secondItem="lF7-6G-Kv4" secondAttribute="centerY" id="rfk-BB-UYG"/>
+                                                        <constraint firstAttribute="trailing" secondItem="07c-ve-hwN" secondAttribute="trailing" id="vtd-Ew-diB"/>
                                                     </constraints>
                                                 </tableViewCellContentView>
                                                 <connections>
@@ -2370,8 +2390,10 @@
         <image name="arrowshape.turn.up.left.circle.fill" catalog="system" width="128" height="121"/>
         <image name="arrowshape.turn.up.right.circle.fill" catalog="system" width="128" height="121"/>
         <image name="calendar" catalog="system" width="128" height="106"/>
+        <image name="checkmark" catalog="system" width="128" height="114"/>
         <image name="option" catalog="system" width="128" height="106"/>
         <image name="rectangle.3.group" catalog="system" width="128" height="81"/>
+        <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>

@@ -16,6 +16,7 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = Requesttable.dequeueReusableCell(withIdentifier: "RequestTableViewCell", for: indexPath) as! RequestTableViewCell
+        cell.flag = flag
         cell.name.text = requests[indexPath.row]
         return cell
     }
@@ -40,9 +41,11 @@ extension RequestViewController {
             self.userinfo = userinfo
             if self.flag == "group"{
                 self.requests = userinfo.Grequest
+                self.Requesttable.reloadData()
             }
             else if self.flag == "friend"{
                 self.requests = userinfo.Frequest
+                self.Requesttable.reloadData()
             }
         }.store(in: &disposalblebag)
     }

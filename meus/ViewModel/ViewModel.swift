@@ -90,8 +90,6 @@ extension ViewModel {
                     }
                 }
                 else{
-                    print("dsflj;asfjds;lfjsald")
-                    print(frienduid)
                     self.ref.child("users").child(frienduid).child("Frequest").getData {
                         (error,snapshot) in
                         if let error = error {
@@ -119,4 +117,59 @@ extension ViewModel {
             }
         })
     }
+    
+    func AcceptFriend(target: String, completion: @escaping (Int) -> ()) {
+        var frienduid : String = ""
+        self.ref.child("users").queryOrdered(byChild: "id").queryEqual(toValue: target).observeSingleEvent(of: .value, with: {
+            snapshot in
+            for child in snapshot.children {
+                let snap = child as! DataSnapshot
+                frienduid = snap.key
+                self.ref.child("users").child(frienduid).child("friends").getData {
+                    (error,snapshot) in
+                    if let error = error {
+                        print("Error \(error)")
+                    }
+                    else{
+                        guard let value = snapshot?.value else {return}
+                        if let data2 = try? FirebaseDecoder().decode([String].self, from: value){
+                            var array: [String] = data2
+                            if (!array.contains(self.userinfo.id)){
+                                array.append(self.userinfo.id)
+                                self.ref.child("users").child(frienduid).updateChildValues(["friends": array])
+                                self.userinfo.friends.append(target)
+                                self.userinfo.Frequest.remove(at: self.userinfo.Frequest.firstIndex(of: target)!)
+                                self.ref.child("users").child(self.userinfo.uid).updateChildValues(["friends": self.userinfo.friends])
+                                self.ref.child("users").child(self.userinfo.uid).updateChildValues(["Frequest": self.userinfo.Frequest])
+                                completion(1)
+                            }
+                            else {
+                                completion(2)
+                            }
+                        }
+                        else{
+                            print("Error")
+                        }
+                    }
+                }
+            }
+        })
+    }
+    
+    func DenyFriend(target: String){
+        self.userinfo.Frequest.remove(at: self.userinfo.Frequest.firstIndex(of: target)!)
+        self.ref.child("users").child(self.userinfo.uid).updateChildValues(["Frequest": self.userinfo.Frequest])
+    }
+    
+    func AcceptGroup(target: String, completion: @escaping (Int) -> ()) {
+            completion(1)
+        
+    }
+    
+    func DenyGroup(target: String){
+        self.userinfo.Grequest.remove(at: self.userinfo.Grequest.firstIndex(of: target)!)
+        self.ref.child("users").child(self.userinfo.uid).updateChildValues(["Grequest": self.userinfo.Grequest])
+    }
+    
+    
 }

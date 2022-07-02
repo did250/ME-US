@@ -108,6 +108,7 @@
 		497CC1552870C57B00D86594 /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
+				497CC151287088F300D86594 /* ViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -188,7 +189,6 @@
 				497CC1572870C5A100D86594 /* View */,
 				497CC1552870C57B00D86594 /* ViewModel */,
 				6DF221042852555500008EB3 /* meus.entitlements */,
-				497CC151287088F300D86594 /* ViewModel.swift */,
 				497CC14D287084A300D86594 /* GoogleService-Info.plist */,
 				6D2EA37A283BE14500A91E9A /* AppDelegate.swift */,
 				6D2EA37C283BE14500A91E9A /* SceneDelegate.swift */,
