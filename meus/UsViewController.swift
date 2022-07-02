@@ -2,40 +2,110 @@ import Firebase
 import UIKit
 import CodableFirebase
 import FirebaseDatabase
+import Combine
 
 class UsViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     var ref : DatabaseReference!
-    var userinfo : userstruct!
-    var groups : [String] = []
-    var friends : [String] = []
-    
+    var disposalblebag = Set<AnyCancellable>()
+    var userinfo = userstruct(Frequest: [""], Grequest: [""], friends: [""], groups: [""], id: "", key: "", name: "", schedules: [[""]], uid: "")
+   
     @IBOutlet var GroupTable: UITableView!
     @IBOutlet var FriendTable: UITableView!
 
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        ref = Database.database().reference()
+        setBinding()
+        viewModel.Loaduser{data in
+            print("Loaduser")
+        }
+        GroupTable.delegate = self
+        GroupTable.dataSource = self
+        FriendTable.delegate = self
+        FriendTable.dataSource = self
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        guard let newvc = self.storyboard?.instantiateViewController(withIdentifier: "MeViewController") as? MeViewController else {return}
+        newvc.uid = Auth.auth().currentUser!.uid
+        viewModel.Loaduser{data in
+            print("Loaduser")
+        }
+    }
+    
+    @IBAction func Refresh(_ sender: UIButton) {
+        viewModel.Loaduser{data in
+            print("Loaduser")
+        }
+    }
+    
+    @IBAction func addgroup(_ sender: UIButton) {
+        guard let popup = self.storyboard?.instantiateViewController(withIdentifier: "AddGroupPopViewController") as? AddGroupPopViewController else {return}
+        popup.modalPresentationStyle = .fullScreen
+        popup.modalTransitionStyle = .crossDissolve
+        self.present(popup, animated: true, completion: nil)
+    }
+    
+    @IBAction func grouprequest(_ sender: UIButton) {
+        guard let popup = self.storyboard?.instantiateViewController(withIdentifier: "RequestViewController") as? RequestViewController else {return}
+        popup.flag = "group"
+        popup.modalPresentationStyle = .overFullScreen
+        popup.modalTransitionStyle = .crossDissolve
+        self.present(popup, animated: true, completion: nil)
+    }
+    
+    @IBAction func addfriend(_ sender: UIButton) {
+        guard let popup = self.storyboard?.instantiateViewController(withIdentifier: "AddFriendPopViewController") as? AddFriendPopViewController else {return}
+        popup.modalPresentationStyle = .overFullScreen
+        popup.modalTransitionStyle = .crossDissolve
+        self.present(popup, animated: true, completion: nil)
+    }
+    
+    @IBAction func friendrequest(_ sender: UIButton) {
+        guard let popup = self.storyboard?.instantiateViewController(withIdentifier: "RequestViewController") as? RequestViewController else {return}
+        popup.flag = "friend"
+        popup.modalPresentationStyle = .fullScreen
+        popup.modalTransitionStyle = .crossDissolve
+        self.present(popup, animated: true, completion: nil)
+    }
+}
+
+// MARK: - ViewModel Binding
+extension UsViewController {
+    func setBinding(){
+        viewModel.$userinfo.sink{ (userinfo : userstruct) in
+            self.userinfo = userinfo
+            self.GroupTable.reloadData()
+            self.FriendTable.reloadData()
+        }.store(in: &disposalblebag)
+    }
+}
+
+// MARK: - TableView Methods
+extension UsViewController {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if tableView == GroupTable {
-            return groups.count
+            return userinfo.groups.count
         }
         if tableView == FriendTable {
-            return friends.count
+            return userinfo.friends.count
         }
         return 0
     }
-    
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = GroupTable.dequeueReusableCell(withIdentifier: "Cells", for: indexPath) as! Cells
         if tableView == self.GroupTable {
-            cell.Txt.text = groups[indexPath.row]
+            cell.Txt.text = userinfo.groups[indexPath.row]
             return cell
         }
         if tableView == self.FriendTable {
-            cell.Txt.text = friends[indexPath.row]
+            cell.Txt.text = userinfo.friends[indexPath.row]
             return cell
         }
         return cell
     }
-    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if tableView == GroupTable {
             return "Group"
@@ -45,11 +115,9 @@ class UsViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         }
         return ""
     }
-    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 30
     }
-    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = FriendTable.dequeueReusableCell(withIdentifier: "Cells", for: indexPath) as! Cells
         if tableView == FriendTable {
@@ -60,168 +128,19 @@ class UsViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
                 for child in snapshot.children {
                     let snap = child as! DataSnapshot
                     frienduid = snap.key
-                    
                     newvc.uid = frienduid
-                    
                     self.present(newvc, animated: true, completion: nil)
                 }
             })
-            
-            
         }
         else if tableView == GroupTable {
             let cell2 = GroupTable.dequeueReusableCell(withIdentifier: "Cells", for: indexPath) as! Cells
             guard let newvc = self.storyboard?.instantiateViewController(withIdentifier: "GroupViewController") as? GroupViewController else {return}
             newvc.myid = userinfo.id
-            newvc.name = groups[indexPath.row]
+            newvc.name = userinfo.groups[indexPath.row]
             newvc.modalPresentationStyle = .fullScreen
             newvc.modalTransitionStyle = .crossDissolve
             self.present(newvc, animated: true, completion: nil)
         }
-        
-        
-        
-    }
-    
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        ref = Database.database().reference()
-        Loaduser()
-        
-        GroupTable.delegate = self
-        GroupTable.dataSource = self
-        FriendTable.delegate = self
-        FriendTable.dataSource = self
-    }
-    override func viewWillAppear(_ animated: Bool) {
-        guard let newvc = self.storyboard?.instantiateViewController(withIdentifier: "MeViewController") as? MeViewController else {return}
-        newvc.uid = Auth.auth().currentUser!.uid
-        Loaduser()
-    }
-    
-    @IBAction func Refresh(_ sender: UIButton) {
-        Loaduser()
-    }
-    
-    @IBAction func addgroup(_ sender: UIButton) {
-        guard let popup = self.storyboard?.instantiateViewController(withIdentifier: "AddGroupPopViewController") as? AddGroupPopViewController else {return}
-        popup.myid = userinfo.id
-        popup.groups = userinfo.groups
-        popup.myuid = userinfo.uid
-        popup.modalPresentationStyle = .fullScreen
-        popup.modalTransitionStyle = .crossDissolve
-        self.present(popup, animated: true, completion: nil)
-        
-    }
-    
-    @IBAction func grouprequest(_ sender: UIButton) {
-        guard let popup = self.storyboard?.instantiateViewController(withIdentifier: "RequestViewController") as? RequestViewController else {return}
-        popup.requests = userinfo.Grequest
-        popup.modalPresentationStyle = .overFullScreen
-        popup.modalTransitionStyle = .crossDissolve
-        self.present(popup, animated: true, completion: nil)
-    }
-    
-    @IBAction func addfriend(_ sender: UIButton) {
-    
-        guard let popup = self.storyboard?.instantiateViewController(withIdentifier: "AddFriendPopViewController") as? AddFriendPopViewController else {return}
-        popup.myid = userinfo.id
-        popup.modalPresentationStyle = .overFullScreen
-        popup.modalTransitionStyle = .crossDissolve
-        self.present(popup, animated: true, completion: nil)
-       
-        
-    }
-    
-    @IBAction func friendrequest(_ sender: UIButton) {
-        guard let popup = self.storyboard?.instantiateViewController(withIdentifier: "RequestViewController") as? RequestViewController else {return}
-        popup.requests = userinfo.Frequest
-        popup.modalPresentationStyle = .fullScreen
-        popup.modalTransitionStyle = .crossDissolve
-        self.present(popup, animated: true, completion: nil)
-    }
-    
-}
-
-extension UsViewController {
-    // 로그인한 유저 정보 load
-    func Loaduser(){
-        let uid = Auth.auth().currentUser?.uid
-        ref.child("users").child(uid ?? "anyvalue").getData {
-            (error, snapshot) in
-            if let error = error {
-                print("Error \(error)")
-            }
-            else {
-                let value = snapshot?.value
-                if let data = try? FirebaseDecoder().decode(userstruct.self, from: value){
-                    self.userinfo = data
-                    self.groups = self.userinfo.groups
-                    self.friends = self.userinfo.friends
-                    
-                    DispatchQueue.main.async {
-                        self.GroupTable.reloadData()
-                        self.FriendTable.reloadData()
-                    }
-                }
-                else {
-                    print("Error")
-                }
-            }
-        }
-    }
-    // 친구의 Frequest 에 myid 추가
-    func sendFrequest(friendid : String, myid : String) {
-        var frienduid : String = ""
-        ref?.child("users").queryOrdered(byChild: "id").queryEqual(toValue: friendid).observeSingleEvent(of: .value, with: {
-            snapshot in
-            for child in snapshot.children {
-                let snap = child as! DataSnapshot
-                frienduid = snap.key
-                self.ref.child("users").child(frienduid).child("Frequest").getData {
-                    (error,snapshot) in
-                    if let error = error {
-                        print("Error \(error)")
-                    }
-                    else{
-                        guard let value = snapshot?.value else {return}
-                        if let data2 = try? FirebaseDecoder().decode([String].self, from: value){
-                            var array: [String] = data2
-                            array.append(myid)
-                            self.ref.child("users").child(frienduid).updateChildValues(["Frequest": array])
-                        }
-                        else{
-                            print("Error")
-                        }
-                    }
-                }
-            }
-        })
     }
 }
-
-struct userstruct: Codable{
-    let Frequest: [String]
-    let Grequest: [String]
-    let friends: [String]
-    let groups: [String]
-    let id: String
-    let key: String
-    let name: String
-    let schedules: [[String]]
-    let uid: String
-    enum Codingkeys: String {
-        case Frequest = "Frequest"
-        case Grequest = "Grequest"
-        case friends = "friends"
-        case groups = "groups"
-        case id = "id"
-        case key = "key"
-        case name = "name"
-        case schedules = "scheduels"
-        case uid = "uid"
-    }
-}
-
-

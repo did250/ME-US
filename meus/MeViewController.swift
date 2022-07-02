@@ -2,8 +2,10 @@ import Firebase
 import FirebaseDatabase
 import CodableFirebase
 import UIKit
+import Combine
 
 var selectedDate = Date()
+var viewModel: ViewModel = ViewModel()
 
 class MeViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource, UITableViewDelegate, UITableViewDataSource {
     
@@ -13,7 +15,10 @@ class MeViewController: UIViewController,UICollectionViewDelegate,UICollectionVi
     var daySchedule:[Schedule] = []         // 그 날의 스케쥴
     var currentDays:[Int] = []              // 그 달의 스케줄이 있는 날짜들
     var selectedIndex = -1
-    var userinfo : userstruct!
+    var userinfo = userstruct(Frequest: [""], Grequest: [""], friends: [""], groups: [""], id: "", key: "", name: "", schedules: [[""]], uid: "")
+    
+    var disposalblebag = Set<AnyCancellable>()
+    
     
     @IBOutlet var backbutton: UIButton!
     @IBOutlet var Calendarname: UILabel!
@@ -29,38 +34,20 @@ class MeViewController: UIViewController,UICollectionViewDelegate,UICollectionVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-//        var schedule0 = Schedule(title: "a0", startDate: "2020년 10월 22일", endDate: "2022년 4월 8일", startTime: "오전 11시 20분", endTime: "오전 11시 20분")
-//        var schedule1 = Schedule(title: "a1", startDate: "2022년 6월 5일", endDate: "2022년 6월 5일", startTime: "오전 11시 20분", endTime: "오전 11시 20분")
-//        var schedule2 = Schedule(title: "a2", startDate: "2022년 6월 18일", endDate: "2022년 6월 22일", startTime: "오전 11시 20분", endTime: "오전 11시 20분")
-//        var schedule3 = Schedule(title: "a3", startDate: "2022년 7월 21일", endDate: "2022년 10월 7일", startTime: "오전 11시 20분", endTime: "오전 11시 20분")
-//        var schedule4 = Schedule(title: "a4", startDate: "2022년 11월 23일", endDate: "2023년 2월 3일", startTime: "오전 11시 20분", endTime: "오전 11시 20분")
-//        var schedule5 = Schedule(title: "a5", startDate: "2022년 6월 2일", endDate: "2022년 6월 29일", startTime: "오전 11시 20분", endTime: "오전 11시 20분")
-//
-//
-//        scheduleList.append(schedule0)
-//        scheduleList.append(schedule1)
-//        scheduleList.append(schedule2)
-//        scheduleList.append(schedule3)
-//        scheduleList.append(schedule4)
-//        scheduleList.append(schedule5)
+
         ref = Database.database().reference()
-       
-//        m = Int(CalendarHelper().monthString(date: selectedDate))!
-//        y = Int(CalendarHelper().yearString(date: selectedDate))!
-//
-        Loaduser{data in
-            self.userinfo = data
+
+        self.setBinding()
+        viewModel.Loaduser{data in
             scheduleList.removeAll()
             for i in self.userinfo.schedules{
                 var newschedule:Schedule = Schedule(title: i[0], startDate: i[1], endDate: i[2], startTime: i[3], endTime: i[4])
                 scheduleList.append(newschedule)
             }
             //여기에는 안넣어도 어차피 appear에서 findSchedule()있으니까 필요없는거같음
-            self.collectionView.reloadData()
         }
         
         self.navigationItem.hidesBackButton = true
-
         setCellsView()
         setMonthView()
         collectionView.delegate = self
@@ -350,15 +337,12 @@ class MeViewController: UIViewController,UICollectionViewDelegate,UICollectionVi
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
-        print("viewdidappear")
         if (uid != Auth.auth().currentUser?.uid){
             self.Calendarname.text = userinfo.name + "'s Calendar"
             addbutton.isHidden = true
             backbutton.isHidden = false
             addbutton.isEnabled = false
             backbutton.isEnabled = true
-            
-            
         }
         else {
             self.Calendarname.text = "My Calendar"
@@ -366,8 +350,7 @@ class MeViewController: UIViewController,UICollectionViewDelegate,UICollectionVi
             addbutton.isEnabled = true
             backbutton.isHidden = true
             backbutton.isEnabled = false
-            Loaduser{data in
-                self.userinfo = data
+            viewModel.Loaduser{data in
                 scheduleList.removeAll()
                 self.currentDays.removeAll()
                 self.currentSchedule.removeAll()
@@ -376,7 +359,6 @@ class MeViewController: UIViewController,UICollectionViewDelegate,UICollectionVi
                     scheduleList.append(newschedule)
                 }
                 self.findSchedule()
-                self.collectionView.reloadData()
             }
             //scheduleList.removeAll()
             self.currentDays.removeAll()
@@ -390,28 +372,13 @@ class MeViewController: UIViewController,UICollectionViewDelegate,UICollectionVi
 }
 
 extension MeViewController {
-    func Loaduser(completion: @escaping (userstruct) -> ()) {
-       
-        
-        ref.child("users").child(uid ?? "anyvalue").getData {
-            (error, snapshot) in
-            if let error = error {
-                print("Error \(error)")
-            }
-            else {
-                let value = snapshot?.value
-                if let data = try? FirebaseDecoder().decode(userstruct.self, from: value){
-                    
-                    completion(data)
-//                    DispatchQueue.main.async {
-//                        self.collectionView.reloadData()
-//                    }
-                }
-                else {
-                    print("Error")
-                }
-            }
-        }
+    func setBinding(){
+        viewModel.$userinfo.sink{ (userinfo : userstruct) in
+            print(userinfo.id)
+            print("kkk")
+            self.userinfo = userinfo
+            self.collectionView.reloadData()
+        }.store(in: &disposalblebag)
     }
     
     func findSchedule(){

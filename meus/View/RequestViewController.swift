@@ -1,8 +1,12 @@
 import UIKit
+import Combine
 
 class RequestViewController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    var requests : [String] = ["1", "2"]
+    var userinfo = userstruct(Frequest: [""], Grequest: [""], friends: [""], groups: [""], id: "", key: "", name: "", schedules: [[""]], uid: "")
+    var disposalblebag = Set<AnyCancellable>()
+    var requests : [String] = []
+    var flag = ""
     
     @IBOutlet var Requesttable: UITableView!
     
@@ -16,17 +20,30 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
         return cell
     }
 
-    
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        setBinding()
         Requesttable.delegate = self
         Requesttable.dataSource = self
-        // Do any additional setup after loading the view.
     }
     
     @IBAction func OK(_ sender: UIButton) {
         self.dismiss(animated: false, completion: nil)
     }
-    
+}
+
+// MARK: - ViewModel Binding
+extension RequestViewController {
+    func setBinding(){
+        viewModel.$userinfo.sink{ (userinfo : userstruct) in
+            self.userinfo = userinfo
+            if self.flag == "group"{
+                self.requests = userinfo.Grequest
+            }
+            else if self.flag == "friend"{
+                self.requests = userinfo.Frequest
+            }
+        }.store(in: &disposalblebag)
+    }
 }
