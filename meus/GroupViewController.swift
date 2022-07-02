@@ -55,7 +55,10 @@ class GroupViewController: UIViewController,UITableViewDelegate, UITableViewData
         
     }
     @IBAction func schedulemix(_ sender: UIButton) {
-        
+        guard let msvc = self.storyboard?.instantiateViewController(withIdentifier: "MixedScheduleViewController") as? MixedScheduleViewController else {return}
+        msvc.modalPresentationStyle = .fullScreen
+        msvc.modalTransitionStyle = .crossDissolve
+        self.present(msvc, animated: true, completion: nil)
     }
     
     @IBAction func backBtn(_ sender: UIButton) {

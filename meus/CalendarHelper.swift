@@ -11,9 +11,9 @@ class CalendarHelper{
         return formatter.string(from: date)
     }
     
-    func dateToStringOnlyDay(date: Date) -> String{
+    func dayToString(date: Date) -> String{
         let formatter = DateFormatter()
-        formatter.dateFormat = "dd"
+        formatter.dateFormat = "d"
         formatter.locale = Locale(identifier: "ko_KR")
         return formatter.string(from: date)
     }
@@ -27,7 +27,28 @@ class CalendarHelper{
     
     func timeToString(date: Date) -> String{
         let formatter = DateFormatter()
-        formatter.dateFormat = "a hh시 mm분"
+        formatter.dateFormat = "a h시 m분"
+        formatter.locale = Locale(identifier: "ko_KR")
+        return formatter.string(from: date)
+    }
+    
+    func hourToString(date: Date) -> String{
+        let formatter = DateFormatter()
+        formatter.dateFormat = "h"
+        formatter.locale = Locale(identifier: "ko_KR")
+        return formatter.string(from: date)
+    }
+    
+    func minToString(date: Date) -> String{
+        let formatter = DateFormatter()
+        formatter.dateFormat = "m"
+        formatter.locale = Locale(identifier: "ko_KR")
+        return formatter.string(from: date)
+    }
+    
+    func ampmToString(date: Date) -> String{
+        let formatter = DateFormatter()
+        formatter.dateFormat = "a"
         formatter.locale = Locale(identifier: "ko_KR")
         return formatter.string(from: date)
     }
@@ -38,6 +59,13 @@ class CalendarHelper{
         formatter.timeZone = TimeZone(identifier: "UTC")
         return formatter.date(from: string)!
     }
+    func StringtoTime(string: String) -> Date{
+        let formatter = DateFormatter()
+        formatter.dateFormat = "a h시 m분"
+        formatter.timeZone = TimeZone(identifier: TimeZone.current.identifier)
+        return formatter.date(from: string)!
+    }
+    
     
     func plusMonth(date: Date) -> Date{
         return calendar.date(byAdding: .month, value: 1, to: date)! // 달에 값을 1추가
@@ -47,7 +75,7 @@ class CalendarHelper{
         return calendar.date(byAdding: .month, value: -1, to: date)! // 달에 값을 -1추가
     }
     
-    func monthString(date: Date) -> String{ // 2022년 6월 7일 => 6월
+    func monthString(date: Date) -> String{ // 2022년 6월 7일 => 6
         let formatter = DateFormatter()
         formatter.locale = Locale(identifier: "ko_kr") // 한국시간 표시
         formatter.dateFormat = "M"

@@ -48,6 +48,8 @@ class MeViewController: UIViewController,UICollectionViewDelegate,UICollectionVi
         
         
         
+        
+        
         ref = Database.database().reference()
        
 //        m = Int(CalendarHelper().monthString(date: selectedDate))!
@@ -64,7 +66,6 @@ class MeViewController: UIViewController,UICollectionViewDelegate,UICollectionVi
             self.collectionView.reloadData()
         }
         
-        let screenHeight = (UIScreen.main.bounds.height) * 2 / 5
         self.navigationItem.hidesBackButton = true
 
         setCellsView()
@@ -85,6 +86,9 @@ class MeViewController: UIViewController,UICollectionViewDelegate,UICollectionVi
         let flowLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         flowLayout.itemSize = CGSize(width: width, height: height)
         
+        //self.collectionView.collectionViewLayout.collectionViewContentSize.height = screenHeight
+        
+        self.collectionView.bounds.size.height = screenHeight
         
     }
     
@@ -213,9 +217,9 @@ class MeViewController: UIViewController,UICollectionViewDelegate,UICollectionVi
         var month = CalendarHelper().monthString(date: selectedDate) // string
         var day = totalSquares[indexPath.item] // string
         
-        
-
         let date = year + "년 " + month + "월 " + day + "일"
+        
+        
         if (day != " "){
             selectedDate = CalendarHelper().StringtoDate(string: date)
             selectedIndex = indexPath.row
@@ -314,7 +318,6 @@ class MeViewController: UIViewController,UICollectionViewDelegate,UICollectionVi
         }
     }
     
-
     
     override open var shouldAutorotate: Bool{ // 화면 방향전환여부 x
         return false
