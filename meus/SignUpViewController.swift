@@ -4,6 +4,7 @@ import UIKit
 class SignUpViewController: UIViewController, UITextFieldDelegate, UIScrollViewDelegate {
     
     var ref: DatabaseReference!
+    var focused : Bool = false
     
     @IBOutlet weak var name: UITextField!
     @IBOutlet weak var idAndemail: UITextField!
@@ -105,6 +106,45 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIScrollViewD
         pwreInputField.delegate = self
         emailField.delegate = self
         numberField.delegate = self
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboarWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+        
+        
+        view.addGestureRecognizer(UITapGestureRecognizer(target: self, action: #selector(handleTap(sender:))))
+    }
+    
+    @objc func handleTap(sender: UITapGestureRecognizer) {
+        if sender.state == .ended {
+            view.endEditing(true)
+        }
+        sender.cancelsTouchesInView = false
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == numberField{
+            focused = true
+        }
+        else if textField == emailField {
+            focused = true
+        }
+        else {
+            focused = false
+        }
+    }
+    
+    @objc func keyboarWillShow(_ sender:Notification) {
+        if focused == true {
+            self.view.frame.origin.y = -200
+        } else {
+            self.view.frame.origin.y = 0
+        }
+    }
+    
+    @objc func keyboardWillHide(_ sender:Notification) {
+        if focused == true {
+            self.view.frame.origin.y = 0
+        }
     }
     
     func adduser(uid:String, name: String){

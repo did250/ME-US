@@ -2,7 +2,7 @@ import UIKit
 import Firebase
 import FirebaseDatabase
 
-class AddGroupPopViewController: UIViewController {
+class AddGroupPopViewController: UIViewController,UITextFieldDelegate {
 
     var ref : DatabaseReference!
     var myid : String = ""
@@ -17,6 +17,8 @@ class AddGroupPopViewController: UIViewController {
         
         labelalready.isHidden = true
         ref = Database.database().reference()
+        
+        groupname.delegate = self
     }
 
     @IBAction func btnOK(_ sender: UIButton) {
@@ -34,5 +36,16 @@ class AddGroupPopViewController: UIViewController {
     
     @IBAction func btncancel(_ sender: UIButton) {
         self.dismiss(animated: false, completion: nil)
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == groupname {
+            groupname.resignFirstResponder()
+        }
+        return true
     }
 }

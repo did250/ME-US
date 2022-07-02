@@ -2,7 +2,7 @@ import Firebase
 import FirebaseDatabase
 import UIKit
 import CodableFirebase
-class AddFriendPopViewController: UIViewController {
+class AddFriendPopViewController: UIViewController, UITextFieldDelegate {
 
     var ref : DatabaseReference!
     var flag :String = ""
@@ -18,6 +18,8 @@ class AddFriendPopViewController: UIViewController {
         labelsame.isHidden = true
         labelalready.isHidden = true
         // Do any additional setup after loading the view.
+        
+        friedid.delegate = self
     }
     
     @IBAction func btnOK(_ sender: Any) {
@@ -30,6 +32,18 @@ class AddFriendPopViewController: UIViewController {
             sendFrequest(friendid: input, myid: myid)
             
         }
+    }
+    
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
+    
+    
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == friedid {
+            friedid.resignFirstResponder()
+        }
+        return true
     }
     
     @IBAction func btncancel(_ sender: UIButton) {

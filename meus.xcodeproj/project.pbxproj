@@ -19,7 +19,6 @@
 		49235AB72851639D00706A61 /* Popup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49235AB62851639D00706A61 /* Popup.storyboard */; };
 		49235AB92851657100706A61 /* UsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49235AB82851657100706A61 /* UsViewController.swift */; };
 		49235ABF28516DA600706A61 /* Cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49235ABE28516DA600706A61 /* Cells.swift */; };
-		499747E72870462600145CF5 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 499747E62870462600145CF5 /* GoogleService-Info.plist */; };
 		499A58C52858899800ED7D7B /* AddFriendPopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499A58C42858899800ED7D7B /* AddFriendPopViewController.swift */; };
 		499A58C7285917F700ED7D7B /* AddGroupPopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499A58C6285917F700ED7D7B /* AddGroupPopViewController.swift */; };
 		499A58C9285BA37F00ED7D7B /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499A58C8285BA37F00ED7D7B /* RequestViewController.swift */; };
@@ -38,6 +37,7 @@
 		6D2EA384283BE14800A91E9A /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 6D2EA383283BE14800A91E9A /* Assets.xcassets */; };
 		6D2EA387283BE14800A91E9A /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 6D2EA385283BE14800A91E9A /* LaunchScreen.storyboard */; };
 		6D6F19442855BF7D00BFB2B8 /* optiondata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6F19432855BF7D00BFB2B8 /* optiondata.swift */; };
+		6DA146AF28705F690066321E /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6DA146AE28705F690066321E /* GoogleService-Info.plist */; };
 		6DD0E0D92841F23100C3D5E7 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD0E0D82841F23100C3D5E7 /* SignUpViewController.swift */; };
 		6DD6D57828439FAE00FB883A /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD6D57728439FAE00FB883A /* MeViewController.swift */; };
 		6DE7FA3628451E5700B6EF57 /* IdFindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE7FA3528451E5700B6EF57 /* IdFindViewController.swift */; };
@@ -59,7 +59,6 @@
 		49235AB62851639D00706A61 /* Popup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Popup.storyboard; sourceTree = "<group>"; };
 		49235AB82851657100706A61 /* UsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsViewController.swift; sourceTree = "<group>"; };
 		49235ABE28516DA600706A61 /* Cells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cells.swift; sourceTree = "<group>"; };
-		499747E62870462600145CF5 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		499A58C42858899800ED7D7B /* AddFriendPopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendPopViewController.swift; sourceTree = "<group>"; };
 		499A58C6285917F700ED7D7B /* AddGroupPopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroupPopViewController.swift; sourceTree = "<group>"; };
 		499A58C8285BA37F00ED7D7B /* RequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
@@ -80,6 +79,7 @@
 		6D2EA386283BE14800A91E9A /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		6D2EA388283BE14800A91E9A /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		6D6F19432855BF7D00BFB2B8 /* optiondata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = optiondata.swift; sourceTree = "<group>"; };
+		6DA146AE28705F690066321E /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6DD0E0D82841F23100C3D5E7 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		6DD6D57728439FAE00FB883A /* MeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 		6DE7FA3528451E5700B6EF57 /* IdFindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdFindViewController.swift; sourceTree = "<group>"; };
@@ -142,7 +142,7 @@
 			isa = PBXGroup;
 			children = (
 				6DF221042852555500008EB3 /* meus.entitlements */,
-				499747E62870462600145CF5 /* GoogleService-Info.plist */,
+				6DA146AE28705F690066321E /* GoogleService-Info.plist */,
 				6D2EA37A283BE14500A91E9A /* AppDelegate.swift */,
 				6D2EA37C283BE14500A91E9A /* SceneDelegate.swift */,
 				6D2EA37E283BE14500A91E9A /* ViewController.swift */,
@@ -245,7 +245,7 @@
 			files = (
 				6D2EA387283BE14800A91E9A /* LaunchScreen.storyboard in Resources */,
 				6D2EA384283BE14800A91E9A /* Assets.xcassets in Resources */,
-				499747E72870462600145CF5 /* GoogleService-Info.plist in Resources */,
+				6DA146AF28705F690066321E /* GoogleService-Info.plist in Resources */,
 				6D2EA382283BE14500A91E9A /* Main.storyboard in Resources */,
 				49235AB72851639D00706A61 /* Popup.storyboard in Resources */,
 			);

@@ -1,7 +1,7 @@
 
 import UIKit
 
-class PasswordChangeViewController: UIViewController {
+class PasswordChangeViewController: UIViewController,UITextFieldDelegate {
     
     @IBOutlet weak var currentPw: UITextField!
     
@@ -35,11 +35,28 @@ class PasswordChangeViewController: UIViewController {
         
         self.present(alert, animated: true, completion: nil)
     }
+    override func touchesBegan(_ touches: Set<UITouch>, with event: UIEvent?) {
+        self.view.endEditing(true)
+    }
     
+    func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+        if textField == currentPw {
+            newPw.becomeFirstResponder()
+        }
+        if textField == newPw {
+            checkPw.becomeFirstResponder()
+        } else {
+            checkPw.resignFirstResponder()
+        }
+        return true
+    }
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        
+        currentPw.delegate = self
+        newPw.delegate = self
+        checkPw.delegate = self
     }
     
 }

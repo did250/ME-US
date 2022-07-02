@@ -2,6 +2,8 @@ import UIKit
 
 class PwFindViewController: UIViewController, UITextFieldDelegate {
     
+    var focused : Bool = false
+    
     @IBOutlet weak var nameField: UITextField!
     
     @IBOutlet weak var idField: UITextField!
@@ -65,5 +67,27 @@ class PwFindViewController: UIViewController, UITextFieldDelegate {
         emailField.delegate = self
         certificationField.delegate = self
         
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(keyboarWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
+    }
+    
+    func textFieldDidBeginEditing(_ textField: UITextField) {
+        if textField == certificationField {
+            focused = true
+        } else {
+            focused = false
+        }
+    }
+    
+    @objc func keyboarWillShow(_ sender:Notification) {
+        if focused == true {
+            self.view.frame.origin.y = -100
+        } else {
+            self.view.frame.origin.y = 0
+        }
+    }
+    
+    @objc func keyboardWillHide(_ sender:Notification) {
+        self.view.frame.origin.y = 0
     }
 }
