@@ -3,7 +3,7 @@ import UIKit
 class GroupViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
     
     var members : [String] = ["양희원","빅중선","한성호","임후남"]
-    
+    var myid : String = ""
     var name = ""
     
     
@@ -40,6 +40,8 @@ class GroupViewController: UIViewController,UITableViewDelegate, UITableViewData
     
     @IBAction func groupinvite(_ sender: UIButton) {
         guard let popup = self.storyboard?.instantiateViewController(withIdentifier: "AddFriendPopViewController") as? AddFriendPopViewController else { return }
+        popup.myid = myid
+        popup.flag = "GroupInvite"
         popup.modalPresentationStyle = .overFullScreen
         popup.modalTransitionStyle = .crossDissolve
         self.present(popup, animated: true , completion: nil)

@@ -5,6 +5,7 @@ import CodableFirebase
 class AddFriendPopViewController: UIViewController {
 
     var ref : DatabaseReference!
+    var flag :String = ""
     var myid : String = ""
     
     @IBOutlet var friedid: UITextField!
@@ -42,27 +43,59 @@ class AddFriendPopViewController: UIViewController {
             for child in snapshot.children {
                 let snap = child as! DataSnapshot
                 frienduid = snap.key
-                self.ref.child("users").child(frienduid).child("Frequest").getData {
-                    (error,snapshot) in
-                    if let error = error {
-                        print("Error \(error)")
-                    }
-                    else{
-                        guard let value = snapshot?.value else {return}
-                        if let data2 = try? FirebaseDecoder().decode([String].self, from: value){
-                            var array: [String] = data2
-                            if (!array.contains(myid)){
-                                array.append(myid)
-                                self.ref.child("users").child(frienduid).updateChildValues(["Frequest": array])
-                                self.dismiss(animated: false, completion: nil)
-                            }
-                            else {
-                                self.labelalready.isHidden = false
-                                self.labelsame.isHidden = true
-                            }
+                if self.flag == "GroupInvite" {
+                    
+                    self.ref.child("users").child(frienduid).child("Grequest").getData {
+                        (error,snapshot) in
+                        if let error = error {
+                            print("Error \(error)")
                         }
                         else{
-                            print("Error")
+                            guard let value = snapshot?.value else {return}
+                            print(value)
+                            if let data2 = try? FirebaseDecoder().decode([String].self, from: value){
+                                var array: [String] = data2
+                                if (!array.contains(myid)){
+                                    
+                                    array.append(myid)
+                                  
+                                    self.ref.child("users").child(frienduid).updateChildValues(["Grequest": array])
+                                    self.dismiss(animated: false, completion: nil)
+                                }
+                                else {
+                                    self.labelalready.isHidden = false
+                                    self.labelsame.isHidden = true
+                                }
+                            }
+                            else{
+                                print("Error")
+                            }
+                        }
+                    }
+                }
+                else{
+                    self.ref.child("users").child(frienduid).child("Frequest").getData {
+                        (error,snapshot) in
+                        if let error = error {
+                            print("Error \(error)")
+                        }
+                        else{
+                            guard let value = snapshot?.value else {return}
+                            if let data2 = try? FirebaseDecoder().decode([String].self, from: value){
+                                var array: [String] = data2
+                                if (!array.contains(myid)){
+                                    array.append(myid)
+                                    self.ref.child("users").child(frienduid).updateChildValues(["Frequest": array])
+                                    self.dismiss(animated: false, completion: nil)
+                                }
+                                else {
+                                    self.labelalready.isHidden = false
+                                    self.labelsame.isHidden = true
+                                }
+                            }
+                            else{
+                                print("Error")
+                            }
                         }
                     }
                 }

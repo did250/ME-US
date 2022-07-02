@@ -29,8 +29,6 @@ class MeViewController: UIViewController,UICollectionViewDelegate,UICollectionVi
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
 //        var schedule0 = Schedule(title: "a0", startDate: "2020년 10월 22일", endDate: "2022년 4월 8일", startTime: "오전 11시 20분", endTime: "오전 11시 20분")
 //        var schedule1 = Schedule(title: "a1", startDate: "2022년 6월 5일", endDate: "2022년 6월 5일", startTime: "오전 11시 20분", endTime: "오전 11시 20분")
 //        var schedule2 = Schedule(title: "a2", startDate: "2022년 6월 18일", endDate: "2022년 6월 22일", startTime: "오전 11시 20분", endTime: "오전 11시 20분")
@@ -45,11 +43,6 @@ class MeViewController: UIViewController,UICollectionViewDelegate,UICollectionVi
 //        scheduleList.append(schedule3)
 //        scheduleList.append(schedule4)
 //        scheduleList.append(schedule5)
-        
-        
-        
-        
-        
         ref = Database.database().reference()
        
 //        m = Int(CalendarHelper().monthString(date: selectedDate))!
@@ -74,22 +67,16 @@ class MeViewController: UIViewController,UICollectionViewDelegate,UICollectionVi
         collectionView.dataSource = self
         ScheduleTable.dataSource = self
         ScheduleTable.delegate = self
+        
     }
     
     
     func setCellsView(){
-
         let width = (UIScreen.main.bounds.width) / 7
         let screenHeight = (UIScreen.main.bounds.height) * 2 / 5
         let height = screenHeight / 6
-        
         let flowLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
         flowLayout.itemSize = CGSize(width: width, height: height)
-        
-        //self.collectionView.collectionViewLayout.collectionViewContentSize.height = screenHeight
-        
-        self.collectionView.bounds.size.height = screenHeight
-        
     }
     
     func setMonthView(){ // 달력 나타내기

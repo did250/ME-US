@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="collection view cell content view" minToolsVersion="11.0"/>
@@ -668,8 +668,8 @@
                                     <constraint firstAttribute="height" constant="50" id="OPu-re-r6u"/>
                                 </constraints>
                             </stackView>
-                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="CZL-uG-Noy" customClass="ScheduleCollectionView" customModule="meus" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="228.5" width="414" height="307.5"/>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="CZL-uG-Noy">
+                                <rect key="frame" x="0.0" y="228.5" width="414" height="358.5"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                                 <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="EZB-Ac-sXT">
                                     <size key="itemSize" width="128" height="128"/>
@@ -713,7 +713,7 @@
                                 </connections>
                             </collectionView>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" verticalHuggingPriority="251" alwaysBounceVertical="YES" dataMode="prototypes" style="insetGrouped" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="18" estimatedSectionHeaderHeight="-1" sectionFooterHeight="18" estimatedSectionFooterHeight="-1" translatesAutoresizingMaskIntoConstraints="NO" id="m2k-TV-iBT">
-                                <rect key="frame" x="0.0" y="536" width="414" height="277"/>
+                                <rect key="frame" x="0.0" y="587" width="414" height="226"/>
                                 <color key="backgroundColor" systemColor="systemBrownColor"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="Cells" textLabel="hOe-vO-Qh7" detailTextLabel="Cde-VZ-dYl" style="IBUITableViewCellStyleSubtitle" id="5tS-gk-6Qz" customClass="Cells" customModule="meus" customModuleProvider="target">
@@ -768,29 +768,28 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="cUh-c2-HcE" firstAttribute="top" secondItem="Bar-Yu-0rc" secondAttribute="bottom" constant="24" id="102-C6-Aih"/>
+                            <constraint firstItem="CZL-uG-Noy" firstAttribute="leading" secondItem="ADn-Dm-ajD" secondAttribute="leading" id="1wn-Kr-NtZ"/>
                             <constraint firstItem="m2k-TV-iBT" firstAttribute="bottom" secondItem="ADn-Dm-ajD" secondAttribute="bottom" id="3Rp-0a-Ewa"/>
                             <constraint firstItem="Bar-Yu-0rc" firstAttribute="centerX" secondItem="ADn-Dm-ajD" secondAttribute="centerX" id="7Bk-aV-vIP"/>
                             <constraint firstItem="UMH-Qe-gV5" firstAttribute="top" secondItem="ADn-Dm-ajD" secondAttribute="top" id="8fw-Ce-IOx"/>
-                            <constraint firstItem="CZL-uG-Noy" firstAttribute="top" secondItem="MHo-PM-e6G" secondAttribute="bottom" id="8sA-j4-sMJ"/>
                             <constraint firstItem="cUh-c2-HcE" firstAttribute="leading" secondItem="FtF-aR-ojM" secondAttribute="trailing" id="EEn-rf-7eg"/>
-                            <constraint firstItem="CZL-uG-Noy" firstAttribute="height" secondItem="B8r-OA-4GA" secondAttribute="height" multiplier="0.343192" id="EOI-Qa-ooL"/>
                             <constraint firstItem="FtF-aR-ojM" firstAttribute="centerY" secondItem="cUh-c2-HcE" secondAttribute="centerY" id="FCz-Hi-XJI"/>
                             <constraint firstItem="ADn-Dm-ajD" firstAttribute="trailing" secondItem="MHo-PM-e6G" secondAttribute="trailing" id="FUw-fg-0xd"/>
+                            <constraint firstItem="CZL-uG-Noy" firstAttribute="height" secondItem="B8r-OA-4GA" secondAttribute="height" multiplier="0.4" id="Ffh-Zf-pzp"/>
                             <constraint firstItem="Kb5-AS-7Cl" firstAttribute="leading" secondItem="cUh-c2-HcE" secondAttribute="trailing" id="Fgk-oA-jb4"/>
                             <constraint firstItem="m2k-TV-iBT" firstAttribute="trailing" secondItem="ADn-Dm-ajD" secondAttribute="trailing" id="IGp-Ir-0Pf"/>
                             <constraint firstItem="Bar-Yu-0rc" firstAttribute="top" secondItem="ADn-Dm-ajD" secondAttribute="top" constant="13" id="Ktf-4D-V2v"/>
                             <constraint firstItem="Kb5-AS-7Cl" firstAttribute="height" secondItem="cUh-c2-HcE" secondAttribute="height" id="M6C-fh-q9E"/>
-                            <constraint firstItem="m2k-TV-iBT" firstAttribute="width" secondItem="CZL-uG-Noy" secondAttribute="width" id="Rl1-Va-0Sm"/>
-                            <constraint firstItem="ADn-Dm-ajD" firstAttribute="trailing" secondItem="CZL-uG-Noy" secondAttribute="trailing" id="UXM-7H-AUh"/>
+                            <constraint firstItem="CZL-uG-Noy" firstAttribute="top" secondItem="MHo-PM-e6G" secondAttribute="bottom" id="Obr-9b-1pt"/>
+                            <constraint firstItem="CZL-uG-Noy" firstAttribute="trailing" secondItem="ADn-Dm-ajD" secondAttribute="trailing" id="Ryg-Dc-vVb"/>
+                            <constraint firstItem="m2k-TV-iBT" firstAttribute="top" secondItem="CZL-uG-Noy" secondAttribute="bottom" id="aZf-vh-rYF"/>
                             <constraint firstItem="FtF-aR-ojM" firstAttribute="leading" secondItem="ADn-Dm-ajD" secondAttribute="leading" id="aaU-h8-jij"/>
                             <constraint firstItem="MHo-PM-e6G" firstAttribute="leading" secondItem="ADn-Dm-ajD" secondAttribute="leading" id="bHd-XB-af3"/>
                             <constraint firstItem="cUh-c2-HcE" firstAttribute="centerX" secondItem="ADn-Dm-ajD" secondAttribute="centerX" id="c8E-a9-DQk"/>
-                            <constraint firstItem="CZL-uG-Noy" firstAttribute="leading" secondItem="ADn-Dm-ajD" secondAttribute="leading" id="fUx-yg-iRm"/>
                             <constraint firstItem="FtF-aR-ojM" firstAttribute="height" secondItem="cUh-c2-HcE" secondAttribute="height" id="fiW-qf-bj4"/>
                             <constraint firstItem="MHo-PM-e6G" firstAttribute="centerX" secondItem="ADn-Dm-ajD" secondAttribute="centerX" id="haE-xv-u0s"/>
                             <constraint firstItem="m2k-TV-iBT" firstAttribute="leading" secondItem="ADn-Dm-ajD" secondAttribute="leading" id="lJt-iD-2up"/>
                             <constraint firstItem="UMH-Qe-gV5" firstAttribute="leading" secondItem="ADn-Dm-ajD" secondAttribute="leading" id="oBY-h1-Lrg"/>
-                            <constraint firstItem="m2k-TV-iBT" firstAttribute="top" secondItem="CZL-uG-Noy" secondAttribute="bottom" id="oSW-ZM-Jem"/>
                             <constraint firstItem="Kb5-AS-7Cl" firstAttribute="centerY" secondItem="cUh-c2-HcE" secondAttribute="centerY" id="r3D-go-pnN"/>
                             <constraint firstItem="MHo-PM-e6G" firstAttribute="top" secondItem="cUh-c2-HcE" secondAttribute="bottom" constant="30" id="tOm-i7-scq"/>
                             <constraint firstItem="ADn-Dm-ajD" firstAttribute="trailing" secondItem="Kb5-AS-7Cl" secondAttribute="trailing" id="xeP-fz-Kq4"/>
@@ -2288,7 +2287,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KfG-4d-bJg" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-14" y="82"/>
+            <point key="canvasLocation" x="-14.492753623188406" y="81.696428571428569"/>
         </scene>
         <!--Second Pop View Controller-->
         <scene sceneID="UEh-TT-Pef">
