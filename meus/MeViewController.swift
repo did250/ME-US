@@ -38,7 +38,7 @@ class MeViewController: UIViewController,UICollectionViewDelegate,UICollectionVi
         ref = Database.database().reference()
 
         self.setBinding()
-        viewModel.Loaduser{data in
+        viewModel.Loaduser(uid : Auth.auth().currentUser!.uid){data in
             scheduleList.removeAll()
             for i in self.userinfo.schedules{
                 var newschedule:Schedule = Schedule(title: i[0], startDate: i[1], endDate: i[2], startTime: i[3], endTime: i[4])
@@ -336,8 +336,9 @@ class MeViewController: UIViewController,UICollectionViewDelegate,UICollectionVi
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
         if (uid != Auth.auth().currentUser?.uid){
+            print("33")
+            print(uid)
             self.Calendarname.text = userinfo.name + "'s Calendar"
             addbutton.isHidden = true
             backbutton.isHidden = false
@@ -350,7 +351,7 @@ class MeViewController: UIViewController,UICollectionViewDelegate,UICollectionVi
             addbutton.isEnabled = true
             backbutton.isHidden = true
             backbutton.isEnabled = false
-            viewModel.Loaduser{data in
+            viewModel.Loaduser(uid : Auth.auth().currentUser!.uid){data in
                 scheduleList.removeAll()
                 self.currentDays.removeAll()
                 self.currentSchedule.removeAll()
@@ -374,8 +375,6 @@ class MeViewController: UIViewController,UICollectionViewDelegate,UICollectionVi
 extension MeViewController {
     func setBinding(){
         viewModel.$userinfo.sink{ (userinfo : userstruct) in
-            print(userinfo.id)
-            print("kkk")
             self.userinfo = userinfo
             self.collectionView.reloadData()
         }.store(in: &disposalblebag)

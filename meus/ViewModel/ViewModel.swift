@@ -29,8 +29,8 @@ extension ViewModel {
             
         }
     }
-    func Loaduser(completion: @escaping (userstruct) -> ()){
-        let uid = Auth.auth().currentUser?.uid
+    func Loaduser(uid: String, completion: @escaping (userstruct) -> ()){
+        
         ref.child("users").child(uid ?? "anyvalue").getData {
             (error, snapshot) in
             if let error = error {
@@ -171,5 +171,16 @@ extension ViewModel {
         self.ref.child("users").child(self.userinfo.uid).updateChildValues(["Grequest": self.userinfo.Grequest])
     }
     
-    
+    func FindFriend(name : String ,completion: @escaping (String)->()){
+        var frienduid : String = ""
+        self.ref.child("users").queryOrdered(byChild: "id").queryEqual(toValue: name).observeSingleEvent(of: .value, with: {
+            snapshot in
+            for child in snapshot.children {
+                let snap = child as! DataSnapshot
+                frienduid = snap.key
+                completion(frienduid)
+            }
+        })
+    }
+
 }

@@ -18,7 +18,7 @@ class UsViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
         
         ref = Database.database().reference()
         setBinding()
-        viewModel.Loaduser{data in
+        viewModel.Loaduser(uid : Auth.auth().currentUser!.uid){data in
             print("Loaduser")
         }
         GroupTable.delegate = self
@@ -30,13 +30,13 @@ class UsViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     override func viewWillAppear(_ animated: Bool) {
         guard let newvc = self.storyboard?.instantiateViewController(withIdentifier: "MeViewController") as? MeViewController else {return}
         newvc.uid = Auth.auth().currentUser!.uid
-        viewModel.Loaduser{data in
+        viewModel.Loaduser(uid : Auth.auth().currentUser!.uid){data in
             print("Loaduser")
         }
     }
     
     @IBAction func Refresh(_ sender: UIButton) {
-        viewModel.Loaduser{data in
+        viewModel.Loaduser(uid : Auth.auth().currentUser!.uid){data in
             print("Loaduser")
         }
     }
@@ -121,17 +121,11 @@ extension UsViewController {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = FriendTable.dequeueReusableCell(withIdentifier: "Cells", for: indexPath) as! Cells
         if tableView == FriendTable {
-            guard let newvc = self.storyboard?.instantiateViewController(withIdentifier: "MeViewController") as? MeViewController else {return}
-            var frienduid : String = ""
-            ref?.child("users").queryOrdered(byChild: "id").queryEqual(toValue: cell.Txt.text!).observeSingleEvent(of: .value, with: {
-                snapshot in
-                for child in snapshot.children {
-                    let snap = child as! DataSnapshot
-                    frienduid = snap.key
-                    newvc.uid = frienduid
-                    self.present(newvc, animated: true, completion: nil)
-                }
-            })
+            viewModel.FindFriend(name: cell.Txt.text!){frienduid in
+                guard let newvc = self.storyboard?.instantiateViewController(withIdentifier: "MeViewController") as? MeViewController else {return}
+                newvc.uid = frienduid
+                self.present(newvc, animated: true, completion: nil)
+            }
         }
         else if tableView == GroupTable {
             let cell2 = GroupTable.dequeueReusableCell(withIdentifier: "Cells", for: indexPath) as! Cells
@@ -144,3 +138,4 @@ extension UsViewController {
         }
     }
 }
+
