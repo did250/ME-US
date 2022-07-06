@@ -2,7 +2,7 @@
 import Foundation
 
 var scheduleList = [Schedule]()
-
+var scheduleList2 = [Schedule]() 
 
 class Schedule{
     //var id: Int!

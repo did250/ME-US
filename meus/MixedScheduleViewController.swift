@@ -4,8 +4,6 @@ import CodableFirebase
 import FirebaseDatabase
 import Combine
 
-var scheduleList2 = [Schedule]() // 그룹 내의 사람들의 스케줄을 다 받아오는 곳
-
 class MixedScheduleViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
     
     var ref : DatabaseReference!
@@ -13,6 +11,8 @@ class MixedScheduleViewController: UIViewController,UITableViewDelegate, UITable
     
     var disposalblebag = Set<AnyCancellable>()
     
+    var members : [String] = []
+    var groupname : String = ""
     var visitedArr = [Bool](repeating: false, count: 1440) // 꽉 차있으면 또 처리할 필요없게
     var currentDate: String = ""
     var todayDate = Date()
@@ -23,6 +23,7 @@ class MixedScheduleViewController: UIViewController,UITableViewDelegate, UITable
     
     @IBOutlet weak var datePicker: UIDatePicker!
 
+    @IBOutlet weak var groupName: UILabel!
     @IBOutlet weak var pmStackView: UIStackView!
     @IBOutlet weak var mixedScheduleTableView: UITableView!
     @IBOutlet weak var mixedScheduleTableView2: UITableView!
@@ -34,22 +35,10 @@ class MixedScheduleViewController: UIViewController,UITableViewDelegate, UITable
         self.configureStartDatePicker()
         self.timeLabel.layer.borderWidth = 0.5
         
-        var schedule0 = Schedule(title: "a0", startDate: "2022년 7월 2일", endDate: "2022년 7월 2일", startTime: "오후 5시 10분", endTime: "오후 8시 50분")
-        var schedule1 = Schedule(title: "a5", startDate: "2022년 7월 3일", endDate: "2022년 7월 3일", startTime: "오전 7시 20분", endTime: "오후 3시 59분")
-        var schedule2 = Schedule(title: "a1", startDate: "2022년 7월 3일", endDate: "2022년 7월 3일", startTime: "오후 5시 20분", endTime: "오후 7시 40분")
-        var schedule3 = Schedule(title: "a2", startDate: "2022년 6월 18일", endDate: "2022년 6월 22일", startTime: "오전 11시 20분", endTime: "오전 8시 40분")
-        //var schedule4 = Schedule(title: "a3", startDate: "2022년 7월 21일", endDate: "2022년 10월 7일", startTime: "오전 11시 20분", endTime: "오전 11시 20분")
-        var schedule5 = Schedule(title: "a4", startDate: "2022년 11월 23일", endDate: "2023년 2월 3일", startTime: "오전 11시 20분", endTime: "오전 11시 20분")
         
-
-
-        scheduleList2.append(schedule0)
-        scheduleList2.append(schedule1)
-        scheduleList2.append(schedule2)
-        scheduleList2.append(schedule3)
-//        scheduleList2.append(schedule4)
-        scheduleList2.append(schedule5)
+        scheduleList2 = viewModel.MixedSchedule(members: members)
         
+        self.groupName.text = groupname
         self.mixedScheduleTableView.isScrollEnabled = false
         self.mixedScheduleTableView.separatorStyle = .none
         self.mixedScheduleTableView.dataSource = self
@@ -63,7 +52,10 @@ class MixedScheduleViewController: UIViewController,UITableViewDelegate, UITable
         
         self.findMixedSchedule()
     }
-    
+//    override func viewDidAppear(_ animated: Bool) {
+//        super.viewDidAppear(animated)
+//        scheduleList2 = viewModel.MixedSchedule(members: members)
+//    }
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return CGFloat(pmStackView.bounds.height / 720)
@@ -122,7 +114,11 @@ class MixedScheduleViewController: UIViewController,UITableViewDelegate, UITable
         let formater = DateFormatter()
         formater.dateFormat = "yyyy년 MM월 dd일"
         formater.locale = Locale(identifier: "ko_KR")
-        
+        scheduleList2 = viewModel.MixedSchedule(members: members)
+        print("%%%%")
+        for i in scheduleList2{
+            print(i)
+        }
         self.currentDate = CalendarHelper().dateToString(date: datePicker.date)
         self.findMixedSchedule()
         for i in 0...1439{
@@ -130,6 +126,7 @@ class MixedScheduleViewController: UIViewController,UITableViewDelegate, UITable
                 print(i)
             }
         }
+        
         self.mixedScheduleTableView.reloadData()
         self.mixedScheduleTableView2.reloadData()
     }
@@ -165,7 +162,7 @@ class MixedScheduleViewController: UIViewController,UITableViewDelegate, UITable
             var endMin = CalendarHelper().minToString(date: CalendarHelper().StringtoTime(string: i.endTime))
             var startTimeToNum: Int
             var endTimeToNum: Int
-            
+        
             if(startMeridiem == "오전"){
                 if(startHour == "12"){
                     startTimeToNum = Int(startMin)!
@@ -200,6 +197,9 @@ class MixedScheduleViewController: UIViewController,UITableViewDelegate, UITable
                     endTimeToNum = 720 + Int(endHour)! * 60 + Int(endMin)!
                 }
             }
+            print("!@#!@#!@#")
+            print(startTimeToNum)
+            print(endTimeToNum)
             if(startYear == self.y && endYear == self.y){
                 if(startMonth == self.m && endMonth == self.m){
                     if(startDay == self.d && endDay == self.d){

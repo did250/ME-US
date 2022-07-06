@@ -25,9 +25,7 @@ class GroupViewController: UIViewController,UITableViewDelegate, UITableViewData
         
         self.setBinding()
         viewModel.LoadGroup(group: name){data in
-            for i in self.groupinfo.members{
-                self.members.append(i)
-            }
+            self.members = viewModel.AddGroupMembers()
             self.membertable.reloadData()
         }
         
@@ -58,6 +56,8 @@ class GroupViewController: UIViewController,UITableViewDelegate, UITableViewData
     }
     @IBAction func schedulemix(_ sender: UIButton) {
         guard let msvc = self.storyboard?.instantiateViewController(withIdentifier: "MixedScheduleViewController") as? MixedScheduleViewController else {return}
+        msvc.groupname = self.name
+        msvc.members = self.members
         msvc.modalPresentationStyle = .fullScreen
         msvc.modalTransitionStyle = .crossDissolve
         self.present(msvc, animated: true, completion: nil)

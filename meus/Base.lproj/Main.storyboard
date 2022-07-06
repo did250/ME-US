@@ -1450,6 +1450,7 @@
                     </view>
                     <connections>
                         <outlet property="datePicker" destination="ODI-ZF-34r" id="SVU-gu-4QS"/>
+                        <outlet property="groupName" destination="rik-nP-dgX" id="Wfq-fD-Rwf"/>
                         <outlet property="mixedScheduleTableView" destination="rpp-Pw-JFV" id="eac-7u-wfj"/>
                         <outlet property="mixedScheduleTableView2" destination="tkW-Zw-U1a" id="lJT-qu-Ipr"/>
                         <outlet property="pmStackView" destination="TLQ-SQ-PeY" id="GHh-LR-en6"/>

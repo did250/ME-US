@@ -80,6 +80,53 @@ extension ViewModel {
         completion(1)
     }
     
+    func MixedSchedule(members : [String]) -> [Schedule]{
+        var scheduleList2 = [Schedule]()
+        for i in members{
+            
+            var member : String = ""
+            self.ref.child("users").queryOrdered(byChild: "name").queryEqual(toValue: i).observeSingleEvent(of: .value, with: {
+                snapshot in
+                for child in snapshot.children{
+                    let snap = child as! DataSnapshot
+                    member = snap.key
+                    //print("###")
+                    //print(member)
+                    self.ref.child("users").child(member).child("schedules").getData{
+                        (error,snapshot) in
+                        if let error = error {
+                            print("Error \(error)")
+                        }
+                        else{
+                            guard let value = snapshot?.value else {return}
+                            if let data = try? FirebaseDecoder().decode([[String]].self, from: value){
+                                
+                                var newschedule : [[String]] = data
+                                for j in newschedule{
+                                    var newschedule:Schedule = Schedule(title: j[0], startDate: j[1], endDate: j[2], startTime: j[3], endTime: j[4])
+                                    //print(j)
+                                    scheduleList2.append(newschedule)
+                                }
+                                
+//                                for i in scheduleList2{
+//                                    print(i.title)
+//                                }
+                            }
+                            else{
+                                print("Error")
+
+                            }
+                        }
+                    }
+                }
+            })
+        }
+        for i in scheduleList2{
+            print(i)
+        }
+        return scheduleList2
+    }
+    
     func sendFrequest(friendid : String, flag : String, groupname:String, completion: @escaping (Int) -> ()) {
         var frienduid : String = ""
         self.ref.child("users").queryOrdered(byChild: "id").queryEqual(toValue: friendid).observeSingleEvent(of: .value, with: {
@@ -525,6 +572,14 @@ extension ViewModel {
             m = 1
         }
         return m
+    }
+    
+    func AddGroupMembers() -> [String]{
+        var members : [String] = []
+        for i in self.groupinfo.members{
+            members.append(i)
+        }
+        return members
     }
     
     
