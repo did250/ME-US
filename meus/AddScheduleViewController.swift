@@ -115,14 +115,14 @@ class AddScheduleViewController: UIViewController {
         let formater = DateFormatter()
         formater.dateFormat = "a hh시 mm분"
         formater.locale = Locale(identifier: "ko_KR")
-        self.startTime = CalendarHelper().dateToString(date: datePicker.date)
+        self.startTime = CalendarHelper().timeToString(date: datePicker.date)
         self.startTimeTextField.text = formater.string(from: datePicker.date)
     }
     @objc private func endTimePickerValueDidChange(_ datePicker: UIDatePicker){
         let formater = DateFormatter()
         formater.dateFormat = "a hh시 mm분"
         formater.locale = Locale(identifier: "ko_KR")
-        self.endTime = CalendarHelper().dateToString(date: datePicker.date)
+        self.endTime = CalendarHelper().timeToString(date: datePicker.date)
         self.endTimeTextField.text = formater.string(from: datePicker.date)
     }
     

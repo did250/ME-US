@@ -54,6 +54,7 @@ extension ViewModel {
     func AddGroup(new: String, completion: @escaping (Int)->()){
         self.userinfo.groups.append(new)
         self.ref.child("users").child(self.userinfo.uid).updateChildValues(["groups": self.userinfo.groups])
+        self.ref.child("Group").child(new).setValue(["members": [self.userinfo.name]])
         completion(1)
     }
     
@@ -159,6 +160,33 @@ extension ViewModel {
     func AcceptGroup(target: String, completion: @escaping (Int) -> ()) {
         self.userinfo.groups.append(target)
         self.ref.child("users").child(self.userinfo.uid).updateChildValues(["groups": self.userinfo.groups])
+        self.ref.child("Group").child(target).child("members").getData {
+            (error,snapshot) in
+            if let error = error {
+                print("Error \(error)")
+            }
+            else{
+                guard let value = snapshot?.value else {return}
+                if let data2 = try? FirebaseDecoder().decode([String].self, from: value){
+                    var array: [String] = data2
+                    array.append(self.userinfo.name)
+                    self.ref.child("Group").child(target).updateChildValues(["members":array])
+                    var temp = self.userinfo.Grequest
+                    var s = -1
+                    for i in temp{
+                        s = s+1
+                        if i == target{
+                            temp.remove(at: s)
+                        }
+                    }
+                    self.ref.child("users").child(self.userinfo.uid).updateChildValues(["Grequest":temp])
+                    self.userinfo.Grequest = temp
+                }
+                else{
+                    print("Error")
+                }
+            }
+        }
     }
     
     func DenyGroup(target: String){
