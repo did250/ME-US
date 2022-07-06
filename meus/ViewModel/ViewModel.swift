@@ -10,6 +10,8 @@ class ViewModel: ObservableObject {
     
     @Published var userinfo : userstruct = userstruct(Frequest: [""], Grequest: [""], friends: [""], groups: ["1"], id: "1", key: "", name: "0", schedules: [[""]], uid: "")
     
+    @Published var groupinfo : groupstruct = groupstruct(members: [""])
+    
     init(){
         print("VM init")
     }
@@ -31,8 +33,8 @@ extension ViewModel {
             
         }
     }
+    
     func Loaduser(uid: String, completion: @escaping (userstruct) -> ()){
-        
         ref.child("users").child(uid ?? "anyvalue").getData {
             (error, snapshot) in
             if let error = error {
@@ -51,6 +53,26 @@ extension ViewModel {
             }
         }
     }
+    
+    func LoadGroup(group: String, completion: @escaping (groupstruct) -> ()){
+        ref.child("Group").child(group).getData{
+            (error, snapshot) in
+            if let error = error {
+                print("Error2 \(error)")
+            }
+            else {
+                let value = snapshot?.value
+                if let data = try? FirebaseDecoder().decode(groupstruct.self, from: value){
+                    self.groupinfo = data
+                    completion(data)
+                }
+                else {
+                    print("Error2")
+                }
+            }
+        }
+    }
+    
     func AddGroup(new: String, completion: @escaping (Int)->()){
         self.userinfo.groups.append(new)
         self.ref.child("users").child(self.userinfo.uid).updateChildValues(["groups": self.userinfo.groups])
