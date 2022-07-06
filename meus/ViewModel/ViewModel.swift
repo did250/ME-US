@@ -158,7 +158,7 @@ extension ViewModel {
     
     func AcceptGroup(target: String, completion: @escaping (Int) -> ()) {
         self.userinfo.groups.append(target)
-        self.ref.child("users").child(self.userinfo.uid).updateChildValues(["grooups": self.userinfo.groups])
+        self.ref.child("users").child(self.userinfo.uid).updateChildValues(["groups": self.userinfo.groups])
     }
     
     func DenyGroup(target: String){
