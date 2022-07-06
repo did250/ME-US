@@ -9,7 +9,8 @@ class UsViewController: UIViewController, UITableViewDelegate, UITableViewDataSo
     var ref : DatabaseReference!
     var disposalblebag = Set<AnyCancellable>()
     var userinfo = userstruct(Frequest: [""], Grequest: [""], friends: [""], groups: [""], id: "", key: "", name: "", schedules: [[""]], uid: "")
-   
+    var currentgroup: String = ""
+    
     @IBOutlet var GroupTable: UITableView!
     @IBOutlet var FriendTable: UITableView!
 
@@ -106,6 +107,7 @@ extension UsViewController {
         }
         return cell
     }
+    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if tableView == GroupTable {
             return "Group"
@@ -115,9 +117,11 @@ extension UsViewController {
         }
         return ""
     }
+    
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
         return 30
     }
+    
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         let cell = FriendTable.dequeueReusableCell(withIdentifier: "Cells", for: indexPath) as! Cells
         if tableView == FriendTable {
@@ -130,6 +134,7 @@ extension UsViewController {
         else if tableView == GroupTable {
             let cell2 = GroupTable.dequeueReusableCell(withIdentifier: "Cells", for: indexPath) as! Cells
             guard let newvc = self.storyboard?.instantiateViewController(withIdentifier: "GroupViewController") as? GroupViewController else {return}
+            
             newvc.myid = userinfo.id
             newvc.name = userinfo.groups[indexPath.row]
             newvc.modalPresentationStyle = .fullScreen

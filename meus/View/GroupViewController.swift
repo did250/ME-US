@@ -7,7 +7,6 @@ class GroupViewController: UIViewController,UITableViewDelegate, UITableViewData
     var name = ""
     
     
-    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return members.count
     }
@@ -42,6 +41,7 @@ class GroupViewController: UIViewController,UITableViewDelegate, UITableViewData
         guard let popup = self.storyboard?.instantiateViewController(withIdentifier: "AddFriendPopViewController") as? AddFriendPopViewController else { return }
         popup.myid = myid
         popup.flag = "GroupInvite"
+        popup.currentgroup = name
         popup.modalPresentationStyle = .overFullScreen
         popup.modalTransitionStyle = .crossDissolve
         self.present(popup, animated: true , completion: nil)

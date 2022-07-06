@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		31B878D328740D1500618CD4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31B878D228740D1500618CD4 /* GoogleService-Info.plist */; };
 		31C3CA6D284E0CC10092E08E /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C3CA6C284E0CC10092E08E /* CalendarHelper.swift */; };
 		31FDF1D728644CE20014735B /* AddScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FDF1D628644CE20014735B /* AddScheduleViewController.swift */; };
 		31FDF1D92865D90F0014735B /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FDF1D82865D90F0014735B /* Schedule.swift */; };
@@ -24,6 +23,7 @@
 		499A58C7285917F700ED7D7B /* AddGroupPopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499A58C6285917F700ED7D7B /* AddGroupPopViewController.swift */; };
 		499A58C9285BA37F00ED7D7B /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499A58C8285BA37F00ED7D7B /* RequestViewController.swift */; };
 		499A58CB285BA57B00ED7D7B /* RequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499A58CA285BA57B00ED7D7B /* RequestTableViewCell.swift */; };
+		49CC8C3A28756BD6000168A3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49CC8C3928756BD6000168A3 /* GoogleService-Info.plist */; };
 		6D1A5C6F285D81380030BE59 /* SecondPopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1A5C6E285D81380030BE59 /* SecondPopViewController.swift */; };
 		6D1A5C71285DB2EF0030BE59 /* AlarmSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1A5C70285DB2EF0030BE59 /* AlarmSettingViewController.swift */; };
 		6D1A5C73285DB8700030BE59 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1A5C72285DB8700030BE59 /* InfoViewController.swift */; };
@@ -47,7 +47,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		31B878D228740D1500618CD4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		31C3CA6C284E0CC10092E08E /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
 		31FDF1D628644CE20014735B /* AddScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddScheduleViewController.swift; sourceTree = "<group>"; };
 		31FDF1D82865D90F0014735B /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
@@ -64,6 +63,7 @@
 		499A58C6285917F700ED7D7B /* AddGroupPopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroupPopViewController.swift; sourceTree = "<group>"; };
 		499A58C8285BA37F00ED7D7B /* RequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
 		499A58CA285BA57B00ED7D7B /* RequestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTableViewCell.swift; sourceTree = "<group>"; };
+		49CC8C3928756BD6000168A3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6D1A5C6E285D81380030BE59 /* SecondPopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondPopViewController.swift; sourceTree = "<group>"; };
 		6D1A5C70285DB2EF0030BE59 /* AlarmSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSettingViewController.swift; sourceTree = "<group>"; };
 		6D1A5C72285DB8700030BE59 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
@@ -190,7 +190,7 @@
 				497CC1572870C5A100D86594 /* View */,
 				497CC1552870C57B00D86594 /* ViewModel */,
 				6DF221042852555500008EB3 /* meus.entitlements */,
-				31B878D228740D1500618CD4 /* GoogleService-Info.plist */,
+				49CC8C3928756BD6000168A3 /* GoogleService-Info.plist */,
 				6D2EA37A283BE14500A91E9A /* AppDelegate.swift */,
 				6D2EA37C283BE14500A91E9A /* SceneDelegate.swift */,
 				49235AB22851500600706A61 /* PopViewController.swift */,
@@ -277,7 +277,7 @@
 			files = (
 				6D2EA387283BE14800A91E9A /* LaunchScreen.storyboard in Resources */,
 				6D2EA384283BE14800A91E9A /* Assets.xcassets in Resources */,
-				31B878D328740D1500618CD4 /* GoogleService-Info.plist in Resources */,
+				49CC8C3A28756BD6000168A3 /* GoogleService-Info.plist in Resources */,
 				6D2EA382283BE14500A91E9A /* Main.storyboard in Resources */,
 				49235AB72851639D00706A61 /* Popup.storyboard in Resources */,
 			);

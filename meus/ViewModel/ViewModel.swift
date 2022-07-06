@@ -57,7 +57,7 @@ extension ViewModel {
         completion(1)
     }
     
-    func sendFrequest(friendid : String, flag : String, completion: @escaping (Int) -> ()) {
+    func sendFrequest(friendid : String, flag : String, groupname:String, completion: @escaping (Int) -> ()) {
         var frienduid : String = ""
         self.ref.child("users").queryOrdered(byChild: "id").queryEqual(toValue: friendid).observeSingleEvent(of: .value, with: {
             snapshot in
@@ -72,18 +72,11 @@ extension ViewModel {
                         }
                         else{
                             guard let value = snapshot?.value else {return}
-                            print(value)
                             if let data2 = try? FirebaseDecoder().decode([String].self, from: value){
                                 var array: [String] = data2
-                                if (!array.contains(self.userinfo.id)){
-                                    array.append(self.userinfo.id)
-                                    self.ref.child("users").child(frienduid).updateChildValues(["Grequest": array])
-                                    completion(1)
-                                   
-                                }
-                                else {
-                                    completion(2)
-                                }
+                                array.append(groupname)
+                                self.ref.child("users").child(frienduid).updateChildValues(["Grequest": array])
+                                completion(1)
                             }
                             else{
                                 print("Error")
@@ -164,8 +157,8 @@ extension ViewModel {
     }
     
     func AcceptGroup(target: String, completion: @escaping (Int) -> ()) {
-            completion(1)
-        
+        self.userinfo.groups.append(target)
+        self.ref.child("users").child(self.userinfo.uid).updateChildValues(["grooups": self.userinfo.groups])
     }
     
     func DenyGroup(target: String){
@@ -185,31 +178,22 @@ extension ViewModel {
         })
     }
     
-    //cell에서 x버튼
     func DeleteSchedule(target: String){
+        print("delete")
+        var t : Int = -1
+        for i in scheduleList{
+            t = t+1
+            if i.title == target{
+                scheduleList.remove(at: t)
+            }
+        }
         for i in self.userinfo.schedules.startIndex...self.userinfo.schedules.endIndex-1{
             if(self.userinfo.schedules[i][0] == target){
-                print("123")
                 self.userinfo.schedules.remove(at: i)
-                print("456")
                 break
             }
         }
-        print(self.userinfo.schedules)
         self.ref.child("users").child(self.userinfo.uid).updateChildValues(["schedules":self.userinfo.schedules])
-        print("adfk;asdjfkladsjfl;asdfjla;dsjfl")
-        
-//        var currentDays = MeViewController().currentDays
-//        var currentSchedule = MeViewController().currentSchedule
-//        currentDays.removeAll()
-//        currentSchedule.removeAll()
-//        currentSchedule = viewModel.FindcurrentSchedule()
-//        currentDays = viewModel.FindcurrentDays(currentSchedule: currentSchedule)
-//
-//        // 위에 4줄 이렇게 해버려도 되나?????????????
-//
-//        MeViewController().collectionView.reloadData()
-//        MeViewController().ScheduleTable.reloadData()
     }
     
     func FindcurrentDays(currentSchedule:[Schedule]) -> [Int]{

@@ -9,6 +9,7 @@ class AddFriendPopViewController: UIViewController, UITextFieldDelegate {
     var ref : DatabaseReference!
     var flag : String = ""
     var myid : String = ""
+    var currentgroup = ""
     var userinfo = userstruct(Frequest: [""], Grequest: [""], friends: [""], groups: [""], id: "", key: "", name: "", schedules: [[""]], uid: "")
     var disposalblebag = Set<AnyCancellable>()
     
@@ -31,7 +32,7 @@ class AddFriendPopViewController: UIViewController, UITextFieldDelegate {
             labelalready.isHidden = true
         }
         else {
-            viewModel.sendFrequest(friendid: input, flag: flag){t in
+            viewModel.sendFrequest(friendid: input, flag: flag, groupname: currentgroup){t in
                 if t == 3 || t == 1 {
                     self.dismiss(animated: false, completion: nil)
                 }

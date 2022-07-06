@@ -33,6 +33,7 @@ class MeViewController: UIViewController,UICollectionViewDelegate,UICollectionVi
     var selectedIndex = -1
     var m: Int = 0
     var y: Int = 0
+    var t: String = String(CalendarHelper().daysOfMonth(date: selectedDate))
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -137,22 +138,13 @@ class MeViewController: UIViewController,UICollectionViewDelegate,UICollectionVi
 extension MeViewController {
     func setBinding(){
         viewModel.$userinfo.sink{ (userinfo : userstruct) in
-            print("setbinding")
             self.userinfo = userinfo
-            scheduleList.removeAll()
-            viewModel.AddScheduleList()
             self.currentDays.removeAll()
             self.currentSchedule.removeAll()
+            self.daySchedule.removeAll()
             self.currentSchedule = viewModel.FindcurrentSchedule()
-            print("currentSchedule")
-            for i in self.currentSchedule{
-                print(i.title)
-            }
             self.currentDays = viewModel.FindcurrentDays(currentSchedule: self.currentSchedule)
-            print("currentDays")
-            for i in self.currentDays{
-                print(i)
-            }
+            self.daySchedule = viewModel.FindDaySchedule(currentSchedule: self.currentSchedule, day: self.t)
             self.collectionView.reloadData()
             self.ScheduleTable.reloadData()
         }.store(in: &disposalblebag)
@@ -210,6 +202,8 @@ extension MeViewController{
         selectedIndex = indexPath.row
         daySchedule.removeAll()
         print(day)
+        t = day
+        
         if (day != " "){
             self.daySchedule = viewModel.FindDaySchedule(currentSchedule: self.currentSchedule, day: day)
             collectionView.reloadData()
