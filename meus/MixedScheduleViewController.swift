@@ -1,9 +1,17 @@
+import Firebase
 import UIKit
-import SwiftUI
+import CodableFirebase
+import FirebaseDatabase
+import Combine
 
 var scheduleList2 = [Schedule]() // 그룹 내의 사람들의 스케줄을 다 받아오는 곳
 
 class MixedScheduleViewController: UIViewController,UITableViewDelegate, UITableViewDataSource {
+    
+    var ref : DatabaseReference!
+    var userinfo = userstruct(Frequest: [""], Grequest: [""], friends: [""], groups: [""], id: "", key: "", name: "", schedules: [[""]], uid: "")
+    
+    var disposalblebag = Set<AnyCancellable>()
     
     var visitedArr = [Bool](repeating: false, count: 1440) // 꽉 차있으면 또 처리할 필요없게
     var currentDate: String = ""
@@ -192,13 +200,9 @@ class MixedScheduleViewController: UIViewController,UITableViewDelegate, UITable
                     endTimeToNum = 720 + Int(endHour)! * 60 + Int(endMin)!
                 }
             }
-            print("!!!!!")
-            print(startTimeToNum)
-            print(endTimeToNum)
             if(startYear == self.y && endYear == self.y){
                 if(startMonth == self.m && endMonth == self.m){
                     if(startDay == self.d && endDay == self.d){
-                        //변수에 따라 백그라운드 색 지정
                         for i in startTimeToNum...endTimeToNum{
                             visitedArr[i] = true
                             
@@ -315,4 +319,14 @@ class MixedScheduleViewController: UIViewController,UITableViewDelegate, UITable
         }//for문 끝나는곳
     }
     
+}
+
+extension MixedScheduleViewController {
+    func setBinding(){
+        viewModel.$userinfo.sink{ (userinfo : userstruct) in
+            self.userinfo = userinfo
+            self.mixedScheduleTableView.reloadData()
+            self.mixedScheduleTableView2.reloadData()
+        }.store(in: &disposalblebag)
+    }
 }

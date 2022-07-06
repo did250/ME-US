@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		31B878D328740D1500618CD4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31B878D228740D1500618CD4 /* GoogleService-Info.plist */; };
 		31C3CA6D284E0CC10092E08E /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C3CA6C284E0CC10092E08E /* CalendarHelper.swift */; };
 		31FDF1D728644CE20014735B /* AddScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FDF1D628644CE20014735B /* AddScheduleViewController.swift */; };
 		31FDF1D92865D90F0014735B /* Schedule.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FDF1D82865D90F0014735B /* Schedule.swift */; };
@@ -17,7 +18,6 @@
 		49235AB72851639D00706A61 /* Popup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49235AB62851639D00706A61 /* Popup.storyboard */; };
 		49235AB92851657100706A61 /* UsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49235AB82851657100706A61 /* UsViewController.swift */; };
 		49235ABF28516DA600706A61 /* Cells.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49235ABE28516DA600706A61 /* Cells.swift */; };
-		497CC14E287084A300D86594 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 497CC14D287084A300D86594 /* GoogleService-Info.plist */; };
 		497CC152287088F300D86594 /* ViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497CC151287088F300D86594 /* ViewModel.swift */; };
 		497CC1542870AE4F00D86594 /* userstruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 497CC1532870AE4F00D86594 /* userstruct.swift */; };
 		499A58C52858899800ED7D7B /* AddFriendPopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499A58C42858899800ED7D7B /* AddFriendPopViewController.swift */; };
@@ -47,6 +47,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		31B878D228740D1500618CD4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		31C3CA6C284E0CC10092E08E /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
 		31FDF1D628644CE20014735B /* AddScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddScheduleViewController.swift; sourceTree = "<group>"; };
 		31FDF1D82865D90F0014735B /* Schedule.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Schedule.swift; sourceTree = "<group>"; };
@@ -57,7 +58,6 @@
 		49235AB62851639D00706A61 /* Popup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Popup.storyboard; sourceTree = "<group>"; };
 		49235AB82851657100706A61 /* UsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsViewController.swift; sourceTree = "<group>"; };
 		49235ABE28516DA600706A61 /* Cells.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Cells.swift; sourceTree = "<group>"; };
-		497CC14D287084A300D86594 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		497CC151287088F300D86594 /* ViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewModel.swift; sourceTree = "<group>"; };
 		497CC1532870AE4F00D86594 /* userstruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = userstruct.swift; sourceTree = "<group>"; };
 		499A58C42858899800ED7D7B /* AddFriendPopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddFriendPopViewController.swift; sourceTree = "<group>"; };
@@ -107,6 +107,7 @@
 			isa = PBXGroup;
 			children = (
 				497CC151287088F300D86594 /* ViewModel.swift */,
+				31C3CA6C284E0CC10092E08E /* CalendarHelper.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -189,7 +190,7 @@
 				497CC1572870C5A100D86594 /* View */,
 				497CC1552870C57B00D86594 /* ViewModel */,
 				6DF221042852555500008EB3 /* meus.entitlements */,
-				497CC14D287084A300D86594 /* GoogleService-Info.plist */,
+				31B878D228740D1500618CD4 /* GoogleService-Info.plist */,
 				6D2EA37A283BE14500A91E9A /* AppDelegate.swift */,
 				6D2EA37C283BE14500A91E9A /* SceneDelegate.swift */,
 				49235AB22851500600706A61 /* PopViewController.swift */,
@@ -198,7 +199,6 @@
 				6DD0E0D82841F23100C3D5E7 /* SignUpViewController.swift */,
 				6DD6D57728439FAE00FB883A /* MeViewController.swift */,
 				31FDF1D628644CE20014735B /* AddScheduleViewController.swift */,
-				31C3CA6C284E0CC10092E08E /* CalendarHelper.swift */,
 				6D2ABD0B28578BA000B5BEDC /* OptionViewController.swift */,
 				6D2EA383283BE14800A91E9A /* Assets.xcassets */,
 				6D2EA380283BE14500A91E9A /* Main.storyboard */,
@@ -277,7 +277,7 @@
 			files = (
 				6D2EA387283BE14800A91E9A /* LaunchScreen.storyboard in Resources */,
 				6D2EA384283BE14800A91E9A /* Assets.xcassets in Resources */,
-				497CC14E287084A300D86594 /* GoogleService-Info.plist in Resources */,
+				31B878D328740D1500618CD4 /* GoogleService-Info.plist in Resources */,
 				6D2EA382283BE14500A91E9A /* Main.storyboard in Resources */,
 				49235AB72851639D00706A61 /* Popup.storyboard in Resources */,
 			);

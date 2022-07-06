@@ -23,9 +23,7 @@ class AddScheduleViewController: UIViewController {
     private var endDate: String?
     private var startTime: String?
     private var endTime: String?
-    
-    var selectedDate2 = Calendar.current.date(byAdding: .day, value: 1, to: selectedDate)
-    
+        
     override func viewDidLoad() {
         
         ref = Database.database().reference()

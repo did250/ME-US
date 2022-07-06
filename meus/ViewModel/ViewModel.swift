@@ -16,6 +16,8 @@ class ViewModel: ObservableObject {
 }
 
 extension ViewModel {
+    
+    
     func login( userEmail: String, userPassword: String, completion : @escaping (Int) -> ()){
         return Auth.auth().signIn(withEmail: userEmail, password: userPassword) { [weak self] authResult, error in guard self != nil else { return }
             if authResult != nil {
@@ -182,5 +184,314 @@ extension ViewModel {
             }
         })
     }
+    
+    //cell에서 x버튼
+    func DeleteSchedule(target: String){
+        for i in self.userinfo.schedules.startIndex...self.userinfo.schedules.endIndex-1{
+            if(self.userinfo.schedules[i][0] == target){
+                print("123")
+                self.userinfo.schedules.remove(at: i)
+                print("456")
+                break
+            }
+        }
+        print(self.userinfo.schedules)
+        self.ref.child("users").child(self.userinfo.uid).updateChildValues(["schedules":self.userinfo.schedules])
+        print("adfk;asdjfkladsjfl;asdfjla;dsjfl")
+        
+//        var currentDays = MeViewController().currentDays
+//        var currentSchedule = MeViewController().currentSchedule
+//        currentDays.removeAll()
+//        currentSchedule.removeAll()
+//        currentSchedule = viewModel.FindcurrentSchedule()
+//        currentDays = viewModel.FindcurrentDays(currentSchedule: currentSchedule)
+//
+//        // 위에 4줄 이렇게 해버려도 되나?????????????
+//
+//        MeViewController().collectionView.reloadData()
+//        MeViewController().ScheduleTable.reloadData()
+    }
+    
+    func FindcurrentDays(currentSchedule:[Schedule]) -> [Int]{
+        var m: Int
+        var y: Int
+        m = Int(CalendarHelper().monthString(date: selectedDate))!
+        y = Int(CalendarHelper().yearString(date: selectedDate))!
+        var currentDays:[Int] = []              // 그 달의 스케줄이 있는 날짜들
+        for i in currentSchedule{
+            var startYear = Int(CalendarHelper().yearString(date: CalendarHelper().StringtoDate(string: i.startDate)))!
+            var endYear = Int(CalendarHelper().yearString(date: CalendarHelper().StringtoDate(string: i.endDate)))!
+            var startMonth = Int(CalendarHelper().monthString(date: CalendarHelper().StringtoDate(string: i.startDate)))!
+            var endMonth = Int(CalendarHelper().monthString(date: CalendarHelper().StringtoDate(string: i.endDate)))!
+            
+            if(startYear == y && endYear == y){
+                if(startMonth == m && endMonth == m){
+                    var startDay = CalendarHelper().daysOfMonth(date: CalendarHelper().StringtoDate(string: i.startDate))
+                    var endDay = CalendarHelper().daysOfMonth(date: CalendarHelper().StringtoDate(string: i.endDate))
+                    for i in startDay...endDay{
+                        if(!currentDays.contains(i)){
+                            currentDays.append(i)
+                        }
+                    }
+                }
+                else if(startMonth <= m && endMonth >= m){
+                    if(startMonth == m){
+                        var startDay = CalendarHelper().daysOfMonth(date: CalendarHelper().StringtoDate(string: i.startDate))
+                        var endDay = CalendarHelper().daysInMonth(date: CalendarHelper().StringtoDate(string: i.startDate))
+                        for i in startDay...endDay{
+                            if(!currentDays.contains(i)){
+                                currentDays.append(i)
+                            }
+                        }
+                        
+                    }
+                    else if(startMonth < m && endMonth > m){
+                        var startDay = 1
+                        var endDay = CalendarHelper().daysInMonth(date: selectedDate)
+                        for i in startDay...endDay{
+                            if(!currentDays.contains(i)){
+                                currentDays.append(i)
+                            }
+                        }
+                    }
+                    else if(endMonth == m){
+                        var startDay = 1
+                        var endDay = CalendarHelper().daysOfMonth(date: CalendarHelper().StringtoDate(string: i.endDate))
+                        for i in startDay...endDay{
+                            if(!currentDays.contains(i)){
+                                currentDays.append(i)
+                            }
+                        }
+                    }
+                }
+            }
+            else if(startYear <= y && endYear >= y){
+                if(startYear == y){
+                    if(startMonth == m){
+                        var startDay = CalendarHelper().daysOfMonth(date: CalendarHelper().StringtoDate(string: i.startDate))
+                        var endDay = CalendarHelper().daysInMonth(date: CalendarHelper().StringtoDate(string: i.startDate))
+                        for i in startDay...endDay{
+                            if(!currentDays.contains(i)){
+                                currentDays.append(i)
+                            }
+                        }
+                    }
+                    else if(startMonth < m){
+                        var startDay = 1
+                        var endDay = CalendarHelper().daysInMonth(date: selectedDate)
+                        for i in startDay...endDay{
+                            if(!currentDays.contains(i)){
+                                currentDays.append(i)
+                            }
+                        }
+                    }
+                }
+                else if(startYear < y && endYear > y){
+                    var startDay = 1
+                    var endDay = CalendarHelper().daysInMonth(date: selectedDate)
+                    for i in startDay...endDay{
+                        if(!currentDays.contains(i)){
+                            currentDays.append(i)
+                        }
+                    }
+                }
+                else if(endYear == y){
+                    if(endMonth == m){
+                        var startDay = 1
+                        var endDay = CalendarHelper().daysOfMonth(date: CalendarHelper().StringtoDate(string: i.endDate))
+                        for i in startDay...endDay{
+                            if(!currentDays.contains(i)){
+                                currentDays.append(i)
+                            }
+                        }
+                    }
+                    else if(endMonth > m){
+                        var startDay = 1
+                        var endDay = CalendarHelper().daysInMonth(date: selectedDate)
+                        for i in startDay...endDay{
+                            if(!currentDays.contains(i)){
+                                currentDays.append(i)
+                            }
+                        }
 
+                    }
+                }
+            }
+        }//for문 끝나는곳
+        return currentDays
+    }
+    
+    func FindcurrentSchedule() -> [Schedule]{
+        var m: Int
+        var y: Int
+        m = Int(CalendarHelper().monthString(date: selectedDate))!
+        y = Int(CalendarHelper().yearString(date: selectedDate))!
+        var currentSchedule:[Schedule] = []     // 그 달의 모든 스케줄
+        
+        for i in scheduleList{
+            var startYear = Int(CalendarHelper().yearString(date: CalendarHelper().StringtoDate(string: i.startDate)))!
+            var endYear = Int(CalendarHelper().yearString(date: CalendarHelper().StringtoDate(string: i.endDate)))!
+            var startMonth = Int(CalendarHelper().monthString(date: CalendarHelper().StringtoDate(string: i.startDate)))!
+            var endMonth = Int(CalendarHelper().monthString(date: CalendarHelper().StringtoDate(string: i.endDate)))!
+            
+            if(startYear == y && endYear == y){
+                if(startMonth == m && endMonth == m){
+                    currentSchedule.append(i)
+                    
+                }
+                else if(startMonth <= m && endMonth >= m){
+                    if(startMonth == m){
+                        currentSchedule.append(i)
+                    }
+                    else if(startMonth < m && endMonth > m){
+                        currentSchedule.append(i)
+                    }
+                    else if(endMonth == m){
+                        currentSchedule.append(i)
+                    }
+                }
+            }
+            else if(startYear <= y && endYear >= y){
+                if(startYear == y){
+                    if(startMonth == m){
+                        currentSchedule.append(i)
+                    }
+                    else if(startMonth < m){
+                        currentSchedule.append(i)
+                    }
+                }
+                else if(startYear < y && endYear > y){
+                    currentSchedule.append(i)
+
+                }
+                else if(endYear == y){
+                    if(endMonth == m){
+                        currentSchedule.append(i)
+                    }
+                    else if(endMonth > m){
+                        currentSchedule.append(i)
+                    }
+                }
+            }
+        }//for문 끝나는곳
+        return currentSchedule
+    }
+    
+    func FindDaySchedule(currentSchedule: [Schedule], day: String) -> [Schedule]{
+        var m: Int
+        var y: Int
+        m = Int(CalendarHelper().monthString(date: selectedDate))!
+        y = Int(CalendarHelper().yearString(date: selectedDate))!
+        var daySchedule:[Schedule] = []         // 그 날의 스케쥴
+        
+        for i in currentSchedule{
+            var startYear = Int(CalendarHelper().yearString(date: CalendarHelper().StringtoDate(string: i.startDate)))!
+            var endYear = Int(CalendarHelper().yearString(date: CalendarHelper().StringtoDate(string: i.endDate)))!
+            var startMonth = Int(CalendarHelper().monthString(date: CalendarHelper().StringtoDate(string: i.startDate)))!
+            var endMonth = Int(CalendarHelper().monthString(date: CalendarHelper().StringtoDate(string: i.endDate)))!
+            
+            if(startYear == y && endYear == y){
+                if(startMonth == m && endMonth == m){
+                    var startDay = CalendarHelper().daysOfMonth(date: CalendarHelper().StringtoDate(string: i.startDate))
+                    var endDay = CalendarHelper().daysOfMonth(date: CalendarHelper().StringtoDate(string: i.endDate))
+                    if(Int(day)! >= startDay && Int(day)! <= endDay){
+                        daySchedule.append(i)
+                    }
+                }
+                else if(startMonth <= m && endMonth >= m){
+                    if(startMonth == m){
+                        var startDay = CalendarHelper().daysOfMonth(date: CalendarHelper().StringtoDate(string: i.startDate))
+                        var endDay = CalendarHelper().daysInMonth(date: CalendarHelper().StringtoDate(string: i.startDate))
+                        if(Int(day)! >= startDay && Int(day)! <= endDay){
+                            daySchedule.append(i)
+                        }
+                    }
+                    else if(startMonth < m && endMonth > m){
+                        var startDay = 1
+                        var endDay = CalendarHelper().daysInMonth(date: selectedDate)
+                        if(Int(day)! >= startDay && Int(day)! <= endDay){
+                            daySchedule.append(i)
+                        }
+                    }
+                    else if(endMonth == m){
+                        var startDay = 1
+                        var endDay = CalendarHelper().daysOfMonth(date: CalendarHelper().StringtoDate(string: i.endDate))
+                        if(Int(day)! >= startDay && Int(day)! <= endDay){
+                            daySchedule.append(i)
+                        }
+                    }
+                }
+            }
+            else if(startYear <= y && endYear >= y){
+                if(startYear < y && endYear > y){
+                    var startDay = 1
+                    var endDay = CalendarHelper().daysInMonth(date: selectedDate)
+                    if(Int(day)! >= startDay && Int(day)! <= endDay){
+                        daySchedule.append(i)
+                    }
+                }
+                else if(startYear == y){
+                    if(startMonth == m){
+                        var startDay = CalendarHelper().daysOfMonth(date: CalendarHelper().StringtoDate(string: i.startDate))
+                        var endDay = CalendarHelper().daysInMonth(date: CalendarHelper().StringtoDate(string: i.startDate))
+                        if(Int(day)! >= startDay && Int(day)! <= endDay){
+                            daySchedule.append(i)
+                        }
+                    }
+                    else if(startMonth <= m){
+                        var startDay = 1
+                        var endDay = CalendarHelper().daysInMonth(date: selectedDate)
+                        if(Int(day)! >= startDay && Int(day)! <= endDay){
+                            daySchedule.append(i)
+                        }
+                    }
+                }
+                else if(endYear == y){
+                    if(endMonth == m){
+                        var startDay = 1
+                        var endDay = CalendarHelper().daysOfMonth(date: CalendarHelper().StringtoDate(string: i.endDate))
+                        if(Int(day)! >= startDay && Int(day)! <= endDay){
+                            daySchedule.append(i)
+                        }
+                    }
+                    else if(endMonth > m){
+                        var startDay = 1
+                        var endDay = CalendarHelper().daysInMonth(date: selectedDate)
+                        if(Int(day)! >= startDay && Int(day)! <= endDay){
+                            daySchedule.append(i)
+                        }
+                    }
+                }
+            }
+        }
+        return daySchedule
+    }
+    
+    func AddScheduleList(){
+        for i in self.userinfo.schedules{
+            var newschedule:Schedule = Schedule(title: i[0], startDate: i[1], endDate: i[2], startTime: i[3], endTime: i[4])
+            
+            scheduleList.append(newschedule)
+        }
+    }
+    
+    func MinusMonth(m: Int) -> Int{
+        var m = m
+        m -= 1
+        if(m == 0){
+            m = 12
+        }
+        return m
+    }
+    
+    func PlusMonth(m: Int) -> Int{
+        var m = m
+        m += 1
+        if(m == 13){
+            m = 1
+        }
+        return m
+    }
+    
+    
 }

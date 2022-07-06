@@ -7,14 +7,13 @@ import Combine
 var selectedDate = Date()
 var viewModel: ViewModel = ViewModel()
 
+
+
 class MeViewController: UIViewController,UICollectionViewDelegate,UICollectionViewDataSource, UITableViewDelegate, UITableViewDataSource {
     
     var uid = Auth.auth().currentUser?.uid
     var ref : DatabaseReference!
-    var currentSchedule:[Schedule] = []     // 그 달의 모든 스케줄
-    var daySchedule:[Schedule] = []         // 그 날의 스케쥴
-    var currentDays:[Int] = []              // 그 달의 스케줄이 있는 날짜들
-    var selectedIndex = -1
+    
     var userinfo = userstruct(Frequest: [""], Grequest: [""], friends: [""], groups: [""], id: "", key: "", name: "", schedules: [[""]], uid: "")
     
     var disposalblebag = Set<AnyCancellable>()
@@ -28,7 +27,10 @@ class MeViewController: UIViewController,UICollectionViewDelegate,UICollectionVi
     @IBOutlet var ScheduleTable: UITableView!
 
     var totalSquares = [String]()
-    
+    var currentSchedule:[Schedule] = []     // 그 달의 모든 스케줄
+    var daySchedule:[Schedule] = []         // 그 날의 스케쥴
+    var currentDays:[Int] = []              // 그 달의 스케줄이 있는 날짜들
+    var selectedIndex = -1
     var m: Int = 0
     var y: Int = 0
     
@@ -40,11 +42,7 @@ class MeViewController: UIViewController,UICollectionViewDelegate,UICollectionVi
         self.setBinding()
         viewModel.Loaduser(uid : Auth.auth().currentUser!.uid){data in
             scheduleList.removeAll()
-            for i in self.userinfo.schedules{
-                var newschedule:Schedule = Schedule(title: i[0], startDate: i[1], endDate: i[2], startTime: i[3], endTime: i[4])
-                scheduleList.append(newschedule)
-            }
-            //여기에는 안넣어도 어차피 appear에서 findSchedule()있으니까 필요없는거같음
+            viewModel.AddScheduleList()
         }
         
         self.navigationItem.hidesBackButton = true
@@ -56,43 +54,35 @@ class MeViewController: UIViewController,UICollectionViewDelegate,UICollectionVi
         ScheduleTable.delegate = self
         
     }
-    
-    
-    func setCellsView(){
-        let width = (UIScreen.main.bounds.width) / 7
-        let screenHeight = (UIScreen.main.bounds.height) * 2 / 5
-        let height = screenHeight / 6
-        let flowLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
-        flowLayout.itemSize = CGSize(width: width, height: height)
-    }
-    
-    func setMonthView(){ // 달력 나타내기
-        totalSquares.removeAll()
-        
-        let daysInMonth = CalendarHelper().daysInMonth(date: selectedDate)
-        let firstDayOfMonth = CalendarHelper().firstOfMonth(date: selectedDate)
-        let startingSpaces = CalendarHelper().weekDay(date: firstDayOfMonth)
-        
-        var count: Int = 1
-        
-        
-        while(count <= 42){
-            if(count <= startingSpaces || count - startingSpaces > daysInMonth){
-                totalSquares.append(" ")
-                
-                
-            }
-            else{
-
-                totalSquares.append(String(count - startingSpaces))
-            }
-            count+=1
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        if (uid != Auth.auth().currentUser?.uid){
+            self.Calendarname.text = userinfo.name + "'s Calendar"
+            addbutton.isHidden = true
+            backbutton.isHidden = false
+            addbutton.isEnabled = false
+            backbutton.isEnabled = true
         }
-
-        monthLabel.text = CalendarHelper().yearString(date: selectedDate) + "년 " + CalendarHelper().monthString(date: selectedDate) + "월"
-        
-        collectionView.reloadData()
-        ScheduleTable.reloadData()
+        else {
+            self.Calendarname.text = "My Calendar"
+            addbutton.isHidden = false
+            addbutton.isEnabled = true
+            backbutton.isHidden = true
+            backbutton.isEnabled = false
+            viewModel.Loaduser(uid : Auth.auth().currentUser!.uid){data in
+                scheduleList.removeAll()
+                self.currentDays.removeAll()
+                self.currentSchedule.removeAll()
+                viewModel.AddScheduleList()
+                self.currentSchedule = viewModel.FindcurrentSchedule()
+                self.currentDays = viewModel.FindcurrentDays(currentSchedule: self.currentSchedule)
+            }
+            self.currentDays.removeAll()
+            self.currentSchedule.removeAll()
+            self.currentSchedule = viewModel.FindcurrentSchedule()
+            self.currentDays = viewModel.FindcurrentDays(currentSchedule: self.currentSchedule)
+            self.collectionView.reloadData()
+        }
     }
     
     @IBAction func backbutton(_ sender: UIButton) {
@@ -113,15 +103,14 @@ class MeViewController: UIViewController,UICollectionViewDelegate,UICollectionVi
     
     @IBAction func previousMonth(_ sender: UIButton) {
         selectedDate = CalendarHelper().minusMonth(date: selectedDate)
-        selectedIndex = -1
+        
         currentDays.removeAll()
         currentSchedule.removeAll()
         daySchedule.removeAll()
-        m -= 1
-        if(m == 0){
-            m = 12
-        }
-        findSchedule()
+        selectedIndex = -1
+        m = viewModel.MinusMonth(m: self.m)
+        self.currentSchedule = viewModel.FindcurrentSchedule()
+        self.currentDays = viewModel.FindcurrentDays(currentSchedule: self.currentSchedule)
         collectionView.reloadData()
         setMonthView()
         
@@ -131,56 +120,80 @@ class MeViewController: UIViewController,UICollectionViewDelegate,UICollectionVi
     @IBAction func nextMonth(_ sender: UIButton) {
         selectedDate = CalendarHelper().plusMonth(date: selectedDate)
         selectedIndex = -1
-        m += 1
-        if(m == 13){
-            m = 1
-        }
-        
+        m = viewModel.PlusMonth(m: self.m)
         currentDays.removeAll()
         currentSchedule.removeAll()
         daySchedule.removeAll()
-        
-        findSchedule()
+        self.currentSchedule = viewModel.FindcurrentSchedule()
+        self.currentDays = viewModel.FindcurrentDays(currentSchedule: self.currentSchedule)
         setMonthView()
     }
     
+    override open var shouldAutorotate: Bool{ // 화면 방향전환여부 x
+        return false
+    }
+}
+
+extension MeViewController {
+    func setBinding(){
+        viewModel.$userinfo.sink{ (userinfo : userstruct) in
+            print("setbinding")
+            self.userinfo = userinfo
+            scheduleList.removeAll()
+            viewModel.AddScheduleList()
+            self.currentDays.removeAll()
+            self.currentSchedule.removeAll()
+            self.currentSchedule = viewModel.FindcurrentSchedule()
+            print("currentSchedule")
+            for i in self.currentSchedule{
+                print(i.title)
+            }
+            self.currentDays = viewModel.FindcurrentDays(currentSchedule: self.currentSchedule)
+            print("currentDays")
+            for i in self.currentDays{
+                print(i)
+            }
+            self.collectionView.reloadData()
+            self.ScheduleTable.reloadData()
+        }.store(in: &disposalblebag)
+    }
+    
+}
+
+//컬렉션부
+extension MeViewController{
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int { // 지정된 섹션에 표시할 셀의 개수를 묻는 함수
-        totalSquares.count
+        return totalSquares.count
+        
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell { // 컬렉션뷰의 지정된 위치에 표시할 셀을 요청하는 함수
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "reuseCell", for: indexPath) as! CalendarCell // 재사용되는 셀의 속성 초기화
-      
-        
-        
         var year = CalendarHelper().yearString(date: selectedDate) // string
         var month = CalendarHelper().monthString(date: selectedDate) // string
         var day = totalSquares[indexPath.item] // string
         let yearMonthDay = year + "년 " + month + "월 " + day + "일"
-
         let date = totalSquares[indexPath.item]
         
+        
+        
         cell.dayLabel.text = date
-        //cell.backgroundColor = .white
         cell.scheduleOn.layer.cornerRadius = cell.scheduleOn.frame.width / 2
         cell.scheduleOn.clipsToBounds = true
         cell.scheduleOn.backgroundColor = .white
+        
         for i in currentDays{
             if(date == String(i)){
-                //cell.backgroundColor = .blue
                 cell.scheduleOn.backgroundColor = .blue
             }
         }
-        
-
-        
+                
         if(selectedIndex == indexPath.row){
             cell.layer.borderWidth = 0.5
         }
         else{
             cell.layer.borderWidth = 0
         }
-
         
         return cell
     }
@@ -193,111 +206,20 @@ class MeViewController: UIViewController,UICollectionViewDelegate,UICollectionVi
         
         let date = year + "년 " + month + "월 " + day + "일"
         
-        
+        selectedDate = CalendarHelper().StringtoDate(string: date)
+        selectedIndex = indexPath.row
+        daySchedule.removeAll()
+        print(day)
         if (day != " "){
-            selectedDate = CalendarHelper().StringtoDate(string: date)
-            selectedIndex = indexPath.row
-            daySchedule.removeAll()
-            m = Int(CalendarHelper().monthString(date: selectedDate))!
-            y = Int(CalendarHelper().yearString(date: selectedDate))!
-
-            
-            for i in currentSchedule{
-                var startYear = Int(CalendarHelper().yearString(date: CalendarHelper().StringtoDate(string: i.startDate)))!
-                var endYear = Int(CalendarHelper().yearString(date: CalendarHelper().StringtoDate(string: i.endDate)))!
-                var startMonth = Int(CalendarHelper().monthString(date: CalendarHelper().StringtoDate(string: i.startDate)))!
-                var endMonth = Int(CalendarHelper().monthString(date: CalendarHelper().StringtoDate(string: i.endDate)))!
-                
-                if(startYear == self.y && endYear == self.y){
-                    if(startMonth == self.m && endMonth == self.m){
-                        var startDay = CalendarHelper().daysOfMonth(date: CalendarHelper().StringtoDate(string: i.startDate))
-                        var endDay = CalendarHelper().daysOfMonth(date: CalendarHelper().StringtoDate(string: i.endDate))
-                        if(Int(day)! >= startDay && Int(day)! <= endDay){
-                            daySchedule.append(i)
-                        }
-                    }
-                    else if(startMonth <= self.m && endMonth >= self.m){
-                        if(startMonth == self.m){
-                            var startDay = CalendarHelper().daysOfMonth(date: CalendarHelper().StringtoDate(string: i.startDate))
-                            var endDay = CalendarHelper().daysInMonth(date: CalendarHelper().StringtoDate(string: i.startDate))
-                            if(Int(day)! >= startDay && Int(day)! <= endDay){
-                                daySchedule.append(i)
-                            }
-                        }
-                        else if(startMonth < self.m && endMonth > self.m){
-                            var startDay = 1
-                            var endDay = CalendarHelper().daysInMonth(date: selectedDate)
-                            if(Int(day)! >= startDay && Int(day)! <= endDay){
-                                daySchedule.append(i)
-                            }
-                        }
-                        else if(endMonth == self.m){
-                            var startDay = 1
-                            var endDay = CalendarHelper().daysOfMonth(date: CalendarHelper().StringtoDate(string: i.endDate))
-                            if(Int(day)! >= startDay && Int(day)! <= endDay){
-                                daySchedule.append(i)
-                            }
-                        }
-                    }
-                }
-                else if(startYear <= self.y && endYear >= self.y){
-                    if(startYear < self.y && endYear > self.y){
-                        var startDay = 1
-                        var endDay = CalendarHelper().daysInMonth(date: selectedDate)
-                        if(Int(day)! >= startDay && Int(day)! <= endDay){
-                            daySchedule.append(i)
-                        }
-                    }
-                    else if(startYear == self.y){
-                        if(startMonth == self.m){
-                            var startDay = CalendarHelper().daysOfMonth(date: CalendarHelper().StringtoDate(string: i.startDate))
-                            var endDay = CalendarHelper().daysInMonth(date: CalendarHelper().StringtoDate(string: i.startDate))
-                            if(Int(day)! >= startDay && Int(day)! <= endDay){
-                                daySchedule.append(i)
-                            }
-                        }
-                        else if(startMonth <= self.m){
-                            var startDay = 1
-                            var endDay = CalendarHelper().daysInMonth(date: selectedDate)
-                            if(Int(day)! >= startDay && Int(day)! <= endDay){
-                                daySchedule.append(i)
-                            }
-                        }
-                    }
-                    else if(endYear == self.y){
-                        if(endMonth == self.m){
-                            var startDay = 1
-                            var endDay = CalendarHelper().daysOfMonth(date: CalendarHelper().StringtoDate(string: i.endDate))
-                            if(Int(day)! >= startDay && Int(day)! <= endDay){
-                                daySchedule.append(i)
-                            }
-                        }
-                        else if(endMonth > self.m){
-                            var startDay = 1
-                            var endDay = CalendarHelper().daysInMonth(date: selectedDate)
-                            if(Int(day)! >= startDay && Int(day)! <= endDay){
-                                daySchedule.append(i)
-                            }
-                        }
-                    }
-                            
-                }
-                
-                
-                
-            }
-            
+            self.daySchedule = viewModel.FindDaySchedule(currentSchedule: self.currentSchedule, day: day)
             collectionView.reloadData()
             ScheduleTable.reloadData()
         }
     }
-    
-    
-    override open var shouldAutorotate: Bool{ // 화면 방향전환여부 x
-        return false
-    }
-    
-    /// Table View
+}
+
+//테이블부
+extension MeViewController{
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         //return scheduleList.count
         
@@ -307,9 +229,7 @@ class MeViewController: UIViewController,UICollectionViewDelegate,UICollectionVi
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = ScheduleTable.dequeueReusableCell(withIdentifier: "Cells", for: indexPath) as! Cells
         cell.Txt.text = daySchedule[indexPath.row].title
-        
-        y = Int(CalendarHelper().yearString(date: selectedDate))!
-        
+                
         var currentDay = CalendarHelper().dateToString(date: selectedDate)
         var currentYear = CalendarHelper().yearString(date: selectedDate)
         var startYear = CalendarHelper().yearString(date: CalendarHelper().StringtoDate(string: daySchedule[indexPath.row].startDate))
@@ -333,165 +253,44 @@ class MeViewController: UIViewController,UICollectionViewDelegate,UICollectionVi
 
         return cell
     }
-
-    override func viewDidAppear(_ animated: Bool) {
-        super.viewDidAppear(animated)
-        if (uid != Auth.auth().currentUser?.uid){
-            print("33")
-            print(uid)
-            self.Calendarname.text = userinfo.name + "'s Calendar"
-            addbutton.isHidden = true
-            backbutton.isHidden = false
-            addbutton.isEnabled = false
-            backbutton.isEnabled = true
-        }
-        else {
-            self.Calendarname.text = "My Calendar"
-            addbutton.isHidden = false
-            addbutton.isEnabled = true
-            backbutton.isHidden = true
-            backbutton.isEnabled = false
-            viewModel.Loaduser(uid : Auth.auth().currentUser!.uid){data in
-                scheduleList.removeAll()
-                self.currentDays.removeAll()
-                self.currentSchedule.removeAll()
-                for i in self.userinfo.schedules{
-                    var newschedule:Schedule = Schedule(title: i[0], startDate: i[1], endDate: i[2], startTime: i[3], endTime: i[4])
-                    scheduleList.append(newschedule)
-                }
-                self.findSchedule()
-            }
-            //scheduleList.removeAll()
-            self.currentDays.removeAll()
-            self.currentSchedule.removeAll()
-            findSchedule()
-            self.collectionView.reloadData()
-        }
-        
-        
-    }
 }
 
-extension MeViewController {
-    func setBinding(){
-        viewModel.$userinfo.sink{ (userinfo : userstruct) in
-            self.userinfo = userinfo
-            self.collectionView.reloadData()
-        }.store(in: &disposalblebag)
+// 뷰 관련 함수
+extension MeViewController{
+    func setCellsView(){
+        let width = (UIScreen.main.bounds.width) / 7
+        let screenHeight = (UIScreen.main.bounds.height) * 2 / 5
+        let height = screenHeight / 6
+        let flowLayout = collectionView.collectionViewLayout as! UICollectionViewFlowLayout
+        flowLayout.itemSize = CGSize(width: width, height: height)
     }
     
-    func findSchedule(){
-        m = Int(CalendarHelper().monthString(date: selectedDate))!
-        y = Int(CalendarHelper().yearString(date: selectedDate))!
-        for i in scheduleList{
-            var startYear = Int(CalendarHelper().yearString(date: CalendarHelper().StringtoDate(string: i.startDate)))!
-            var endYear = Int(CalendarHelper().yearString(date: CalendarHelper().StringtoDate(string: i.endDate)))!
-            var startMonth = Int(CalendarHelper().monthString(date: CalendarHelper().StringtoDate(string: i.startDate)))!
-            var endMonth = Int(CalendarHelper().monthString(date: CalendarHelper().StringtoDate(string: i.endDate)))!
-            
-            if(startYear == self.y && endYear == self.y){
-                if(startMonth == self.m && endMonth == self.m){
-                    self.currentSchedule.append(i)
-                    var startDay = CalendarHelper().daysOfMonth(date: CalendarHelper().StringtoDate(string: i.startDate))
-                    var endDay = CalendarHelper().daysOfMonth(date: CalendarHelper().StringtoDate(string: i.endDate))
-                    for i in startDay...endDay{
-                        if(!self.currentDays.contains(i)){
-                            self.currentDays.append(i)
-                        }
-                    }
-                }
-                else if(startMonth <= self.m && endMonth >= self.m){
-                    if(startMonth == self.m){
-                        self.currentSchedule.append(i)
-                        var startDay = CalendarHelper().daysOfMonth(date: CalendarHelper().StringtoDate(string: i.startDate))
-                        var endDay = CalendarHelper().daysInMonth(date: CalendarHelper().StringtoDate(string: i.startDate))
-                        for i in startDay...endDay{
-                            if(!self.currentDays.contains(i)){
-                                self.currentDays.append(i)
-                            }
-                        }
-                        
-                    }
-                    else if(startMonth < self.m && endMonth > self.m){
-                        self.currentSchedule.append(i)
-                        var startDay = 1
-                        var endDay = CalendarHelper().daysInMonth(date: selectedDate)
-                        for i in startDay...endDay{
-                            if(!self.currentDays.contains(i)){
-                                self.currentDays.append(i)
-                            }
-                        }
-                    }
-                    else if(endMonth == self.m){
-                        self.currentSchedule.append(i)
-                        var startDay = 1
-                        var endDay = CalendarHelper().daysOfMonth(date: CalendarHelper().StringtoDate(string: i.endDate))
-                        for i in startDay...endDay{
-                            if(!self.currentDays.contains(i)){
-                                self.currentDays.append(i)
-                            }
-                        }
-                    }
-                }
+    func setMonthView(){ // 달력 나타내기
+        totalSquares.removeAll()
+        
+        let daysInMonth = CalendarHelper().daysInMonth(date: selectedDate)
+        let firstDayOfMonth = CalendarHelper().firstOfMonth(date: selectedDate)
+        let startingSpaces = CalendarHelper().weekDay(date: firstDayOfMonth)
+        
+        var count: Int = 1
+        
+        
+        while(count <= 42){
+            if(count <= startingSpaces || count - startingSpaces > daysInMonth){
+                totalSquares.append(" ")
             }
-            else if(startYear <= self.y && endYear >= self.y){
-                if(startYear == self.y){
-                    if(startMonth == self.m){
-                        self.currentSchedule.append(i)
-                        var startDay = CalendarHelper().daysOfMonth(date: CalendarHelper().StringtoDate(string: i.startDate))
-                        var endDay = CalendarHelper().daysInMonth(date: CalendarHelper().StringtoDate(string: i.startDate))
-                        for i in startDay...endDay{
-                            if(!self.currentDays.contains(i)){
-                                self.currentDays.append(i)
-                            }
-                        }
-                    }
-                    else if(startMonth < self.m){
-                        self.currentSchedule.append(i)
-                        var startDay = 1
-                        var endDay = CalendarHelper().daysInMonth(date: selectedDate)
-                        for i in startDay...endDay{
-                            if(!self.currentDays.contains(i)){
-                                self.currentDays.append(i)
-                            }
-                        }
-                    }
-                }
-                else if(startYear < self.y && endYear > self.y){
-                    self.currentSchedule.append(i)
-                    var startDay = 1
-                    var endDay = CalendarHelper().daysInMonth(date: selectedDate)
-                    for i in startDay...endDay{
-                        if(!self.currentDays.contains(i)){
-                            self.currentDays.append(i)
-                        }
-                    }
-                }
-                else if(endYear == self.y){
-                    if(endMonth == self.m){
-                        self.currentSchedule.append(i)
-                        var startDay = 1
-                        var endDay = CalendarHelper().daysOfMonth(date: CalendarHelper().StringtoDate(string: i.endDate))
-                        for i in startDay...endDay{
-                            if(!self.currentDays.contains(i)){
-                                self.currentDays.append(i)
-                            }
-                        }
-                    }
-                    else if(endMonth > self.m){
-                        self.currentSchedule.append(i)
-                        var startDay = 1
-                        var endDay = CalendarHelper().daysInMonth(date: selectedDate)
-                        for i in startDay...endDay{
-                            if(!self.currentDays.contains(i)){
-                                self.currentDays.append(i)
-                            }
-                        }
+            else{
 
-                    }
-                }
+                totalSquares.append(String(count - startingSpaces))
             }
-        }//for문 끝나는곳
+            count+=1
+        }
+
+        monthLabel.text = CalendarHelper().yearString(date: selectedDate) + "년 " + CalendarHelper().monthString(date: selectedDate) + "월"
+        
+        collectionView.reloadData()
+        ScheduleTable.reloadData()
     }
 }
+
 
