@@ -10,20 +10,9 @@ class ViewController: UIViewController,UITextFieldDelegate {
     
     @IBOutlet weak var idTextField: UITextField!
     @IBOutlet weak var pwTextField: UITextField!
+    @IBOutlet weak var loginBtn: UIButton!
+    @IBOutlet weak var signBtn: UIButton!
     
-    @IBAction func idFindBtn(_ sender: Any) {
-//        let idf = self.storyboard?.instantiateViewController(withIdentifier: "idFindViewController")
-//        idf?.modalPresentationStyle = .fullScreen // 전체화면으로 보이게
-//        idf?.modalTransitionStyle = .crossDissolve // 화면 넘어가는 애니메이션
-//        self.present(idf!, animated: true, completion: nil)
-    }
-    
-    @IBAction func pwFindBtn(_ sender: Any) {
-        let pwf = self.storyboard?.instantiateViewController(withIdentifier: "pwFindViewController")
-        pwf?.modalPresentationStyle = .fullScreen
-        pwf?.modalTransitionStyle = .crossDissolve
-        self.present(pwf!, animated: true, completion: nil)
-    }
     
     @IBAction func loginBtn(_ sender: Any) {
         guard let userEmail = idTextField.text else {return}
@@ -74,6 +63,22 @@ class ViewController: UIViewController,UITextFieldDelegate {
         self.setBinding()
         idTextField.delegate = self
         pwTextField.delegate = self
+        
+        pwTextField.layer.cornerRadius = 15
+        pwTextField.layer.borderWidth = 0
+        pwTextField.layer.borderColor = .none
+        
+        idTextField.layer.cornerRadius = 15
+        idTextField.layer.borderWidth = 0
+        idTextField.layer.borderColor = .none
+        
+        loginBtn.layer.cornerRadius = 20
+        loginBtn.layer.borderWidth = 0
+        loginBtn.layer.borderColor = .none
+        
+        signBtn.layer.cornerRadius = 20
+        signBtn.layer.borderWidth = 0
+        signBtn.layer.borderColor = .none
     }
 }
 

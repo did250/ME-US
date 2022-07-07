@@ -108,6 +108,22 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIScrollViewD
         emailField.delegate = self
         numberField.delegate = self
         
+        isSameCheck.layer.cornerRadius = 15
+        isSameCheck.layer.borderWidth = 0
+        isSameCheck.layer.borderColor = .none
+        
+        number.layer.cornerRadius = 15
+        number.layer.borderWidth = 0
+        number.layer.borderColor = .none
+        
+        numberCheck.layer.cornerRadius = 20
+        numberCheck.layer.borderWidth = 0
+        numberCheck.layer.borderColor = .none
+        
+        signUpFinishBtn.layer.cornerRadius = 20
+        signUpFinishBtn.layer.borderWidth = 0
+        signUpFinishBtn.layer.borderColor = .none
+        
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillHide(_:)), name: UIResponder.keyboardWillHideNotification, object: nil)
         NotificationCenter.default.addObserver(self, selector: #selector(keyboarWillShow(_:)), name: UIResponder.keyboardWillShowNotification, object: nil)
         
