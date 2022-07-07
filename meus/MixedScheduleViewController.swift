@@ -36,17 +36,13 @@ class MixedScheduleViewController: UIViewController,UITableViewDelegate, UITable
         self.timeLabel.layer.borderWidth = 0.5
         
         
-        viewModel.MixedSchedule(members: members){i in
+       
             
-            self.findMixedSchedule(scheduleList2: i)
-            for i in 0...1439{
-                if(self.visitedArr[i] == true){
-                    print(i)
-                }
-            }
-            self.mixedScheduleTableView.reloadData()
-            self.mixedScheduleTableView2.reloadData()
-        }
+        self.findMixedSchedule(scheduleList2: scheduleList2)
+            
+        self.mixedScheduleTableView.reloadData()
+        self.mixedScheduleTableView2.reloadData()
+        
         
         self.groupName.text = groupname
         self.mixedScheduleTableView.isScrollEnabled = false
@@ -117,31 +113,30 @@ class MixedScheduleViewController: UIViewController,UITableViewDelegate, UITable
         
     }
     @objc private func startDatePickerValueDidChange(_ datePicker: UIDatePicker){
+        print("a")
+        for i in scheduleList2{
+            print(i.title)
+        }
+        print("b")
         let formater = DateFormatter()
         formater.dateFormat = "yyyy년 MM월 dd일"
         formater.locale = Locale(identifier: "ko_KR")
-
-        viewModel.MixedSchedule(members: members){i in
-//            for j in i{
-//                print(j.title)
-//
-//            }
-            self.findMixedSchedule(scheduleList2: i)
+        print("c")
+        
+        self.findMixedSchedule(scheduleList2: scheduleList2)
 //            for i in 0...1439{
 //                if(self.visitedArr[i] == true){
 //                    print(i)
 //                }
 //            }
-            self.mixedScheduleTableView.reloadData()
-            self.mixedScheduleTableView2.reloadData()
-        }
+        self.mixedScheduleTableView.reloadData()
+        self.mixedScheduleTableView2.reloadData()
+       
         self.currentDate = CalendarHelper().dateToString(date: datePicker.date)
        
         
         
     }
-    
-    
     
     @IBAction func backBtn(_ sender: UIButton) {
         self.dismiss(animated: true)

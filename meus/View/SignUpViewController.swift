@@ -59,7 +59,8 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIScrollViewD
                     print(error!.localizedDescription)
                     return
                 }
-                adduser(uid: user.uid, name: userName)
+                var vm = ViewModel()
+                vm.adduser(uid: user.uid, id: idAndemail.text!, name: userName)
                 self.dismiss(animated: true, completion: nil)
                 }
         }
@@ -145,9 +146,5 @@ class SignUpViewController: UIViewController, UITextFieldDelegate, UIScrollViewD
         if focused == true {
             self.view.frame.origin.y = 0
         }
-    }
-    
-    func adduser(uid:String, name: String){
-        ref.child("users").child(uid).setValue([ "key": ref.childByAutoId().key, "id": idAndemail.text , "uid": uid,"name": name, "friends": ["friends"], "groups": ["groups"], "Frequest": ["Frequest"], "Grequest": ["Grequest"], "schedules": [["크리스마스","2022년 12월 25일","2022년 12월 25일","오전 11시 11분", "오전 11시 12분"]] ])
     }
 }

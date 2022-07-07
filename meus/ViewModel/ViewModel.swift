@@ -18,7 +18,9 @@ class ViewModel: ObservableObject {
 }
 
 extension ViewModel {
-    
+    func adduser(uid:String, id: String, name: String){
+        self.ref.child("users").child(uid).setValue([ "key": ref.childByAutoId().key, "id": id , "uid": uid,"name": name, "friends": ["friends"], "groups": ["groups"], "Frequest": ["Frequest"], "Grequest": ["Grequest"], "schedules": [["크리스마스","2022년 12월 25일","2022년 12월 25일","오전 11시 11분", "오전 11시 12분"]] ])
+    }
     
     func login( userEmail: String, userPassword: String, completion : @escaping (Int) -> ()){
         return Auth.auth().signIn(withEmail: userEmail, password: userPassword) { [weak self] authResult, error in guard self != nil else { return }
@@ -81,7 +83,7 @@ extension ViewModel {
     }
     
     func MixedSchedule(members : [String], completion: @escaping ([Schedule]) -> ()) -> (){
-        var scheduleList2 = [Schedule]()
+        
         for i in members{
             
             var member : String = ""
@@ -100,13 +102,14 @@ extension ViewModel {
                         else{
                             guard let value = snapshot?.value else {return}
                             if let data = try? FirebaseDecoder().decode([[String]].self, from: value){
-                                
+                                print("1111111")
                                 var newschedule : [[String]] = data
                                 for j in newschedule{
                                     var newschedule:Schedule = Schedule(title: j[0], startDate: j[1], endDate: j[2], startTime: j[3], endTime: j[4])
                                     //print(j)
                                     scheduleList2.append(newschedule)
                                 }
+                                
                                 completion(scheduleList2)
                                 
 //                                for i in scheduleList2{

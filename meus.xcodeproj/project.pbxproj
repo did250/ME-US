@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		31B878D72875842100618CD4 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31B878D62875842100618CD4 /* GoogleService-Info.plist */; };
 		31B878D92875896C00618CD4 /* groupstruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B878D82875896C00618CD4 /* groupstruct.swift */; };
 		31C3CA6D284E0CC10092E08E /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C3CA6C284E0CC10092E08E /* CalendarHelper.swift */; };
 		31FDF1D728644CE20014735B /* AddScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FDF1D628644CE20014735B /* AddScheduleViewController.swift */; };
@@ -25,6 +24,7 @@
 		499A58C7285917F700ED7D7B /* AddGroupPopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499A58C6285917F700ED7D7B /* AddGroupPopViewController.swift */; };
 		499A58C9285BA37F00ED7D7B /* RequestViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499A58C8285BA37F00ED7D7B /* RequestViewController.swift */; };
 		499A58CB285BA57B00ED7D7B /* RequestTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 499A58CA285BA57B00ED7D7B /* RequestTableViewCell.swift */; };
+		49CC8C3C2876BEE2000168A3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 49CC8C3B2876BEE2000168A3 /* GoogleService-Info.plist */; };
 		6D1A5C6F285D81380030BE59 /* SecondPopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1A5C6E285D81380030BE59 /* SecondPopViewController.swift */; };
 		6D1A5C71285DB2EF0030BE59 /* AlarmSettingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1A5C70285DB2EF0030BE59 /* AlarmSettingViewController.swift */; };
 		6D1A5C73285DB8700030BE59 /* InfoViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D1A5C72285DB8700030BE59 /* InfoViewController.swift */; };
@@ -41,14 +41,11 @@
 		6D6F19442855BF7D00BFB2B8 /* optiondata.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6D6F19432855BF7D00BFB2B8 /* optiondata.swift */; };
 		6DD0E0D92841F23100C3D5E7 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD0E0D82841F23100C3D5E7 /* SignUpViewController.swift */; };
 		6DD6D57828439FAE00FB883A /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD6D57728439FAE00FB883A /* MeViewController.swift */; };
-		6DE7FA3628451E5700B6EF57 /* IdFindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE7FA3528451E5700B6EF57 /* IdFindViewController.swift */; };
-		6DE7FA3828451E8100B6EF57 /* PwFindViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DE7FA3728451E8100B6EF57 /* PwFindViewController.swift */; };
 		6DEA606C285CF318002E7429 /* PasswordChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEA606B285CF318002E7429 /* PasswordChangeViewController.swift */; };
 		BE748A7A906BEFC45A7BEA3C /* Pods_meus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 883476C0679D31655310B0FD /* Pods_meus.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		31B878D62875842100618CD4 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		31B878D82875896C00618CD4 /* groupstruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = groupstruct.swift; sourceTree = "<group>"; };
 		31C3CA6C284E0CC10092E08E /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
 		31FDF1D628644CE20014735B /* AddScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddScheduleViewController.swift; sourceTree = "<group>"; };
@@ -66,6 +63,7 @@
 		499A58C6285917F700ED7D7B /* AddGroupPopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddGroupPopViewController.swift; sourceTree = "<group>"; };
 		499A58C8285BA37F00ED7D7B /* RequestViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestViewController.swift; sourceTree = "<group>"; };
 		499A58CA285BA57B00ED7D7B /* RequestTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RequestTableViewCell.swift; sourceTree = "<group>"; };
+		49CC8C3B2876BEE2000168A3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6D1A5C6E285D81380030BE59 /* SecondPopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SecondPopViewController.swift; sourceTree = "<group>"; };
 		6D1A5C70285DB2EF0030BE59 /* AlarmSettingViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlarmSettingViewController.swift; sourceTree = "<group>"; };
 		6D1A5C72285DB8700030BE59 /* InfoViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InfoViewController.swift; sourceTree = "<group>"; };
@@ -84,8 +82,6 @@
 		6D6F19432855BF7D00BFB2B8 /* optiondata.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = optiondata.swift; sourceTree = "<group>"; };
 		6DD0E0D82841F23100C3D5E7 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		6DD6D57728439FAE00FB883A /* MeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
-		6DE7FA3528451E5700B6EF57 /* IdFindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = IdFindViewController.swift; sourceTree = "<group>"; };
-		6DE7FA3728451E8100B6EF57 /* PwFindViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PwFindViewController.swift; sourceTree = "<group>"; };
 		6DEA606B285CF318002E7429 /* PasswordChangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordChangeViewController.swift; sourceTree = "<group>"; };
 		6DF221042852555500008EB3 /* meus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = meus.entitlements; sourceTree = "<group>"; };
 		7381CA878277EC890FF71E28 /* Pods-meus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-meus.release.xcconfig"; path = "Target Support Files/Pods-meus/Pods-meus.release.xcconfig"; sourceTree = "<group>"; };
@@ -124,6 +120,9 @@
 				49235AB82851657100706A61 /* UsViewController.swift */,
 				6D1FC903286B5D70005B8C39 /* GroupViewController.swift */,
 				6DD6D57728439FAE00FB883A /* MeViewController.swift */,
+				6DD0E0D82841F23100C3D5E7 /* SignUpViewController.swift */,
+				31FDF1D628644CE20014735B /* AddScheduleViewController.swift */,
+				49235AB22851500600706A61 /* PopViewController.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -194,14 +193,9 @@
 				497CC1572870C5A100D86594 /* View */,
 				497CC1552870C57B00D86594 /* ViewModel */,
 				6DF221042852555500008EB3 /* meus.entitlements */,
-				31B878D62875842100618CD4 /* GoogleService-Info.plist */,
+				49CC8C3B2876BEE2000168A3 /* GoogleService-Info.plist */,
 				6D2EA37A283BE14500A91E9A /* AppDelegate.swift */,
 				6D2EA37C283BE14500A91E9A /* SceneDelegate.swift */,
-				49235AB22851500600706A61 /* PopViewController.swift */,
-				6DE7FA3528451E5700B6EF57 /* IdFindViewController.swift */,
-				6DE7FA3728451E8100B6EF57 /* PwFindViewController.swift */,
-				6DD0E0D82841F23100C3D5E7 /* SignUpViewController.swift */,
-				31FDF1D628644CE20014735B /* AddScheduleViewController.swift */,
 				6D2ABD0B28578BA000B5BEDC /* OptionViewController.swift */,
 				6D2EA383283BE14800A91E9A /* Assets.xcassets */,
 				6D2EA380283BE14500A91E9A /* Main.storyboard */,
@@ -280,7 +274,7 @@
 			files = (
 				6D2EA387283BE14800A91E9A /* LaunchScreen.storyboard in Resources */,
 				6D2EA384283BE14800A91E9A /* Assets.xcassets in Resources */,
-				31B878D72875842100618CD4 /* GoogleService-Info.plist in Resources */,
+				49CC8C3C2876BEE2000168A3 /* GoogleService-Info.plist in Resources */,
 				6D2EA382283BE14500A91E9A /* Main.storyboard in Resources */,
 				49235AB72851639D00706A61 /* Popup.storyboard in Resources */,
 			);
@@ -347,7 +341,6 @@
 				499A58C52858899800ED7D7B /* AddFriendPopViewController.swift in Sources */,
 				6D2EA37F283BE14500A91E9A /* ViewController.swift in Sources */,
 				31FDF1E1286D8BF80014735B /* MixedSceduleTableViewCell.swift in Sources */,
-				6DE7FA3628451E5700B6EF57 /* IdFindViewController.swift in Sources */,
 				6D2EA37B283BE14500A91E9A /* AppDelegate.swift in Sources */,
 				499A58C9285BA37F00ED7D7B /* RequestViewController.swift in Sources */,
 				6DD0E0D92841F23100C3D5E7 /* SignUpViewController.swift in Sources */,
@@ -357,7 +350,6 @@
 				6D2EA37D283BE14500A91E9A /* SceneDelegate.swift in Sources */,
 				497CC152287088F300D86594 /* ViewModel.swift in Sources */,
 				6D1FC904286B5D70005B8C39 /* GroupViewController.swift in Sources */,
-				6DE7FA3828451E8100B6EF57 /* PwFindViewController.swift in Sources */,
 				6D2ABD0C28578BA000B5BEDC /* OptionViewController.swift in Sources */,
 				6D1A5C71285DB2EF0030BE59 /* AlarmSettingViewController.swift in Sources */,
 				6DEA606C285CF318002E7429 /* PasswordChangeViewController.swift in Sources */,

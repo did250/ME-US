@@ -27,12 +27,16 @@ class GroupViewController: UIViewController,UITableViewDelegate, UITableViewData
         viewModel.LoadGroup(group: name){data in
             self.members = viewModel.AddGroupMembers()
             self.membertable.reloadData()
+            viewModel.MixedSchedule(members: self.members){ i in
+                print("asdfasdfasdfasdfasdfasd;fklasdjf;lkasdjl;kdsjlk;j")
+            }
         }
         
         membertable.delegate = self
         membertable.dataSource = self
        
         self.groupname.text = name
+        
     }
     
     @IBAction func groupinvite(_ sender: UIButton) {
@@ -55,6 +59,8 @@ class GroupViewController: UIViewController,UITableViewDelegate, UITableViewData
         
     }
     @IBAction func schedulemix(_ sender: UIButton) {
+        
+        
         guard let msvc = self.storyboard?.instantiateViewController(withIdentifier: "MixedScheduleViewController") as? MixedScheduleViewController else {return}
         msvc.groupname = self.name
         msvc.members = self.members

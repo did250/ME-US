@@ -38,14 +38,12 @@ class MeViewController: UIViewController,UICollectionViewDelegate,UICollectionVi
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        
         ref = Database.database().reference()
 
         self.setBinding()
-        viewModel.Loaduser(uid : Auth.auth().currentUser!.uid){data in
-            scheduleList.removeAll()
-            viewModel.AddScheduleList()
-        }
         
+   
         self.navigationItem.hidesBackButton = true
         setCellsView()
         setMonthView()
@@ -53,16 +51,31 @@ class MeViewController: UIViewController,UICollectionViewDelegate,UICollectionVi
         collectionView.dataSource = self
         ScheduleTable.dataSource = self
         ScheduleTable.delegate = self
+        ScheduleTable.reloadData()
         
     }
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        print("didappear")
         if (uid != Auth.auth().currentUser?.uid){
-            self.Calendarname.text = userinfo.name + "'s Calendar"
-            addbutton.isHidden = true
-            backbutton.isHidden = false
-            addbutton.isEnabled = false
-            backbutton.isEnabled = true
+            viewModel.Loaduser(uid : uid!){data in
+                scheduleList.removeAll()
+                viewModel.AddScheduleList()
+                self.Calendarname.text = self.userinfo.name + "'s Calendar"
+                self.addbutton.isHidden = true
+                self.backbutton.isHidden = false
+                self.addbutton.isEnabled = false
+                self.backbutton.isEnabled = true
+                self.daySchedule.removeAll()
+                self.currentDays.removeAll()
+                self.currentSchedule.removeAll()
+                self.currentSchedule = viewModel.FindcurrentSchedule()
+                self.currentDays = viewModel.FindcurrentDays(currentSchedule: self.currentSchedule)
+                self.collectionView.reloadData()
+                self.ScheduleTable.reloadData()
+            }
+            
+            
         }
         else {
             self.Calendarname.text = "My Calendar"
@@ -78,10 +91,7 @@ class MeViewController: UIViewController,UICollectionViewDelegate,UICollectionVi
                 self.currentSchedule = viewModel.FindcurrentSchedule()
                 self.currentDays = viewModel.FindcurrentDays(currentSchedule: self.currentSchedule)
             }
-            self.currentDays.removeAll()
-            self.currentSchedule.removeAll()
-            self.currentSchedule = viewModel.FindcurrentSchedule()
-            self.currentDays = viewModel.FindcurrentDays(currentSchedule: self.currentSchedule)
+            self.ScheduleTable.reloadData()
             self.collectionView.reloadData()
         }
     }
