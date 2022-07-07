@@ -28,16 +28,10 @@ class MixedScheduleViewController: UIViewController,UITableViewDelegate, UITable
     @IBOutlet weak var mixedScheduleTableView: UITableView!
     @IBOutlet weak var mixedScheduleTableView2: UITableView!
     
-    @IBOutlet weak var timeLabel: UILabel!
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         self.configureStartDatePicker()
-        self.timeLabel.layer.borderWidth = 0.5
         
-        
-       
-            
         self.findMixedSchedule(scheduleList2: scheduleList2)
             
         self.mixedScheduleTableView.reloadData()
