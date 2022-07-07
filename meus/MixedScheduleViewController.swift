@@ -36,7 +36,17 @@ class MixedScheduleViewController: UIViewController,UITableViewDelegate, UITable
         self.timeLabel.layer.borderWidth = 0.5
         
         
-        scheduleList2 = viewModel.MixedSchedule(members: members)
+        viewModel.MixedSchedule(members: members){i in
+            
+            self.findMixedSchedule(scheduleList2: i)
+            for i in 0...1439{
+                if(self.visitedArr[i] == true){
+                    print(i)
+                }
+            }
+            self.mixedScheduleTableView.reloadData()
+            self.mixedScheduleTableView2.reloadData()
+        }
         
         self.groupName.text = groupname
         self.mixedScheduleTableView.isScrollEnabled = false
@@ -50,12 +60,8 @@ class MixedScheduleViewController: UIViewController,UITableViewDelegate, UITable
         self.mixedScheduleTableView2.delegate = self
         self.mixedScheduleTableView2.register(UITableViewCell.self, forCellReuseIdentifier: "MixedSceduleTableViewCell")
         
-        self.findMixedSchedule()
     }
-//    override func viewDidAppear(_ animated: Bool) {
-//        super.viewDidAppear(animated)
-//        scheduleList2 = viewModel.MixedSchedule(members: members)
-//    }
+
 
     func tableView(_ tableView: UITableView, heightForRowAt indexPath: IndexPath) -> CGFloat {
         return CGFloat(pmStackView.bounds.height / 720)
@@ -74,7 +80,7 @@ class MixedScheduleViewController: UIViewController,UITableViewDelegate, UITable
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = mixedScheduleTableView.dequeueReusableCell(withIdentifier: "MixedSceduleTableViewCell", for: indexPath)
         cell.selectionStyle = .none
-
+        
         if(tableView == mixedScheduleTableView){
             cell.backgroundColor = .white
         }
@@ -114,21 +120,25 @@ class MixedScheduleViewController: UIViewController,UITableViewDelegate, UITable
         let formater = DateFormatter()
         formater.dateFormat = "yyyy년 MM월 dd일"
         formater.locale = Locale(identifier: "ko_KR")
-        scheduleList2 = viewModel.MixedSchedule(members: members)
-        print("%%%%")
-        for i in scheduleList2{
-            print(i)
+
+        viewModel.MixedSchedule(members: members){i in
+//            for j in i{
+//                print(j.title)
+//
+//            }
+            self.findMixedSchedule(scheduleList2: i)
+//            for i in 0...1439{
+//                if(self.visitedArr[i] == true){
+//                    print(i)
+//                }
+//            }
+            self.mixedScheduleTableView.reloadData()
+            self.mixedScheduleTableView2.reloadData()
         }
         self.currentDate = CalendarHelper().dateToString(date: datePicker.date)
-        self.findMixedSchedule()
-        for i in 0...1439{
-            if(visitedArr[i] == true){
-                print(i)
-            }
-        }
+       
         
-        self.mixedScheduleTableView.reloadData()
-        self.mixedScheduleTableView2.reloadData()
+        
     }
     
     
@@ -137,11 +147,12 @@ class MixedScheduleViewController: UIViewController,UITableViewDelegate, UITable
         self.dismiss(animated: true)
     }
     
-    func findMixedSchedule(){
+    func findMixedSchedule(scheduleList2: [Schedule]){
         d = Int(CalendarHelper().dayToString(date: datePicker.date))!
         m = Int(CalendarHelper().monthString(date: datePicker.date))!
         y = Int(CalendarHelper().yearString(date: datePicker.date))!
         visitedArr = [Bool](repeating: false, count: 1440)
+        
         for i in scheduleList2{
             if(!visitedArr.contains(false)){
                 break
@@ -197,9 +208,7 @@ class MixedScheduleViewController: UIViewController,UITableViewDelegate, UITable
                     endTimeToNum = 720 + Int(endHour)! * 60 + Int(endMin)!
                 }
             }
-            print("!@#!@#!@#")
-            print(startTimeToNum)
-            print(endTimeToNum)
+           
             if(startYear == self.y && endYear == self.y){
                 if(startMonth == self.m && endMonth == self.m){
                     if(startDay == self.d && endDay == self.d){
