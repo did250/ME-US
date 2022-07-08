@@ -11,13 +11,15 @@ class RequestViewController: UIViewController, UITableViewDelegate, UITableViewD
     @IBOutlet var Requesttable: UITableView!
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return requests.count
+        return requests.count - 1
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = Requesttable.dequeueReusableCell(withIdentifier: "RequestTableViewCell", for: indexPath) as! RequestTableViewCell
         cell.flag = flag
-        cell.name.text = requests[indexPath.row]
+        if(requests[indexPath.row] != "Grequest" || requests[indexPath.row] != "Frequest"){
+            cell.name.text = requests[indexPath.row + 1]
+        }
         return cell
     }
 

@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		31610F48287738D50002BBBF /* TimeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31610F47287738D50002BBBF /* TimeLabel.swift */; };
+		31781E8E28780739003BA759 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31781E8D28780739003BA759 /* GoogleService-Info.plist */; };
 		31B878D92875896C00618CD4 /* groupstruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B878D82875896C00618CD4 /* groupstruct.swift */; };
 		31C3CA6D284E0CC10092E08E /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C3CA6C284E0CC10092E08E /* CalendarHelper.swift */; };
 		31FDF1D728644CE20014735B /* AddScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FDF1D628644CE20014735B /* AddScheduleViewController.swift */; };
@@ -42,12 +43,12 @@
 		6DD0E0D92841F23100C3D5E7 /* SignUpViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD0E0D82841F23100C3D5E7 /* SignUpViewController.swift */; };
 		6DD6D57828439FAE00FB883A /* MeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DD6D57728439FAE00FB883A /* MeViewController.swift */; };
 		6DEA606C285CF318002E7429 /* PasswordChangeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6DEA606B285CF318002E7429 /* PasswordChangeViewController.swift */; };
-		6DEDE974287741B300001BC3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6DEDE973287741B300001BC3 /* GoogleService-Info.plist */; };
 		BE748A7A906BEFC45A7BEA3C /* Pods_meus.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 883476C0679D31655310B0FD /* Pods_meus.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		31610F47287738D50002BBBF /* TimeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLabel.swift; sourceTree = "<group>"; };
+		31781E8D28780739003BA759 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		31B878D82875896C00618CD4 /* groupstruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = groupstruct.swift; sourceTree = "<group>"; };
 		31C3CA6C284E0CC10092E08E /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
 		31FDF1D628644CE20014735B /* AddScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddScheduleViewController.swift; sourceTree = "<group>"; };
@@ -84,7 +85,6 @@
 		6DD0E0D82841F23100C3D5E7 /* SignUpViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpViewController.swift; sourceTree = "<group>"; };
 		6DD6D57728439FAE00FB883A /* MeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeViewController.swift; sourceTree = "<group>"; };
 		6DEA606B285CF318002E7429 /* PasswordChangeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordChangeViewController.swift; sourceTree = "<group>"; };
-		6DEDE973287741B300001BC3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		6DF221042852555500008EB3 /* meus.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = meus.entitlements; sourceTree = "<group>"; };
 		7381CA878277EC890FF71E28 /* Pods-meus.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-meus.release.xcconfig"; path = "Target Support Files/Pods-meus/Pods-meus.release.xcconfig"; sourceTree = "<group>"; };
 		86FAF1BD66A9FEED3B9E5F5D /* Pods-meus.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-meus.debug.xcconfig"; path = "Target Support Files/Pods-meus/Pods-meus.debug.xcconfig"; sourceTree = "<group>"; };
@@ -195,7 +195,7 @@
 				497CC1572870C5A100D86594 /* View */,
 				497CC1552870C57B00D86594 /* ViewModel */,
 				6DF221042852555500008EB3 /* meus.entitlements */,
-				6DEDE973287741B300001BC3 /* GoogleService-Info.plist */,
+				31781E8D28780739003BA759 /* GoogleService-Info.plist */,
 				6D2EA37A283BE14500A91E9A /* AppDelegate.swift */,
 				6D2EA37C283BE14500A91E9A /* SceneDelegate.swift */,
 				6D2ABD0B28578BA000B5BEDC /* OptionViewController.swift */,
@@ -277,7 +277,7 @@
 			files = (
 				6D2EA387283BE14800A91E9A /* LaunchScreen.storyboard in Resources */,
 				6D2EA384283BE14800A91E9A /* Assets.xcassets in Resources */,
-				6DEDE974287741B300001BC3 /* GoogleService-Info.plist in Resources */,
+				31781E8E28780739003BA759 /* GoogleService-Info.plist in Resources */,
 				6D2EA382283BE14500A91E9A /* Main.storyboard in Resources */,
 				49235AB72851639D00706A61 /* Popup.storyboard in Resources */,
 			);

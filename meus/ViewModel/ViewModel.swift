@@ -125,41 +125,9 @@ extension ViewModel {
                 }
             })
         }
-//        for i in scheduleList2{
-//            print(i)
-//        }
-//        return scheduleList2
+
     }
-//    func aa(member: String, completion: @escaping (Int) -> ()){
-//        self.ref.child("users").child(member).child("schedules").getData{
-//            (error,snapshot) in
-//            if let error = error {
-//                print("Error \(error)")
-//            }
-//            else{
-//                guard let value = snapshot?.value else {return}
-//                if let data = try? FirebaseDecoder().decode([[String]].self, from: value){
-//
-//                    var newschedule : [[String]] = data
-//                    for j in newschedule{
-//                        var newschedule:Schedule = Schedule(title: j[0], startDate: j[1], endDate: j[2], startTime: j[3], endTime: j[4])
-//                        //print(j)
-//                        scheduleList2.append(newschedule)
-//                    }
-//                    completion(1)
-//
-//                    for i in scheduleList2{
-//                        print(i.title)
-//                    }
-//                }
-//                else{
-//                    print("Error")
-//
-//                }
-//            }
-//        }
-//    }
-    
+
     func sendFrequest(friendid : String, flag : String, groupname:String, completion: @escaping (Int) -> ()) {
         var frienduid : String = ""
         self.ref.child("users").queryOrdered(byChild: "id").queryEqual(toValue: friendid).observeSingleEvent(of: .value, with: {

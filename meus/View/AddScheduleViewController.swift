@@ -63,6 +63,7 @@ class AddScheduleViewController: UIViewController {
     
     private func configureStartTimePicker(){
         self.startTimePicker.datePickerMode = .time
+        self.startTimePicker.date = CalendarHelper().StringtoTime(string: "오전 9시 0분")
         self.startTimePicker.preferredDatePickerStyle = .wheels
         self.startTimePicker.addTarget(self, action: #selector(startTimePickerValueDidChange(_:)), for: .valueChanged)
         self.startTimeTextField.text = CalendarHelper().timeToString(date: selectedDate)
@@ -72,6 +73,7 @@ class AddScheduleViewController: UIViewController {
     }
     private func configureEndTimePicker(){
         self.endTimePicker.datePickerMode = .time
+        self.endTimePicker.date = CalendarHelper().StringtoTime(string: "오전 9시 0분")
         self.endTimePicker.preferredDatePickerStyle = .wheels
         self.endTimePicker.addTarget(self, action: #selector(endTimePickerValueDidChange(_:)), for: .valueChanged)
         self.endTimeTextField.text = CalendarHelper().timeToString(date: selectedDate)
