@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="20037" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19529" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="BYZ-38-t0r">
     <device id="retina6_1" orientation="portrait" appearance="light"/>
     <dependencies>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="20020"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19519"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="Stack View standard spacing" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
@@ -344,6 +344,7 @@
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Uif-H1-2xG">
                                                     <rect key="frame" x="312" y="6.5" width="42" height="31"/>
+                                                    <color key="tintColor" red="0.66666666669999997" green="0.0039215686269999999" blue="0.0039215686269999999" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                                     <state key="normal" title="Button"/>
                                                     <buttonConfiguration key="configuration" style="plain" image="xmark" catalog="system"/>
                                                     <connections>
@@ -381,7 +382,8 @@
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vL9-0v-si5">
                                 <rect key="frame" x="350.5" y="62" width="43.5" height="31"/>
-                                <color key="tintColor" systemColor="tintColor"/>
+                                <color key="backgroundColor" red="0.99607843139999996" green="0.96078431369999995" blue="0.83137254900000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" image="plus" catalog="system"/>
                                 <connections>
@@ -390,8 +392,10 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="UMH-Qe-gV5">
                                 <rect key="frame" x="0.0" y="44" width="67" height="31"/>
+                                <color key="backgroundColor" red="0.99607843139999996" green="0.96078431369999995" blue="0.83137254900000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="Button" cornerStyle="dynamic"/>
                                 <connections>
                                     <action selector="backbutton:" destination="9aO-Vy-6T3" eventType="touchUpInside" id="NNd-tx-PYj"/>
                                 </connections>
@@ -473,6 +477,8 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="G98-Vh-m3J">
                                 <rect key="frame" x="183" y="363" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.99607843139999996" green="0.96078431369999995" blue="0.83137254900000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="등록"/>
                                 <connections>
@@ -506,6 +512,8 @@
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RYG-Wl-kQt">
                                 <rect key="frame" x="192" y="495" width="49" height="31"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="backgroundColor" red="0.99607843139999996" green="0.96078431369999995" blue="0.83137254900000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="취소"/>
                                 <connections>
@@ -609,6 +617,8 @@
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="pbe-eC-bfd">
                                 <rect key="frame" x="240" y="44" width="77" height="38.5"/>
+                                <color key="backgroundColor" red="0.99607843139999996" green="0.96078431369999995" blue="0.83137254900000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="그룹 추가"/>
                                 <connections>
@@ -617,14 +627,20 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rmN-hI-r9K">
                                 <rect key="frame" x="327" y="44" width="77" height="38.5"/>
+                                <color key="backgroundColor" red="0.99607843139999996" green="0.96078431369999995" blue="0.83137254900000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
-                                <buttonConfiguration key="configuration" style="plain" title="받은 요청"/>
+                                <buttonConfiguration key="configuration" style="plain" title="받은 요청">
+                                    <backgroundConfiguration key="background"/>
+                                </buttonConfiguration>
                                 <connections>
                                     <action selector="grouprequest:" destination="JCZ-ib-pmN" eventType="touchUpInside" id="Dbc-Wy-nRF"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="sMu-ba-1tj">
                                 <rect key="frame" x="240" y="428.5" width="77" height="31"/>
+                                <color key="backgroundColor" red="0.99607843139999996" green="0.96078431369999995" blue="0.83137254900000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="친구 추가"/>
                                 <connections>
@@ -633,6 +649,8 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ldH-cI-Z6y">
                                 <rect key="frame" x="327" y="428.5" width="77" height="31"/>
+                                <color key="backgroundColor" red="0.99607843139999996" green="0.96078431369999995" blue="0.83137254900000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="받은 요청"/>
                                 <connections>
@@ -641,6 +659,8 @@
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Ypt-Dh-pNd">
                                 <rect key="frame" x="0.0" y="44" width="74" height="38.5"/>
+                                <color key="backgroundColor" red="0.99607843139999996" green="0.96078431369999995" blue="0.83137254900000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="Refresh"/>
                                 <connections>
@@ -676,7 +696,7 @@
                             <constraint firstItem="rmN-hI-r9K" firstAttribute="leading" secondItem="pbe-eC-bfd" secondAttribute="trailing" constant="10" id="wyU-FK-Zhu"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="US" image="rectangle.3.group" catalog="system" id="FIt-38-Pel"/>
+                    <tabBarItem key="tabBarItem" title="US" image="figure.stand.line.dotted.figure.stand" catalog="system" id="FIt-38-Pel"/>
                     <connections>
                         <outlet property="FriendTable" destination="0J7-hk-Zco" id="xHI-X8-dVZ"/>
                         <outlet property="GroupTable" destination="tdA-8o-SBX" id="LSl-RI-t5B"/>
@@ -779,6 +799,8 @@
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="JEw-uL-hNI">
                                 <rect key="frame" x="0.0" y="44" width="73" height="31"/>
+                                <color key="backgroundColor" red="0.99607843139999996" green="0.96078431369999995" blue="0.83137254900000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="뒤로가기"/>
                                 <connections>
@@ -842,6 +864,8 @@
                             </datePicker>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rGq-rL-hkC">
                                 <rect key="frame" x="0.0" y="44" width="72.5" height="31"/>
+                                <color key="backgroundColor" red="0.99607843139999996" green="0.96078431369999995" blue="0.83137254900000002" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain" title="뒤로가기"/>
                                 <connections>
@@ -1246,7 +1270,7 @@
                             <constraint firstItem="12o-K4-qdg" firstAttribute="bottom" secondItem="I06-9O-Foj" secondAttribute="bottom" id="ugu-LO-w4M"/>
                         </constraints>
                     </view>
-                    <tabBarItem key="tabBarItem" title="설정" image="option" catalog="system" id="kth-Kc-8uU"/>
+                    <tabBarItem key="tabBarItem" title="설정" image="circle.grid.hex.fill" catalog="system" id="kth-Kc-8uU"/>
                     <connections>
                         <outlet property="optionTable" destination="I06-9O-Foj" id="axe-Mm-QIn"/>
                     </connections>
@@ -2141,15 +2165,12 @@
         <image name="arrowshape.turn.up.right.circle.fill" catalog="system" width="128" height="121"/>
         <image name="calendar" catalog="system" width="128" height="106"/>
         <image name="checkmark" catalog="system" width="128" height="114"/>
-        <image name="option" catalog="system" width="128" height="106"/>
+        <image name="circle.grid.hex.fill" catalog="system" width="128" height="112"/>
+        <image name="figure.stand.line.dotted.figure.stand" catalog="system" width="128" height="83"/>
         <image name="plus" catalog="system" width="128" height="113"/>
-        <image name="rectangle.3.group" catalog="system" width="128" height="81"/>
         <image name="xmark" catalog="system" width="128" height="113"/>
         <systemColor name="systemRedColor">
             <color red="1" green="0.23137254901960785" blue="0.18823529411764706" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-        </systemColor>
-        <systemColor name="tintColor">
-            <color red="0.0" green="0.47843137254901963" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </systemColor>
     </resources>
 </document>

@@ -182,11 +182,11 @@ extension MeViewController{
         cell.dayLabel.text = date
         cell.scheduleOn.layer.cornerRadius = cell.scheduleOn.frame.width / 2
         cell.scheduleOn.clipsToBounds = true
-        cell.scheduleOn.backgroundColor = .white
+        cell.scheduleOn.backgroundColor = UIColor(displayP3Red: 250/255, green: 227/255, blue: 217/255, alpha: 1)
         
         for i in currentDays{
             if(date == String(i)){
-                cell.scheduleOn.backgroundColor = .blue
+                cell.scheduleOn.backgroundColor = UIColor(displayP3Red: 254/255, green: 245/255, blue: 212/255, alpha: 1)
             }
         }
                 

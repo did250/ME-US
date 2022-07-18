@@ -8,7 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		31610F48287738D50002BBBF /* TimeLabel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31610F47287738D50002BBBF /* TimeLabel.swift */; };
-		31781E8E28780739003BA759 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 31781E8D28780739003BA759 /* GoogleService-Info.plist */; };
 		31B878D92875896C00618CD4 /* groupstruct.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31B878D82875896C00618CD4 /* groupstruct.swift */; };
 		31C3CA6D284E0CC10092E08E /* CalendarHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31C3CA6C284E0CC10092E08E /* CalendarHelper.swift */; };
 		31FDF1D728644CE20014735B /* AddScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FDF1D628644CE20014735B /* AddScheduleViewController.swift */; };
@@ -16,6 +15,7 @@
 		31FDF1DF286D6D7B0014735B /* MixedScheduleViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FDF1DE286D6D7B0014735B /* MixedScheduleViewController.swift */; };
 		31FDF1E1286D8BF80014735B /* MixedSceduleTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FDF1E0286D8BF80014735B /* MixedSceduleTableViewCell.swift */; };
 		31FFEEBE284DDF58005B30B1 /* CalendarCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 31FFEEBD284DDF58005B30B1 /* CalendarCell.swift */; };
+		490AF6E4288555CC00C55687 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 490AF6E3288555CC00C55687 /* GoogleService-Info.plist */; };
 		49235AB32851500600706A61 /* PopViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49235AB22851500600706A61 /* PopViewController.swift */; };
 		49235AB72851639D00706A61 /* Popup.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 49235AB62851639D00706A61 /* Popup.storyboard */; };
 		49235AB92851657100706A61 /* UsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 49235AB82851657100706A61 /* UsViewController.swift */; };
@@ -48,7 +48,6 @@
 
 /* Begin PBXFileReference section */
 		31610F47287738D50002BBBF /* TimeLabel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimeLabel.swift; sourceTree = "<group>"; };
-		31781E8D28780739003BA759 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../GoogleService-Info.plist"; sourceTree = "<group>"; };
 		31B878D82875896C00618CD4 /* groupstruct.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = groupstruct.swift; sourceTree = "<group>"; };
 		31C3CA6C284E0CC10092E08E /* CalendarHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarHelper.swift; sourceTree = "<group>"; };
 		31FDF1D628644CE20014735B /* AddScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AddScheduleViewController.swift; sourceTree = "<group>"; };
@@ -56,6 +55,7 @@
 		31FDF1DE286D6D7B0014735B /* MixedScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixedScheduleViewController.swift; sourceTree = "<group>"; };
 		31FDF1E0286D8BF80014735B /* MixedSceduleTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MixedSceduleTableViewCell.swift; sourceTree = "<group>"; };
 		31FFEEBD284DDF58005B30B1 /* CalendarCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCell.swift; sourceTree = "<group>"; };
+		490AF6E3288555CC00C55687 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; name = "GoogleService-Info.plist"; path = "../../../Downloads/GoogleService-Info.plist"; sourceTree = "<group>"; };
 		49235AB22851500600706A61 /* PopViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PopViewController.swift; sourceTree = "<group>"; };
 		49235AB62851639D00706A61 /* Popup.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = Popup.storyboard; sourceTree = "<group>"; };
 		49235AB82851657100706A61 /* UsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UsViewController.swift; sourceTree = "<group>"; };
@@ -195,10 +195,10 @@
 				497CC1572870C5A100D86594 /* View */,
 				497CC1552870C57B00D86594 /* ViewModel */,
 				6DF221042852555500008EB3 /* meus.entitlements */,
-				31781E8D28780739003BA759 /* GoogleService-Info.plist */,
 				6D2EA37A283BE14500A91E9A /* AppDelegate.swift */,
 				6D2EA37C283BE14500A91E9A /* SceneDelegate.swift */,
 				6D2ABD0B28578BA000B5BEDC /* OptionViewController.swift */,
+				490AF6E3288555CC00C55687 /* GoogleService-Info.plist */,
 				6D2EA383283BE14800A91E9A /* Assets.xcassets */,
 				6D2EA380283BE14500A91E9A /* Main.storyboard */,
 				49235AB62851639D00706A61 /* Popup.storyboard */,
@@ -277,7 +277,7 @@
 			files = (
 				6D2EA387283BE14800A91E9A /* LaunchScreen.storyboard in Resources */,
 				6D2EA384283BE14800A91E9A /* Assets.xcassets in Resources */,
-				31781E8E28780739003BA759 /* GoogleService-Info.plist in Resources */,
+				490AF6E4288555CC00C55687 /* GoogleService-Info.plist in Resources */,
 				6D2EA382283BE14500A91E9A /* Main.storyboard in Resources */,
 				49235AB72851639D00706A61 /* Popup.storyboard in Resources */,
 			);
